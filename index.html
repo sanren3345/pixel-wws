@@ -27,6 +27,65 @@
         color:#cfe3ff; text-shadow:1px 1px 0 #000; }
   #statHud b{ color:var(--accent); }
   #mmBox{ right:14px; bottom:12px; opacity:.5; }
+  /* ---- 肉鸽模式：波次状态面板（左上，计时器下方）---- */
+  #rogueHud{ top:64px; left:16px; display:none; background:rgba(8,13,20,.62);
+        border-left:2px solid #c46cff; padding:5px 10px 6px; min-width:158px; }
+  #rogueHud.on{ display:block; }
+  #rogueHud .rg-wave{ font-size:calc(12px * var(--fs)); color:#e0b0ff; letter-spacing:1.5px;
+        text-shadow:1px 1px 0 #000; margin-bottom:2px; }
+  #rogueHud .rg-wave b{ font-size:calc(17px * var(--fs)); color:#fff; font-weight:normal; }
+  #rogueHud .rg-line{ font-size:calc(10px * var(--fs)); color:#8fa8c9; letter-spacing:.6px;
+        text-shadow:1px 1px 0 #000; line-height:1.55; }
+  #rogueHud .rg-line b{ color:#ffd166; font-weight:normal; }
+  #rogueHud .rg-line i{ font-style:normal; color:#ff8a80; }
+  /* ---- 肉鸽：波次间隔的三选一增益 / 下一波倒计时 ---- */
+  #roguePick{ position:fixed; inset:0; z-index:11; display:none; align-items:center; justify-content:center;
+        background:radial-gradient(circle at 50% 42%, rgba(28,12,42,.72), rgba(4,8,13,.9) 68%); }
+  #roguePick.on{ display:flex; }
+  .rp-box{ width:min(880px, 94vw); text-align:center; padding:6px 4px 10px; }
+  .rp-kicker{ font-size:calc(10px * var(--fs)); letter-spacing:6px; color:#c46cff; }
+  .rp-title{ font-size:calc(26px * var(--fs)); letter-spacing:9px; color:#fff; margin:6px 0 4px;
+        text-shadow:0 0 20px rgba(196,108,255,.5), 2px 2px 0 rgba(0,0,0,.7); }
+  .rp-sub{ font-size:calc(10.5px * var(--fs)); letter-spacing:2px; color:#9a86b4; margin-bottom:16px; }
+  #rpCards{ display:flex; gap:14px; justify-content:center; align-items:stretch; }
+  .rp-card{ flex:1 1 0; min-width:0; max-width:250px; padding:16px 14px 14px; cursor:pointer;
+        background:linear-gradient(180deg, rgba(24,38,52,.97), rgba(11,20,29,.97));
+        border:1px solid #3a5470; border-top:3px solid #4a657f; text-align:left;
+        transition:transform .13s, border-color .13s, box-shadow .13s, background .13s; }
+  .rp-card:hover{ transform:translateY(-6px); border-color:#ffb066; border-top-color:#ff8a1e;
+        background:linear-gradient(180deg, rgba(44,36,22,.98), rgba(16,24,32,.98));
+        box-shadow:0 10px 30px rgba(0,0,0,.55), 0 0 22px rgba(255,138,30,.2); }
+  .rp-card .rp-ico{ width:52px; height:52px; display:flex; align-items:center; justify-content:center;
+        font-size:calc(24px * var(--fs)); border:2px solid #44607c; background:rgba(6,12,18,.7);
+        color:#cfe3ff; margin-bottom:11px; }
+  .rp-card .rp-name{ font-size:calc(15px * var(--fs)); letter-spacing:2px; color:#eaf4ff; }
+  .rp-card .rp-src{ display:inline-block; font-size:calc(8.5px * var(--fs)); letter-spacing:1.5px;
+        color:#7f96a9; border:1px solid #33506b; padding:1px 6px; margin:7px 0 9px; }
+  .rp-card .rp-desc{ font-size:calc(10.5px * var(--fs)); color:#a8c0d6; line-height:1.85; }
+  .rp-card .rp-key{ display:block; margin-top:11px; font-size:calc(9px * var(--fs)); color:#5d7488;
+        letter-spacing:2px; }
+  .rp-card:hover .rp-key{ color:#ffb066; }
+  .rp-card.atk .rp-ico{ border-color:#7d3b3b; color:#ff8a80; }
+  .rp-card.def .rp-ico{ border-color:#3d6b4f; color:#9be26b; }
+  .rp-card.util .rp-ico{ border-color:#33567d; color:#66d9ef; }
+  .rp-card.arms .rp-ico{ border-color:#6b5a2c; color:#ffd166; }
+  .rp-timer{ width:min(420px, 70vw); height:6px; margin:20px auto 0; background:#1b1424;
+        border:1px solid #3a2b4e; }
+  .rp-timer i{ display:block; height:100%; background:linear-gradient(90deg,#8e44c8,#e0b0ff); }
+  .rp-count{ font-size:calc(56px * var(--fs)); color:#ffd166; letter-spacing:6px; margin:10px 0 6px;
+        text-shadow:0 0 26px rgba(255,209,102,.4); }
+  .rp-who{ font-size:calc(12px * var(--fs)); color:#cfe3ff; letter-spacing:2px; }
+  /* ---- 轰炸机操控面板（路易斯安娜：起飞后替代准星显示） ---- */
+  #airHud{ left:50%; top:74px; transform:translateX(-50%); display:none; text-align:center;
+        background:rgba(8,13,20,.82); border:1px solid #ffd16666; padding:7px 16px; }
+  #airHud.on{ display:block; }
+  #airHud .ah-title{ font-size:calc(11px * var(--fs)); letter-spacing:3px; color:#ffd166;
+        text-shadow:1px 1px 0 #000; margin-bottom:3px; }
+  #airHud .ah-row{ font-size:calc(11px * var(--fs)); color:#cfe3ff; line-height:1.7;
+        text-shadow:1px 1px 0 #000; letter-spacing:1px; }
+  #airHud .ah-row i{ font-style:normal; color:#8fa8c9; margin-right:6px; }
+  #airHud .ah-row b{ color:#ffd166; font-weight:normal; }
+  #airHud .ah-tip{ font-size:calc(9px * var(--fs)); color:#6f88a3; letter-spacing:1px; margin-top:2px; }
   /* ---- 战场补给栏（军备竞赛，拾取后显示于战场上方） ---- */
   #buffBar{ top:10px; left:50%; transform:translateX(-50%); display:none; text-align:center; }
   #buffBar.on{ display:block; }
@@ -142,6 +201,9 @@
   .modecard i{ display:block; font-style:normal; font-size:calc(9px * var(--fs)); color:#8fa8c9; margin-top:4px; }
   .modecard.on b{ color:#ffd166; }
   .modecard.on i{ color:#ffb066; }
+  .modecard.rogue.on{ border-color:#c46cff; background:#2a1638; box-shadow:0 0 14px rgba(196,108,255,.22); }
+  .modecard.rogue.on b{ color:#e0b0ff; }
+  .modecard.rogue.on i{ color:#c99cf0; }
   #modeDesc{ font-size:calc(10px * var(--fs)); color:#8fa8c9; line-height:1.75; border-left:2px solid #4a657f;
         padding-left:8px; margin-bottom:10px; min-height:34px; }
   #modeDesc em{ font-style:normal; color:#ffd166; }
@@ -311,6 +373,18 @@
   .rs-preset{ display:block; width:100%; margin-bottom:6px; padding:8px 0; font-size:calc(11px * var(--fs));
         letter-spacing:1px; color:#cfe3ff; background:#0b1721; border:1px solid #2b4256; cursor:pointer; }
   .rs-preset:hover{ border-color:#ff8a1e; color:#fff; }
+  .rs-preset.on{ border-color:#57a8ff; color:#cfe9ff; background:#10222f; }
+  /* 军械库：全舰种通用标识 / 装备需求角标 / 本舰种不生效态 */
+  .am-univ{ display:inline-block; margin-right:9px; padding:1px 7px; font-style:normal; font-size:calc(9px * var(--fs));
+        letter-spacing:1px; color:#9be26b; background:#12291b; border:1px solid #2f6b4a; border-radius:2px; }
+  .am-need{ flex:none; font-style:normal; font-size:calc(8.5px * var(--fs)); letter-spacing:.5px; padding:1px 5px;
+        border-radius:2px; color:#8fb6d6; background:#16293a; border:1px solid #2f4e6b; }
+  .am-need.req{ color:#e0b062; background:#2a2316; border-color:#5a4a2a; }
+  .am-card.na{ opacity:.52; }
+  .am-card.na:hover{ opacity:.85; border-color:#7a5a4a; }
+  .am-card.na .am-tag{ color:#c98a7a; }
+  .am-slot.na{ border-color:#5c3f38; }
+  .am-slot.na .txt small{ color:#c98a7a; }
   #rsReset{ width:100%; margin-top:10px; padding:9px 0; font-size:calc(12px * var(--fs)); letter-spacing:3px;
         color:#ffb3b3; background:#241417; border:1px solid #5c3038; cursor:pointer; }
   #rsReset:hover{ border-color:#ff5252; color:#fff; }
@@ -369,7 +443,9 @@
   .am-card.on{ border-color:#57a8ff; background:linear-gradient(#182c40,#0f2130); }
   .am-card.on::after{ content:'已装配'; position:absolute; right:8px; top:7px; font-size:calc(9px * var(--fs));
         color:#57a8ff; letter-spacing:1px; }
-  .am-card .am-name{ font-size:calc(12px * var(--fs)); color:#eaf4ff; padding-right:50px; }
+  .am-card .am-name{ display:flex; align-items:center; gap:6px; font-size:calc(12px * var(--fs));
+        color:#eaf4ff; padding-right:52px; }
+  .am-card .am-name span{ flex:1 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   .am-card .am-desc{ font-size:calc(10px * var(--fs)); color:#7f96a9; line-height:1.55; margin-top:4px; }
   .am-card .am-tag{ font-size:calc(9px * var(--fs)); color:#e8b34b; margin-top:5px; letter-spacing:.5px; }
   .am-card.on .am-tag{ color:#57a8ff; }
@@ -383,6 +459,73 @@
     #amSlots .am-slot{ flex:1 1 46%; }
     #amList{ width:100%; } #amSide{ width:100%; border-left:none;
       border-top:1px dashed #33506b; padding:10px 0 0; }
+  }
+  /* ---- 兵工厂：造船厂 / 许愿码头 / 礼包链 / 圣诞开箱（像素宣传图背景） ---- */
+  #arsenalPanel{ width:min(1280px, 96vw); margin:70px auto 28px; display:none; }
+  #arsenalPanel.on{ display:block; }
+  #arFrame{ position:relative; height:604px; overflow:hidden; border:1px solid #33495e;
+        background:#070d13; box-shadow:0 8px 34px rgba(0,0,0,.6); }
+  #arBG{ position:absolute; inset:0; width:100%; height:100%; display:block;
+        image-rendering:pixelated; image-rendering:crisp-edges; }
+  #arShade{ position:absolute; inset:0; pointer-events:none;
+        background:
+          linear-gradient(90deg, rgba(5,10,16,.93) 0%, rgba(5,10,16,.72) 30%, rgba(5,10,16,.14) 54%, rgba(5,10,16,.42) 100%),
+          linear-gradient(180deg, rgba(5,10,16,.5) 0%, rgba(5,10,16,0) 20%, rgba(5,10,16,.05) 58%, rgba(5,10,16,.5) 100%); }
+  #arScan{ position:absolute; inset:0; pointer-events:none; opacity:.14;
+        background:repeating-linear-gradient(0deg, rgba(130,190,230,.18) 0 1px, transparent 1px 4px); }
+  #arHead{ position:relative; padding:20px 26px 4px; }
+  #arHead .ar-kicker{ font-size:calc(9px * var(--fs)); letter-spacing:6px; color:#ff8a1e; }
+  #arHead .ar-title{ font-size:calc(25px * var(--fs)); letter-spacing:9px; color:#fff; margin-top:5px;
+        text-shadow:0 0 18px rgba(120,190,255,.4), 2px 2px 0 rgba(0,0,0,.65); }
+  #arHead .ar-sub{ font-size:calc(10px * var(--fs)); letter-spacing:2.5px; color:#8fa8c9; margin-top:7px; }
+  #arBody{ position:relative; display:flex; gap:20px; padding:14px 26px 24px; align-items:stretch; }
+  #arList{ width:min(516px, 47%); flex:none; display:flex; flex-direction:column; gap:8px; }
+  .ar-strip{ position:relative; display:flex; align-items:center; gap:14px; padding:15px 30px 15px 14px;
+        background:linear-gradient(90deg, rgba(18,33,46,.92), rgba(9,18,26,.55) 76%, rgba(9,18,26,.06));
+        border:1px solid rgba(86,120,152,.5); border-left:3px solid #3d5a75; cursor:pointer;
+        transition:border-color .14s, transform .14s, background .14s, box-shadow .14s; }
+  .ar-strip::after{ content:'›'; position:absolute; right:13px; top:50%; transform:translateY(-52%);
+        font-size:calc(17px * var(--fs)); color:#4f6d88; line-height:1; }
+  .ar-strip:hover{ border-color:#ffb066; border-left-color:#ff8a1e; transform:translateX(5px);
+        background:linear-gradient(90deg, rgba(38,30,16,.94), rgba(20,26,30,.68) 76%, rgba(10,20,29,.12)); }
+  .ar-strip:hover::after{ color:#ffb066; }
+  .ar-strip.on{ border-color:#ffd166; border-left-color:#ffd166; transform:translateX(5px);
+        box-shadow:0 0 18px rgba(255,209,102,.16), inset 0 0 26px rgba(255,209,102,.07); }
+  .ar-strip.on::after{ color:#ffd166; }
+  .ar-strip .ar-no{ width:34px; flex:none; font-size:calc(19px * var(--fs)); color:#3f5c78;
+        font-variant-numeric:tabular-nums; letter-spacing:1px; }
+  .ar-strip:hover .ar-no, .ar-strip.on .ar-no{ color:#ffd166; }
+  .ar-strip .ar-txt{ min-width:0; flex:1; }
+  .ar-strip .ar-txt b{ display:block; font-size:calc(15px * var(--fs)); letter-spacing:5px; color:#dcecf9;
+        font-weight:normal; white-space:nowrap; }
+  .ar-strip.on .ar-txt b{ color:#fff; }
+  .ar-strip .ar-txt small{ display:block; font-size:calc(9px * var(--fs)); letter-spacing:2.5px;
+        color:#6f88a3; margin-top:3px; }
+  .ar-strip .ar-state{ flex:none; font-size:calc(9px * var(--fs)); letter-spacing:1px; padding:2px 7px;
+        border:1px solid #3d6b4f; color:#9be26b; }
+  .ar-strip .ar-state.lock{ border-color:#5c4a28; color:#e8b34b; }
+  #arSide{ flex:1; min-width:0; background:rgba(6,13,20,.55); border:1px solid rgba(86,120,152,.28);
+        padding:16px 18px 18px; }
+  #arSide .sd-title{ font-size:calc(18px * var(--fs)); }
+  .ar-desc{ font-size:calc(11px * var(--fs)); color:#a8c0d6; line-height:1.9; margin:10px 0 12px;
+        border-left:2px solid rgba(255,138,30,.5); padding-left:10px; }
+  .ar-kv{ display:flex; justify-content:space-between; gap:14px; font-size:calc(10.5px * var(--fs));
+        padding:5px 0; border-bottom:1px dashed rgba(80,110,140,.32); }
+  .ar-kv span{ color:#7f96a9; }
+  .ar-kv b{ color:#eaf4ff; font-weight:normal; text-align:right; }
+  .ar-prog{ position:relative; height:8px; margin-top:16px; background:#0e1a24; border:1px solid #2b4256; }
+  .ar-prog i{ display:block; height:100%; background:linear-gradient(90deg,#ff8a1e,#ffd166); }
+  .ar-prog em{ position:absolute; right:0; top:-15px; font-size:calc(9px * var(--fs)); color:#ffd166;
+        font-style:normal; letter-spacing:1px; }
+  .ar-note{ margin-top:14px; font-size:calc(9.5px * var(--fs)); color:#e8b34b; letter-spacing:1px; }
+  .ar-chips{ display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
+  .ar-chips span{ font-size:calc(9.5px * var(--fs)); color:#8fa8c9; border:1px solid #33506b;
+        padding:2px 8px; background:rgba(16,30,42,.7); }
+  .ar-hint{ margin-top:14px; font-size:calc(9.5px * var(--fs)); color:#5d7488; letter-spacing:.6px; line-height:1.75; }
+  @media (max-width:1000px){
+    #arFrame{ height:auto; }
+    #arBody{ flex-direction:column; }
+    #arList{ width:100%; }
   }
 </style>
 </head>
@@ -411,6 +554,15 @@
   <div class="wbtn" id="wY"><b id="wYName">—</b>[Y]<div class="rb blue"><div id="yRB" style="width:100%"></div></div></div>
   <div class="wbtn" id="wTR" style="display:none"><b id="wTRName">维修小组</b>[T]<div class="rb green"><div id="tRB" style="width:100%"></div></div></div>
   <div class="wbtn" id="wF" style="display:none"><b id="wFName">速射形态</b>[F]<div class="rb"><div id="fRB" style="width:100%"></div></div></div>
+  <div class="wbtn" id="wSM" style="display:none"><b id="wSMName">烟雾发生器</b>[C]<div class="rb blue"><div id="smRB" style="width:100%"></div></div></div>
+  <div class="wbtn" id="wPL" style="display:none"><b id="wPLName">轰炸机 ×3</b>[C]<div class="rb blue"><div id="plRB" style="width:100%"></div></div></div>
+</div>
+<!-- 轰炸机操控面板 -->
+<div id="airHud" class="hud">
+  <div class="ah-title">✈ 轰 炸 机 编 队</div>
+  <div class="ah-row"><i>航速</i><b id="ahSpd">12.0</b> 格/s<i style="margin-left:12px">高度</i><b>低空</b></div>
+  <div class="ah-row"><i>投弹</i><b id="ahPrep">左键进入预备</b></div>
+  <div class="ah-tip">A/D 转向 · 按住 S 减速 · 左键预备/投弹 · 右键召回/返回</div>
 </div>
 <!-- 左下悬浮战报 -->
 <div id="feedBox"><h3>战 报</h3><div id="feed"></div></div>
@@ -425,6 +577,12 @@
 <div id="buffBar" class="hud">
   <div class="bf-title">战 场 补 给</div>
   <div id="buffItems"></div>
+</div>
+<!-- 左上 肉鸽波次状态 -->
+<div id="rogueHud" class="hud">
+  <div class="rg-wave">第 <b id="rgWave">1</b> 波 · 剩余 <b id="rgAlive">6</b></div>
+  <div class="rg-line">敌方强度 <i id="rgMul">血 30% · 伤 30% · 速 70%</i></div>
+  <div class="rg-line">已获增益 <b id="rgPicks">0</b></div>
 </div>
 <!-- 右上实时战况 -->
 <div id="statHud" class="hud">  <div>击杀 <b id="sKills" style="color:#9be26b">0</b></div>
@@ -443,6 +601,7 @@
       <span class="on clickable" id="tabPort">港 口</span><span class="clickable" id="tabDepot">仓 库</span>
       <span class="clickable" id="tabResearch">研 发</span>
       <span class="clickable" id="tabArmory">军 械 库</span>
+      <span class="clickable" id="tabArsenal">兵 工 厂</span>
     </div>
     <div class="pt-user">测试舰队 · <b>玉虾号</b> · v5.0</div>
   </div>
@@ -474,6 +633,8 @@
             <i>12 艘敌舰 · 无补给</i></div>
           <div class="modecard" data-m="arms"><b>军 备 竞 赛</b><small>战场补给</small>
             <i>12 艘敌舰 · 增益叠加</i></div>
+          <div class="modecard rogue" data-m="rogue"><b>肉 鸽 模 式</b><small>无尽波次</small>
+            <i>6 艘/波 · 增益三选一</i></div>
         </div>
         <div id="modeDesc"></div>
         <div class="pt-h" style="margin-top:0">选 择 难 度</div>
@@ -507,7 +668,7 @@
   <div id="depotPanel">
     <div id="dpHead">
       <div class="pt-h">仓 库 · 我的舰队</div>
-      <span class="dp-tip">点选舰船后回到「港 口」页签即以该舰出战；技能 / 配件按所属舰种列共用</span>
+      <span class="dp-tip">点选舰船后回到「港 口」页签即以该舰出战；舰长技能按所属舰种列共用，军械库配件全舰种通用</span>
     </div>
     <div id="depotCols"></div>
   </div>
@@ -535,7 +696,7 @@
     <div id="amHead">
       <div class="pt-h">船 舶 配 件</div>
       <div class="rs-classes" id="amClasses"></div>
-      <div class="rs-pts">已装配 <b id="amCount">0</b> / 6 槽位</div>
+      <div class="rs-pts"><i class="am-univ">全舰种通用</i>已装配 <b id="amCount">0</b> / 6 槽位</div>
     </div>
     <div id="amBody">
       <div id="amSlots"></div>
@@ -547,6 +708,23 @@
         <div id="amPresets"></div>
         <button id="amReset">全 部 卸 下</button>
         <div class="rs-note" id="amNote"></div>
+      </div>
+    </div>
+  </div>
+  <!-- 兵工厂：造船厂 / 许愿码头 / 礼包链 / 圣诞开箱（像素宣传图背景 + 纵向长条入口） -->
+  <div id="arsenalPanel">
+    <div id="arFrame">
+      <canvas id="arBG" width="320" height="140"></canvas>
+      <div id="arShade"></div>
+      <div id="arScan"></div>
+      <div id="arHead">
+        <div class="ar-kicker">ARSENAL · 兵 工 厂</div>
+        <div class="ar-title">军 备 与 待 遇</div>
+        <div class="ar-sub">造 船 厂 · 许 愿 码 头 · 礼 包 链 · 圣 诞 开 箱</div>
+      </div>
+      <div id="arBody">
+        <div id="arList"></div>
+        <div id="arSide"><div id="arSideIn"></div></div>
       </div>
     </div>
   </div>
@@ -574,11 +752,20 @@
       <h4>操 作</h4>
       <b>W / S</b> 航速五档（含倒车）· <b>A / D</b> 转舵<br>
       <b>鼠标</b> 炮塔指向 · <b>左键 / 空格</b> 开火（可按住连发）<br>
-      <b>1</b> HE 高爆弹 · <b>2</b> AP 穿甲弹 · <b>3</b> 鱼雷齐射（CA 为空袭）<br>
-      <b>R</b> 损管队 · <b>Y</b> 舰种消耗品 · <b>T</b> 维修小组（CA/哈巴）· <b>滚轮 / ±</b> 缩放镜头<br>
+      <b>1</b> HE 高爆弹 · <b>2</b> AP 穿甲弹 · <b>3</b> 鱼雷齐射（CA 为空袭 / 路易斯安娜为轰炸机）<br>
+      <b>R</b> 损管队 · <b>Y</b> 舰种消耗品 · <b>T</b> 维修小组（CA/哈巴）· <b>C</b> 烟雾 / 轰炸机 · <b>F</b> 特殊射击形态（阿达尔伯特：副炮主炮化后按住左键朝准星齐射）· <b>滚轮 / ±</b> 缩放镜头<br>
       <b>ESC</b> 暂停 / 继续
       <h4>胜 负 条 件</h4>
-      击沉全部敌舰即胜；5 分钟时间到按战况结算；旗舰战沉即败。
+      随机战 / 军备竞赛：击沉全部敌舰即胜；5 分钟时间到按战况结算；旗舰战沉即败。<br>
+      肉鸽模式：<em>10 分钟</em>内存活并尽可能多清波次，时间到按抵达波次结算；旗舰战沉即败。
+      <h4>肉 鸽 模 式</h4>
+      每波 <em>6 艘</em>随机敌舰（舰型从仓库全部舰船中随机抽取），自<em>地图边缘</em>驶入并向你逼近。<br>
+      第一波只有 <em>30% 血量 / 30% 伤害 / 70% 航速</em>；此后每波按基础值再 <em>+10% / +10% / +5%</em>。<br>
+      清空一波后 <em>10s 内</em>从三张卡中选一项增益（研发技能 / 军械库配件随机抽取，点击或按 <b>1·2·3</b>，超时随机），
+      选定 <em>3s</em> 后下一波自边缘来袭。<br>
+      本模式<em>消耗品次数不限</em>（R 损管 / Y / T / C 烟雾 / 3 号鱼雷·空袭·轰炸机），只受各自冷却限制；
+      战场同时随机刷新军备竞赛补给点（射速 / 血量 / 伤害 / 回血）。<br>
+      左上角显示<em>当前波次、剩余敌舰、敌方强度与已获增益数</em>。
       <h4>弹 种</h4>
       <b>HE 高爆</b>：直击按 <em>33%</em> 输出伤害并概率点火（DD 2% / CA 5% / BB 15%），着火每秒 -0.5% 最大血量、持续 10s；近失溅射再降至 1/3 且不点火。<br>
       <b>AP 穿甲</b>：命中船体按角度结算（全额 / 33% 半穿 / 10% 过穿 / 不穿）。<br>
@@ -604,6 +791,12 @@
       <h4>空 袭（巡洋舰）</h4>
       CA 取消鱼雷，改为 <em>[3] 空袭</em>：按 <em>[3]</em> 进入选点（显示射程圈，框跟随鼠标）→ <em>左键</em> 确认落点（限主炮射程内）→ <em>3s</em> 后三机编队飞越并投下 <em>72 枚</em>战列舰 HE 弹（直击全额 / 近失 1/3 溅射 / 可点火），覆盖以落点为中心、沿投弹方向 <em>10 × 5 格</em> 的长矩形。右键 / 再按 [3] / <em>ESC</em> 取消选点；非选点状态不显示空袭框。
       每局 <em>2 次</em>（空袭专家 +1），每 <em>25s</em> 自动整备 1 次；空袭只伤敌舰，对密集编队收益最高。
+      <h4>轰 炸 机（路易斯安娜）</h4>
+      <em>[C] / [3]</em> 选中 3 号消耗品 → <em>左键</em> 确认起飞 3 架轰炸机：起飞瞬间<em>失去船舶操控</em>，舰体按当前速度与舵位继续行进，操控权切换至长机。
+      <b>A / D</b> 转向（转弯半径 4 格）；起飞 <em>3s</em> 内 18 格/s、之后 12 格/s；无倒挡，<b>按住 S</b> 经 0.2s 线性缓冲降到 8 格/s，松开恢复巡航。
+      机头前 <em>3 格</em>有半径 <em>1 格</em>的瞄准圆：<em>左键</em>进入 <b>2s 投弹预备</b>（预备完成前再点无效），完成后再次<em>左键</em>投弹——<b>1s</b> 后 <em>9 枚</em>「四倍伤害的战列舰 HE」落在瞄准圆内；炸弹投出后飞机脱离操控，保持 <b>1.5s 落点观察视角</b>（<em>右键</em>可随时提前返回），观察结束操控交还船舶。飞行中右键可随时召回。
+      次数为<em>整备循环</em>：库存上限 <b>2 次</b>（可连续出动 2 次），用空后整备 <b>30s</b>、一次生成 <em>2 次</em>可用次数。<br>
+      舰体特性：<b>可被发现距离 -25%</b>（敌舰需驶得更近才会开火，小地图隐蔽圈同步收缩）。
       <h4>损 管 与 消 耗 品</h4>
       <b>R 损管队</b>：清除进水与火势，并获 10s 免疫；无限次，冷却 30s。<br>
       <b>Y 舰种消耗品</b>（每局 2 个，<em>每次使用后 30s 使用间隔</em>）：DD 引擎增压（速度 +20%·60s）/ CA 主炮重装填（装填 -50%·20s）/ BB 维修小组（回血 1%/s·14s）。<br>
@@ -623,6 +816,17 @@
       撞上礁环时按 <b>S</b> 倒车 + <b>A/D</b> 转舵，舰体会贴边滑出。
       <button class="pp-btn" id="ppHelpBack" style="margin-top:14px">返 回</button>
     </div>
+  </div>
+</div>
+
+<!-- 肉鸽模式：清场后的三选一增益 / 下一波倒计时 -->
+<div id="roguePick">
+  <div class="rp-box">
+    <div class="rp-kicker" id="rpKicker">第 1 波 · 清 场</div>
+    <div class="rp-title" id="rpTitle">选 择 一 项 增 益</div>
+    <div class="rp-sub" id="rpSub">10s 内点选 · 超时随机</div>
+    <div id="rpCards"></div>
+    <div class="rp-timer"><i id="rpBar" style="width:100%"></i></div>
   </div>
 </div>
 
@@ -1390,7 +1594,8 @@ const SHIPS = {
         boost:{ speed:.2, dur:60, cd:30, n:2 },                                            // [Y] 引擎增压：+20%/60s/间隔30s/2次
         torp:{ count:15, dmg:9000, range:60, reload:20, speed:6 } },
   ca: { name:'巡洋舰', col:'ca', w:2, l:5, hp:50600, speed:4.5, turn:70,  turretSpd:130, reload:1.6,
-        dmgHE:1400, dmgAP:2500, shellSpeed:15.3, range:44.2, funnels:2, barrels:3,
+        dmgHE:1400, dmgAP:2500, shellSpeed:13.005, range:44.2, funnels:2, barrels:3,       // 弹速 -15%（15.3→13.005）
+        overIslandR:20,                                                                    // 高抛弹道：可越过半径 <20 格的岛屿
         spotBase:.9,                                                                       // 舰种基础隐蔽：被侦测距离 -10%
         tRepair:{ heal:.02, dur:20, cd:30, n:2 },                                          // [T] 维修小组：2%/s·20s·CD30s·2次
         turretDefs:[ {off:.4, fore:true}, {off:.22, fore:true}, {off:-.3, fore:false} ] }, // 2前1后（鱼雷已换装空袭）
@@ -1413,7 +1618,7 @@ const SHIPS = {
      大量副炮（套用 BB sec/sec2 数据，装填 -50%：小口径 0.25s / 中口径 1s）+ 4 座四联装鱼雷（每轮半齐射 8 枚）；
      消耗品与战列舰一致（Y 维修小组） */
   sl: { name:'施里芬', col:'bb', w:2, l:6, hp:76100, speed:4.2, turn:45, turretSpd:70, reload:5,
-        dmgHE:1000, dmgAP:4900, shellSpeed:21.5, range:46.8, funnels:2, barrels:2,
+        dmgHE:1000, heMul:3, dmgAP:4900, shellSpeed:21.5, range:46.8, funnels:2, barrels:2,
         torp:{ count:8, dmg:6000, range:25, reload:50, speed:6 },                      // 4座4连装，每轮半齐射 8 枚
         sec:{ dmg:537, reload:.25, shellSpeed:14, range:27 },                          // 副炮装填 -50%
         sec2:{ dmg:700, reload:1, shellSpeed:15.3, range:27 },
@@ -1429,21 +1634,69 @@ const SHIPS = {
         tRepair:{ heal:.01, dur:20, cd:40, n:2 },                                         // [T] 维修小组：1%/s·20s·CD40s·2次
         turretDefs:[ {off:.38, fore:true}, {off:.2, fore:true},
                      {off:-.2, fore:false}, {off:-.38, fore:false} ] },                   // 2前2后双联装
+  /* 果敢（仓库·驱逐列）：3 座双联装全前置驱逐炮（6 管，HE800 / AP1200，0.8s 一轮，36.3 格）；
+     AP 走巡洋炮口径表且「免疫角度 -5°」（45/60 → 40/55）更易击穿；
+     鱼雷 10 枚单发（射程 60×0.8=48 格，8000 伤，射完 10 发才装填 40s）；
+     [T] 维修小组 2%/s·10s·CD40s·3 次；[C] 烟雾发生器 5 次（每 0.5s 铺 1 团半径 5 格，生成 10s，存续 20s）；
+     船体特性：被敌方攻击时敌方散布 +10%（enemyDisp）；无 Y 消耗品 */
+  gq: { name:'果敢', col:'dd', w:1, l:4, hp:20800, speed:4, turn:110, turretSpd:220, reload:.8,
+        dmgHE:800, dmgAP:1200, shellSpeed:16.8, range:36.3, funnels:2, barrels:2,
+        apTable:'ca', apBandShift:-5, enemyDisp:.1, yKind:'none',
+        torp:{ count:10, dmg:8000, range:48, reload:40, speed:6, single:true },
+        smoke:{ n:5, r:5, gen:10, spawn:.5, life:20 },
+        tRepair:{ heal:.02, dur:10, cd:40, n:3 },
+        turretDefs:[ {off:.4, fore:true}, {off:.24, fore:true}, {off:.08, fore:true} ] },  // 3座全前置双联装
   /* 维亚济（仓库·巡洋列）：苏系战列巡洋舰，2 座三联装战列炮全前置（6 管），HE1500 / AP5000，
-     弹速 15.3×1.2=18.36 格/s，装填 3.5s（射程与巡洋一致 44.2 格）；
+     弹速 15.3×1.2=18.36 格/s，装填 3.5s（射程 44.2×1.4≈61.9 格，全舰最高）；
      AP 口径按战列炮结算，且各舰种「免疫角度」整体 -5°（45/60° → 40/55°），更容易击穿；
      [Y] 引擎增压 +15%·60s·CD60s·2 次；[T] 维修小组 2%/s·20s·CD40s·3 次；
-     [F] 双连射形态：每轮连打两轮、装填固定 8s、射程 -43%；血量 <50% 时主炮装填 -20%；
+     [F] 双连射形态：每轮连打两轮、装填固定 8s、射程 -43%，第二轮沿用首轮炮塔与诸元、
+     不再受齐射角二次判定；血量 <50% 时主炮装填 -20%；
      船体特性（hullAngle）：舰体与来袭炮弹夹角 <20° 时 —— CA/DD 的 AP 全免，
      BB 的 AP 75% 免疫；DD HE 75% / CA HE 50% / BB HE 25% 免疫 */
   vz: { name:'维亚济', col:'ca', w:2, l:6, hp:64200, speed:4, turn:70, turretSpd:130, reload:3.5,
-        dmgHE:1500, dmgAP:5000, shellSpeed:18.36, range:44.2, funnels:2, barrels:3,
+        dmgHE:1500, dmgAP:5000, shellSpeed:18.36, range:61.88, funnels:2, barrels:3,   // 射程 +40%（44.2→61.88 格）
         apTable:'bb', apAngleDD:true, apBandShift:-5,           // 战列炮口径表 + 免疫角度 -5°（含对驱逐舰）
         lowHpReload:.2, hullAngle:20,                           // 血量 <50% 装填 -20% / 倾角装甲 20°
         fGun:true, fRangeMul:.57, fReloadAbs:8, fBurst:2,        // [F] 双连射：8s/轮 · 射程 -43% · 连打 2 轮
+        fSpeedMul:1.3, fApDmgMul:1.35, fApPen:.10,               // [F] 弹速 +30% · AP 伤害 +35% · AP 各角度击穿概率 +10%
         yKind:'engine', boost:{ speed:.15, dur:60, cd:60, n:2 },
         tRepair:{ heal:.02, dur:20, cd:40, n:3 },
-        turretDefs:[ {off:.38, fore:true}, {off:.16, fore:true} ] }                       // 2座全前置三联装
+        turretDefs:[ {off:.38, fore:true}, {off:.16, fore:true} ] },                      // 2座全前置三联装
+  /* 路易斯安娜（仓库·战列列）：美系战列舰，舰艏 2 座三联装 + 舰艉 1 座四联装（共 10 管），
+     HE1200 / AP4900，弹速 -15%（21.5×.85=18.275 格/s），装填 5s，射程 58.5 格；
+     副炮 10 座双联装驱逐炮（套用 BB 小口径副炮数据，一轮 10 个炮位），副炮齐射角 20°（艏艉各 20° 盲锥）；
+     消耗品同战列舰（[R] 损管 / [Y] 维修小组），另加 3 号消耗品 [C]/[3] 轰炸机编队：
+     按下选中 → 左键确认起飞 3 架（失去船舶操控、船舶按现有速度与舵位继续行进），
+     操控权切换至飞机；投弹后飞机消失、操控交还船舶 */
+  la: { name:'路易斯安娜', col:'bb', w:3, l:7, hp:96300, speed:4.18, turn:45, turretSpd:70, reload:5,
+        dmgHE:1200, heMul:3, dmgAP:4900, shellSpeed:18.275, range:58.5, funnels:2, barrels:3,
+        turretDefs:[ {off:.38, fore:true,  b:3}, {off:.24, fore:true,  b:3},   // 舰艏 2 座三联装
+                     {off:-.32, fore:false, b:4} ],                            // 舰艉 1 座四联装
+        sec:{ dmg:537, reload:.5, shellSpeed:14, range:27, mounts:10 },        // 10 座双联装驱逐炮（套用既有副炮数据）
+        secArc:20,                                                             // 副炮齐射角 20°：艏/艉各 20° 盲锥
+        spotBase:.75,                                                          // 舰体特性：可被发现距离 -25%
+        plane:{ n:3, use:2, regen:2, cd:30 } },                                // 3 号消耗品：轰炸机编队（每次整备生成 2 次 · 库存上限 2 · 整备 30s）
+  /* 阿达尔伯特（仓库·巡洋列）：德系重巡，3 座三联装战列炮（9 管，HE1200 / AP4000，
+     弹速 21.5×1.1=23.65 格/s，5s 一轮，射程 46.8 格，齐射角 35°）；
+     副炮 4 座三联装巡洋炮（12 门，2.5s/轮）+ 9 座双联装驱逐炮（18 门，0.625s/轮），无射界限制（可全向开火）；
+     5 发鱼雷；船体特性：所有 HE 炮弹击穿率 +5%（直击有 5% 概率打出全额伤害）；
+     消耗品：[T] 维修小组 2%/s·20s·CD40s·2 次；[Y] 副炮增强 ×3（射程 +15% / 射速 +15% / 伤害 +20% · 20s · CD50s）；
+     [F] 副炮主炮化：副炮停止自动开火，改为按住左键朝准星手动齐射，射程 +20% / 伤害 +60% / 射速 +15%，再按一次取消 */
+  ad: { name:'阿达尔伯特', col:'ca', w:2, l:6, hp:63900, speed:4, turn:70, turretSpd:130, reload:5,
+        dmgHE:1200, dmgAP:4000, shellSpeed:23.65, range:46.8, funnels:2, barrels:3,
+        apTable:'bb',                                       // 主炮为战列炮口径 → AP 走战列舰穿透表
+        turretArc:35,                                       // 齐射角 35°：艏/艉各 35° 盲锥内炮塔无法开火
+        hePen:.05,                                          // 船体特性：所有 HE 炮弹击穿率 +5%
+        fGun:true, fSec:true,                               // [F]：副炮主炮化（开关式，不改主炮）
+        fSecRange:.2, fSecDmg:.6, fSecRate:.15,
+        yKind:'secBoost', secBoost:{ dur:20, cd:50, n:3, range:.15, reload:.15, dmg:.2 },
+        tRepair:{ heal:.02, dur:20, cd:40, n:2 },           // [T] 维修小组：2%/s·20s·CD40s·2 次
+        torp:{ count:5, dmg:8000, range:40, reload:45, speed:6 },                        // 5 发鱼雷
+        sec: { dmg:537, reload:.625, shellSpeed:14,   range:27, mounts:9, b:2 },         // 9 座双联装驱逐炮（射速 -20%：0.5→0.625s）
+        sec2:{ dmg:700, reload:2.5,  shellSpeed:15.3, range:27, mounts:4, b:3 },         // 4 座三联装巡洋炮（射速 -20%：2→2.5s）
+        turretDefs:[ {off:.38, fore:true, b:3}, {off:.22, fore:true, b:3},               // 舰艏 2 座三联装
+                     {off:-.30, fore:false, b:3} ] }                                     // 舰艉 1 座三联装
 };
 /* 舰船配置解析：shipId 优先（仓库变体舰，如夏威夷 cb），否则退回舰种键 */
 const shipConf = s => SHIPS[s.shipId || s.cls];
@@ -1451,7 +1704,8 @@ const shipConf = s => SHIPS[s.shipId || s.cls];
 const yKindOf = s => shipConf(s).yKind || (s.cls === 'dd' ? 'engine' : s.cls === 'ca' ? 'rl' : 'repair');
 /* 引擎增压参数：增速 / 时长 / 使用间隔 / 次数（DD +20%·60s·30s·2；维亚济 +15%·60s·60s·2） */
 const boostOf = s => shipConf(s).boost || { speed:.2, dur:60, cd:30, n:2 };
-const yCdOf = s => yKindOf(s) === 'engine' ? boostOf(s).cd : 30;   // Y 消耗品使用间隔
+const yCdOf = s => yKindOf(s) === 'engine' ? boostOf(s).cd
+                 : yKindOf(s) === 'secBoost' ? (secBoostOf(s) ? secBoostOf(s).cd : 50) : 30;   // Y 消耗品使用间隔
 const engineMul = s => s.engineT > 0 ? 1 + boostOf(s).speed : 1;   // 增压中的航速倍率
 const VOLLEY_ARC = 30;    // 齐射死角：瞄准方向距中轴 <30° 只有头炮(>150° 只有尾炮)可开火
 const TURRET_ARC = 150;   // 炮塔极限射界半角：炮塔无法360°旋转，艏/艉方向各有30°盲锥
@@ -1460,6 +1714,8 @@ const FLOOD_DUR = 10, FLOOD_DPS = .01, FLOOD_CHANCE = .5;
 const FIRE_DUR = 10, FIRE_DPS = .005;                 // 起火：每秒0.5%血量，持续10s
 const FIRE_CHANCE = { dd:.02, ca:.05, bb:.15 };       // HE弹起火率(按开火舰种)
 const HE_DMG_MUL = .33;                               // HE 弹造成伤害的系数（含主炮与副炮）
+const heMulOf  = c => (c && c.heMul) || 1;            // 舰级 HE 伤害倍率（施里芬/路易斯安娜 ×3）
+const heDmgOf  = c => c.dmgHE*HE_DMG_MUL*heMulOf(c);  // 主炮单发 HE 实际伤害（已含舰级倍率）
 /* ---- 弹速空气阻力衰减（未启用，确认后置 enabled:true 生效）----
    物理模型：二次阻力 F = ½ρ·Cd·A·v²  →  dv/dt = -k·v²（k 为阻力系数，单位 1/格）
    解析解：v(x) = v0·e^(-k·x)，飞行时间 t(x) = (e^(k·x)-1)/(k·v0)
@@ -1620,66 +1876,98 @@ const ARMS_SLOTS = [
   { n:1, name:'武备基础' }, { n:2, name:'火控系统' }, { n:3, name:'攻防强化' },
   { n:4, name:'生存能力' }, { n:5, name:'隐蔽与机动' }, { n:6, name:'终极改型' }
 ];
+/* 配件为全舰种通用：不再按舰种设白名单，任何舰船都能装任何槽位的任何配件。
+   need 字段表示「装上后需要本舰具备哪种装备才会生效」，仅用于界面标注与推荐池过滤：
+   torp=鱼雷 / sec=副炮 / repair=维修小组 / y=Y 键消耗品 / 无 = 全舰通用 */
 const UPGRADES = [
   /* ---- 1 号槽 · 武备基础 ---- */
-  { id:'u1_main',  slot:1, name:'主炮组修改型 1', cls:['dd','ca','bb'],
+  { id:'u1_main',  slot:1, name:'主炮组修改型 1',
     desc:'主炮炮塔转速 +20%', mods:[['turretSpd','mul',1.2]] },
-  { id:'u1_sec',   slot:1, name:'副炮组修改型 1', cls:['bb'],
+  { id:'u1_sec',   slot:1, name:'副炮组修改型 1', need:'sec',
     desc:'副炮装填 -20%，副炮散布 -10%', mods:[['secReload','mul',.8],['secDisp','mul',.9]] },
-  { id:'u1_torp',  slot:1, name:'鱼雷发射管修改型 1', cls:['dd'],
+  { id:'u1_torp',  slot:1, name:'鱼雷发射管修改型 1', need:'torp',
     desc:'鱼雷装填 -10%，鱼雷射程 +10%', mods:[['torpReload','mul',.9],['torpRange','mul',1.1]] },
-  { id:'u1_dc',    slot:1, name:'损管修改型 1', cls:['dd','ca','bb'],
+  { id:'u1_dc',    slot:1, name:'损管修改型 1',
     desc:'起火 / 进水持续时间 -15%，损管冷却 -10%',
     mods:[['burnTime','mul',.85],['floodTime','mul',.85],['dcCd','mul',.9]] },
   /* ---- 2 号槽 · 火控系统 ---- */
-  { id:'u2_plot',  slot:2, name:'火炮控制修改型 1', cls:['dd','ca','bb'],
+  { id:'u2_plot',  slot:2, name:'火炮控制修改型 1',
     desc:'主炮射程 +10%', mods:[['range','mul',1.1]] },
-  { id:'u2_main',  slot:2, name:'主炮组修改型 2', cls:['dd','ca','bb'],
+  { id:'u2_main',  slot:2, name:'主炮组修改型 2',
     desc:'主炮装填 -8%', mods:[['reload','mul',.92]] },
-  { id:'u2_sec',   slot:2, name:'副炮组修改型 2', cls:['bb'],
+  { id:'u2_sec',   slot:2, name:'副炮组修改型 2', need:'sec',
     desc:'副炮射程 +20%，副炮伤害 +15%', mods:[['secRange','mul',1.2],['secDmg','mul',1.15]] },
-  { id:'u2_torp',  slot:2, name:'鱼雷发射管修改型 2', cls:['dd','ca'],
+  { id:'u2_torp',  slot:2, name:'鱼雷发射管修改型 2', need:'torp',
     desc:'鱼雷伤害 +15%，鱼雷射程 +10%', mods:[['torpDmg','mul',1.15],['torpRange','mul',1.1]] },
   /* ---- 3 号槽 · 攻防强化 ---- */
-  { id:'u3_main',  slot:3, name:'主炮组修改型 3', cls:['dd','ca','bb'],
+  { id:'u3_main',  slot:3, name:'主炮组修改型 3',
     desc:'主炮装填 -12%，炮塔转速 -10%', mods:[['reload','mul',.88],['turretSpd','mul',.9]] },
-  { id:'u3_dc',    slot:3, name:'损害控制系统修改型 2', cls:['dd','ca','bb'],
+  { id:'u3_dc',    slot:3, name:'损害控制系统修改型 2',
     desc:'受到的所有伤害 -6%', mods:[['dmgTaken','mul',.94]] },
-  { id:'u3_repair',slot:3, name:'维修小组修改型 1', cls:['bb'],
+  { id:'u3_repair',slot:3, name:'维修小组修改型 1', need:'repair',
     desc:'维修小组每秒回血 +25%，使用次数 +1',
     mods:[['repairAmount','mul',1.25],['repairCharges','add',1]] },
-  { id:'u3_torp',  slot:3, name:'鱼雷装填装置', cls:['dd'],
+  { id:'u3_torp',  slot:3, name:'鱼雷装填装置', need:'torp',
     desc:'鱼雷装填 -15%', mods:[['torpReload','mul',.85]] },
   /* ---- 4 号槽 · 生存能力 ---- */
-  { id:'u4_hull',  slot:4, name:'舰体加固', cls:['dd','ca','bb'],
+  { id:'u4_hull',  slot:4, name:'舰体加固',
     desc:'最大生命值 +6%', mods:[['maxHp','add',.06]] },
-  { id:'u4_dc2',   slot:4, name:'损管修改型 2', cls:['dd','ca','bb'],
+  { id:'u4_dc2',   slot:4, name:'损管修改型 2',
     desc:'损管冷却 -20%，免疫时间 +2s', mods:[['dcCd','mul',.8],['dcImmune','add',2]] },
-  { id:'u4_sec3',  slot:4, name:'副炮组修改型 3', cls:['bb'],
+  { id:'u4_sec3',  slot:4, name:'副炮组修改型 3', need:'sec',
     desc:'副炮装填 -15%，副炮伤害 +10%', mods:[['secReload','mul',.85],['secDmg','mul',1.1]] },
-  { id:'u4_torpdef',slot:4, name:'防雷网', cls:['dd','ca','bb'],
+  { id:'u4_torpdef',slot:4, name:'防雷网',
     desc:'受到的鱼雷伤害 -10%', mods:[['torpTaken','mul',.9]] },
   /* ---- 5 号槽 · 隐蔽与机动 ---- */
-  { id:'u5_stealth',slot:5, name:'隐蔽系统修改型 1', cls:['dd','ca','bb'],
+  { id:'u5_stealth',slot:5, name:'隐蔽系统修改型 1',
     desc:'被侦测距离 -10%，敌舰瞄准散布 +10%', mods:[['spot','mul',.9],['aiDisp','mul',1.1]] },
-  { id:'u5_steer', slot:5, name:'操舵装置修改型 1', cls:['dd','ca','bb'],
+  { id:'u5_steer', slot:5, name:'操舵装置修改型 1',
     desc:'转向速度 +20%', mods:[['turn','mul',1.2]] },
-  { id:'u5_engine',slot:5, name:'引擎修改型 1', cls:['dd','ca','bb'],
+  { id:'u5_engine',slot:5, name:'引擎修改型 1',
     desc:'最大航速 +8%', mods:[['speed','mul',1.08]] },
   /* ---- 6 号槽 · 终极改型 ---- */
-  { id:'u6_plot3', slot:6, name:'火炮控制修改型 3', cls:['dd','ca','bb'],
+  { id:'u6_plot3', slot:6, name:'火炮控制修改型 3',
     desc:'主炮射程 +15%', mods:[['range','mul',1.15]] },
-  { id:'u6_reload4',slot:6, name:'主炮组修改型 4', cls:['dd','ca','bb'],
+  { id:'u6_reload4',slot:6, name:'主炮组修改型 4',
     desc:'主炮装填 -10%', mods:[['reload','mul',.9]] },
-  { id:'u6_boost', slot:6, name:'引擎增压修改型', cls:['dd'],
+  { id:'u6_boost', slot:6, name:'引擎增压修改型', need:'y',
     desc:'Y 消耗品作用时间 +30%，使用次数 +1',
     mods:[['consumableDur','mul',1.3],['consumableCharges','add',1]] },
-  { id:'u6_repair2',slot:6, name:'维修小组修改型 2', cls:['bb'],
+  { id:'u6_repair2',slot:6, name:'维修小组修改型 2', need:'repair',
     desc:'维修小组时长 +25%，使用次数 +1',
     mods:[['repairDuration','mul',1.25],['repairCharges','add',1]] },
-  { id:'u6_stealth2',slot:6, name:'隐蔽系统修改型 2', cls:['dd','ca','bb'],
+  { id:'u6_stealth2',slot:6, name:'隐蔽系统修改型 2',
     desc:'被侦测距离 -15%', mods:[['spot','mul',.85]] }
 ];
+/* 装备需求 → 文案 / 生效判定 */
+const UPG_NEED_TXT = { torp:'需鱼雷', sec:'需副炮', repair:'需维修小组', y:'需 Y 消耗品' };
+const UPG_NEED_KEY = {
+  torpReload:'torp', torpRange:'torp', torpDmg:'torp',
+  secReload:'sec', secRange:'sec', secDmg:'sec', secDisp:'sec',
+  repairAmount:'repair', repairCharges:'repair', repairDuration:'repair',
+  consumableDur:'y', consumableCharges:'y'
+};
+/* 未显式标注时，按修改器键自动推导需求 */
+function upgNeed(u){
+  if (u.need) return u.need;
+  for (const m of (u.mods || [])){ const k = UPG_NEED_KEY[m[0]]; if (k) return k; }
+  return null;
+}
+/* 某艘船（配置对象）能否吃到这件配件的效果 */
+function upgNeedOk(u, conf){
+  if (!conf) return true;
+  const n = upgNeed(u);
+  if (!n) return true;
+  const yk = conf.yKind || (conf.col === 'dd' ? 'engine' : conf.col === 'ca' ? 'rl' : 'repair');
+  if (n === 'torp')   return !!conf.torp;
+  if (n === 'sec')    return !!conf.sec;
+  if (n === 'repair') return !!conf.tRepair || yk === 'repair';
+  if (n === 'y')      return yk !== 'none';
+  return true;
+}
+/* 该舰种下是否至少有一艘船能吃到效果（面板提示用，不影响装配） */
+const shipsOfCls = cls => Object.keys(SHIPS).filter(id => (SHIPS[id].col || id) === cls);
+const upgClassOk = (u, cls) => shipsOfCls(cls).some(id => upgNeedOk(u, SHIPS[id]));
 const UPG_MAP = Object.fromEntries(UPGRADES.map(u => [u.id, u]));
 /* 每舰种 6 个槽位的装配结果：{ 槽位号: 配件id }，localStorage 持久化 */
 let ARMS = { dd:{}, ca:{}, bb:{} };
@@ -1690,7 +1978,7 @@ try{
     if (!raw[k] || typeof raw[k] !== 'object') continue;
     for (const [slot, id] of Object.entries(raw[k])){
       const u = UPG_MAP[id];
-      if (u && u.slot === +slot && u.cls.includes(k)) ARMS[k][slot] = id;
+      if (u && u.slot === +slot) ARMS[k][slot] = id;    // 全舰种通用：装载时不再校验舰种
     }
   }
 }catch(e){}
@@ -1700,10 +1988,12 @@ function upgradesOf(cls){
   for (const s of ARMS_SLOTS){ const u = UPG_MAP[ARMS[cls][s.n]]; if (u) out.push(u); }
   return out;
 }
+/* 推荐配装：配件全舰种通用，预设改为「战术流派」，对任意舰种一键套用 */
 const AM_PRESETS = {
-  dd:{ name:'DD 雷击', arms:{ 1:'u1_torp', 2:'u2_torp', 3:'u3_torp', 4:'u4_hull', 5:'u5_stealth', 6:'u6_stealth2' } },
-  ca:{ name:'CA 火力', arms:{ 1:'u1_main', 2:'u2_plot', 3:'u3_main', 4:'u4_hull', 5:'u5_stealth', 6:'u6_plot3' } },
-  bb:{ name:'BB 抗线', arms:{ 1:'u1_sec', 2:'u2_sec', 3:'u3_repair', 4:'u4_hull', 5:'u5_engine', 6:'u6_repair2' } }
+  gun:  { name:'主炮火力', arms:{ 1:'u1_main', 2:'u2_plot', 3:'u3_main',  4:'u4_hull',  5:'u5_stealth', 6:'u6_plot3'   } },
+  sec:  { name:'副炮压制', arms:{ 1:'u1_sec',  2:'u2_sec',  3:'u3_dc',    4:'u4_sec3',  5:'u5_engine',  6:'u6_reload4' } },
+  torp: { name:'鱼雷突袭', arms:{ 1:'u1_torp', 2:'u2_torp', 3:'u3_torp',  4:'u4_hull',  5:'u5_stealth', 6:'u6_stealth2'} },
+  tank: { name:'生存抗线', arms:{ 1:'u1_dc',   2:'u2_main', 3:'u3_repair',4:'u4_dc2',   5:'u5_engine',  6:'u6_repair2' } }
 };
 
 /* ================= 画布与镜头 ================= */
@@ -1762,11 +2052,43 @@ function genMap(){
 function clearZone(cx, cy, r){
   for (let y = Math.max(0,cy-r); y <= Math.min(MAP-1,cy+r); y++)
     for (let x = Math.max(0,cx-r); x <= Math.min(MAP-1,cx+r); x++) map[y][x] = T_WATER;
+  mapVer++;                                           // 地形变了：岛屿尺寸缓存作废
+}
+/* ---- 岛屿尺寸查询：连通岛块的包围盒半径（格），按格缓存 ----
+   用于「高抛弹道可越过小岛」判定：半径 < 阈值（如 20 格）视为小片地形，炮弹可飞越 */
+let mapVer = 0, isleCache = new Map(), isleCacheVer = -1;
+function isleRadiusAt(cx, cy){
+  if (cx < 0 || cy < 0 || cx >= MAP || cy >= MAP) return 0;
+  if (map[cy][cx] !== T_ISLAND) return 0;
+  if (isleCacheVer !== mapVer){ isleCache.clear(); isleCacheVer = mapVer; }
+  const key = cy*MAP + cx;
+  const hit = isleCache.get(key);
+  if (hit !== undefined) return hit;
+  const stack = [key], seen = new Set([key]);
+  let minX = cx, maxX = cx, minY = cy, maxY = cy;
+  const cells = [];
+  while (stack.length){
+    const k = stack.pop(), x = k % MAP, y = (k / MAP) | 0;
+    cells.push(k);
+    if (x < minX) minX = x; if (x > maxX) maxX = x;
+    if (y < minY) minY = y; if (y > maxY) maxY = y;
+    for (const [nx, ny] of [[x+1,y],[x-1,y],[x,y+1],[x,y-1]]){
+      if (nx < 0 || ny < 0 || nx >= MAP || ny >= MAP) continue;
+      const nk = ny*MAP + nx;
+      if (seen.has(nk) || map[ny][nx] !== T_ISLAND) continue;
+      seen.add(nk); stack.push(nk);
+    }
+  }
+  const r = Math.max(maxX - minX + 1, maxY - minY + 1)/2;   // 包围盒半径（格）
+  for (const k of cells) isleCache.set(k, r);
+  return r;
 }
 
 /* ================= 舰船实体 ================= */
 let player = null, bots = [], shells = [], torps = [], parts = [], floats = [];
 let burstQueue = [];                    // [F] 双连射的补射队列（同一射击诸元的第二轮齐射）
+let smokes = [];                        // 烟雾云：{ x, y, r, t }（果敢烟雾发生器铺出的圆形烟团）
+const SMOKE_CD = 30;                    // 烟雾发生器冷却：一轮生成结束后 30s
 const BURST_GAP = .55;                  // 双连射的两轮间隔(s)
 let strikes = [], bombs = [];                          // 空袭（CA）：进行中的空袭与落下的炸弹
 let strikeAim = false;                                 // 空袭选点状态：按 [3] 进入，左键确认 / 右键或 [3] 取消
@@ -1774,14 +2096,33 @@ let shellType = 1, gameTime = GAME_TIME, state = 'menu', kills = 0, dmgDealt = 0
 let dmgTaken = 0, hitCount = 0, lastCls = 'dd';        // 结算统计：受到伤害 / 命中数 / 上局舰种
 let potDmg = 0;                                        // 潜在伤害累计：敌方射向本舰的弹药伤害总和
 let shotsFired = 0;                                    // 玩家开炮数（高级炮手判定命中率用）
-let gameMode = 'random', modeName = '随机战';            // 模式：random 随机战 / arms 军备竞赛
+let gameMode = 'random', modeName = '随机战';            // 模式：random 随机战 / arms 军备竞赛 / rogue 肉鸽
+/* ---- 肉鸽模式参数 ----
+   第一波：30% 血量 / 30% 伤害 / 70% 航速；此后每波按基础值再 +10% 血量 / +10% 伤害 / +5% 航速 */
+const ROGUE = {
+  time:10*60,        // 总时间 10 分钟
+  count:6,           // 每波敌舰数
+  hp0:.30, dmg0:.30, spd0:.70,          // 第一波倍率
+  hpStep:.10, dmgStep:.10, spdStep:.05, // 每波递增（按基础值）
+  pickT:10,          // 清场后选择增益的时限
+  spawnT:3,          // 选定增益后下一波倒计时
+  maxPick:24         // 增益池去重上限（超过后允许重复抽取）
+};
+let rogue = null;    // 运行时状态 { wave, phase:'fight'|'pick'|'spawn', cd, offer:[], picks:[] }
+const INFCH = () => gameMode === 'rogue';              // 肉鸽：消耗品次数不限（仅受冷却）
+const chg = n => INFCH() ? '∞' : n;                    // 次数显示：肉鸽统一显示 ∞
 let gameDiff = 'easy', diffName = '简单';                // 难度：easy 简单 / hard 困难 / king 海王
 let selMapId = null;                                   // 所选海域（null=程序随机生成）
 const MODE_INFO = {
   random:{ name:'随机战',
     desc:'标准遭遇战：<em>{fleet}</em> 正面交战，战场无补给，只拼炮术与走位。' },
   arms:{ name:'军备竞赛',
-    desc:'同一编队（<em>{fleet}</em>），战场随机刷新半径 3 格补给点，驶入圆圈即可拾取：<em>射速 +10% / 血量 +10% / 伤害 +10% / 每秒回血 0.2%</em>，同类可叠加。' }
+    desc:'同一编队（<em>{fleet}</em>），战场随机刷新半径 3 格补给点，驶入圆圈即可拾取：<em>射速 +10% / 血量 +10% / 伤害 +10% / 每秒回血 0.2%</em>，同类可叠加。' },
+  rogue:{ name:'肉鸽模式',
+    desc:'限时 <em>10:00</em>，每波 <em>6 艘</em>随机敌舰（从仓库全部舰船中抽取）。第一波仅 <em>30% 血量 / 30% 伤害 / 70% 航速</em>；' +
+         '每清空一波可在 <em>10s 内三选一</em>增益（研发技能 / 军械库配件随机抽取），选完 <em>3s</em> 后下一波自地图边缘来袭。' +
+         '每波敌人 <em>血量 +10% · 伤害 +10% · 航速 +5%</em>（按基础值逐波累加）。' +
+         '消耗品<em>次数不限、仅受冷却限制</em>，战场同时刷新军备竞赛补给。' }
 };
 /* ---- 难度：lead=提前量系数(0 直瞄) / jit=瞄准散布(px) / dodge=是否预判来袭炮弹规避 ---- */
 const DIFF_INFO = {
@@ -1843,6 +2184,7 @@ function makeShip(shipId, x, y, ang, isBot){
   const c = SHIPS[shipId];
   const cls = c.col || shipId;                                    // 行为舰种（仓库变体舰归入对应列）
   const sk = isBot ? null : resolveBuild(cls);                    // 玩家按构筑结算技能（AI 无技能）
+  if (sk && c.spotBase) sk.spot = (sk.spot || 1)*c.spotBase;      // 舰体特性：可被发现距离系数（路易斯安娜 -25%）
   const maxHp = isBot ? c.hp : Math.round(c.hp*(1 + (sk.maxHp || 0)));
   const chargeAdd = sk ? (sk.consumableCharges || 0) : 0;         // 监督者：消耗品次数 +1
   return { cls, shipId, x, y, ang, tAng:ang, gear:1, hp:maxHp, maxHp, baseMaxHp:c.hp, sk,
@@ -1851,8 +2193,15 @@ function makeShip(shipId, x, y, ang, isBot){
            engineN:(c.boost ? c.boost.n : 2)+chargeAdd, engineT:0, rlBoostN:2+chargeAdd, rlBoostT:0,  // Y消耗品: 引擎增压 / 主炮重装填
            repairN:2+(sk ? (sk.repairCharges || 0) : 0), repairT:0,               // Y消耗品: BB维修小组
            tRepairN: c.tRepair ? c.tRepair.n+chargeAdd : 0, tRepairT:0, tRepairCd:0,  // T消耗品: 维修小组(按舰配置/剩余/冷却)
+           secBoostN: c.secBoost ? c.secBoost.n+chargeAdd : 0, secBoostT:0,         // Y消耗品: 副炮增强（阿达尔伯特）
+           torpAmmo: c.torp && c.torp.single ? c.torp.count : 0,                    // 单发鱼雷余弹（果敢）
+           torpReloading: false,                                                    // 单发鱼雷是否处于「射空后装填」状态
+           torpSel: false,                                                          // [3] 已选中鱼雷武器（单发模式）
+           smokeN: c.smoke ? c.smoke.n + chargeAdd : 0, smokeGenT:0, smokeSpawnT:0, smokeCd:0,  // [C] 烟雾发生器：次数/生成计时/铺设计时/生成后冷却
+           planeN: c.plane ? c.plane.use : 0, planeCd:0,                            // [C]/[3] 轰炸机编队：可用次数/整备冷却
+           helm:0,                                                                  // 当前舵位（-1 左 / 0 正 / 1 右）：操控飞机时船舶沿用该舵位
            yCd:0,                                                                 // Y消耗品使用间隔计时
-           strikeN: cls === 'ca' ? 2 + (sk && sk.dyn && sk.dyn.strikeExpert ? 1 : 0) : 0,
+           strikeN: cls === 'ca' && !c.torp ? 2 + (sk && sk.dyn && sk.dyn.strikeExpert ? 1 : 0) : 0,
            strikeCd: 25,                                                          // 空袭可用次数 / 整备计时（CA）
            turrets: c.turretDefs.map(td => td.fore ? 0 : 180),   // 各炮塔相对舰体的朝向(度)
            turretsR: c.turretDefs.map(() => 0),                  // 各炮塔独立装填计时
@@ -1868,7 +2217,7 @@ function makeShip(shipId, x, y, ang, isBot){
 }
 /* 补给对输出的加成：射速按“射速 +10%/层”换算成装填时间倍率，伤害直接线性叠加 */
 const rateMul = s => 1/(1 + .1*(s.buffs ? s.buffs.rate : 0));
-const dmgMul  = s => 1 + .1*(s.buffs ? s.buffs.dmg : 0);
+const dmgMul  = s => (1 + .1*(s.buffs ? s.buffs.dmg : 0))*(s.dmgScale || 1);   // 补给伤害 + 肉鸽波次倍率
 /* ---- 技能生效后的派生数值 ---- */
 function nearestEnemyDist(s){
   let d = Infinity;
@@ -1910,24 +2259,51 @@ function dynSpeedMul(s){
   return m;
 }
 /* 敌方瞄准散布倍率：隐蔽专家(配件共通) + 烟雾专家 + 眼花缭乱 */
+/* 烟雾云遮蔽判定：舰体中心落在任一烟团半径内 */
+function inSmoke(s){
+  for (const cl of smokes)
+    if (Math.hypot(cl.x - s.x*TILE, cl.y - s.y*TILE) <= cl.r) return true;
+  return false;
+}
 function aiDispMul(s){
   let m = S(s, 'aiDisp');
   if (hasDyn(s, 'smoke') && Math.abs(GEARS[s.gear]) >= .6) m *= 1.3;
   if (s.dazzleT > 0) m *= 1.2;                      // 眼花缭乱：敌方散布 +20%
+  m *= 1 + (shipConf(s).enemyDisp || 0);            // 船体特性：被攻击时敌方散布 +10%（果敢）
+  if (inSmoke(s)) m *= 1.3;                         // 烟幕遮蔽：敌方瞄准散布 +30%
   return m;
 }
 function secRangeOf(s){
   const c = shipConf(s);
-  return c.sec ? c.sec.range*S(s, 'secRange') : 0;
+  return c.sec ? c.sec.range*S(s, 'secRange')*(1 + secBoostOn(s, 'range') + fSecOn(s, 'range')) : 0;
 }
-/* 主炮实际射程（px）：基础 × 射程加成 × [F] 形态减程（夏威夷 -32% / 维亚济 -43%） */
-const gunRangeOf = s => shipConf(s).range*TILE*S(s, 'range')*(s.fMode ? (shipConf(s).fRangeMul || .68) : 1);
+/* ---- 副炮增强消耗品 / [F] 副炮主炮化：叠加在副炮上的增益（未生效时返回 0）---- */
+const secBoostOf = s => shipConf(s).secBoost;
+function secBoostOn(s, k){
+  const b = secBoostOf(s);
+  return (b && s.secBoostT > 0) ? (b[k] || 0) : 0;
+}
+function fSecOn(s, k){
+  const c = shipConf(s);
+  return (c.fSec && s.fMode) ? (c[k === 'range' ? 'fSecRange' : k === 'dmg' ? 'fSecDmg' : 'fSecRate'] || 0) : 0;
+}
+/* 齐射角（副炮/主炮射界）：turretArc = 艏艉盲锥角度，未配置时用默认 30° */
+const turArcOf    = c => c.turretArc ? 180 - c.turretArc : TURRET_ARC;
+const volleyArcOf = c => c.turretArc || VOLLEY_ARC;
+/* 主炮实际弹速（格/s）：基础 × [F] 形态弹速加成（维亚济 +30%） */
+const shellSpeedOf = s => shipConf(s).shellSpeed*(s.fMode ? (shipConf(s).fSpeedMul || 1) : 1);
+/* [F] 形态的 AP 加成：伤害倍率 / 各角度击穿概率增量（仅在 F 形态生效） */
+const fApDmgMulOf = s => (s.fMode ? (shipConf(s).fApDmgMul || 1) : 1);
+const apPenBonusOf = s => (s.fMode ? (shipConf(s).fApPen || 0) : 0);
+/* 主炮实际射程（px）：基础 × 射程加成 × [F] 形态减程（夏威夷 -32% / 维亚济 -43%）
+   副炮主炮化（fSec）不改主炮，跳过减程 */
+const gunRangeOf = s => shipConf(s).range*TILE*S(s, 'range')*(s.fMode && !shipConf(s).fSec ? (shipConf(s).fRangeMul || .68) : 1);
 function playerHitRate(){ return shotsFired >= 6 ? hitCount/shotsFired : 0; }
 /* 主炮实际装填时间：基础 × 动态技能 × 军备竞赛补给 × 重装填消耗品 */
 function reloadTimeOf(s){
   const c = shipConf(s);
   let r = c.reload*S(s, 'reload');                                    // 配件：主炮装填倍率
-  if (s.fMode) r = c.fReloadAbs || r*(c.fReloadMul || 2/3);            // [F]：夏威夷 1.5s→1.0s / 维亚济 固定 8s
+  if (s.fMode && !c.fSec) r = c.fReloadAbs || r*(c.fReloadMul || 2/3);   // [F]：夏威夷 1.5s→1.0s / 维亚济 固定 8s
   if (c.lowHpReload && s.hp/s.maxHp < .5) r *= 1 - c.lowHpReload;     // 维亚济：血量 <50% 装填 -20%
   if (s.sk){
     const lost = 1 - Math.max(0, s.hp)/s.maxHp;
@@ -2022,8 +2398,9 @@ function updateTurrets(s, aim, dt){
   }
   c.turretDefs.forEach((td, i)=>{
     let d = angDiff(aim, s.ang)*180/Math.PI;         // 目标方向相对舰艏角 -180..180
-    const arcMin = td.fore ? -TURRET_ARC : 180-TURRET_ARC;       // -150 / 30
-    const arcMax = td.fore ?  TURRET_ARC : 360-(180-TURRET_ARC); // 150 / 330
+    const ta = turArcOf(c);                                      // 炮塔射界半角：默认 150（盲锥 30°）
+    const arcMin = td.fore ? -ta : 180-ta;                       // -150 / 30
+    const arcMax = td.fore ?  ta : 360-(180-ta);                 // 150 / 330
     while (d < arcMin) d += 360;
     const target = Math.min(d, arcMax);              // 目标钳制在射界内
     let diff = target - s.turrets[i];                // 沿射界内路径旋转(不取最短)
@@ -2035,9 +2412,12 @@ function updateTurrets(s, aim, dt){
 /* ================= 开火 ================= */
 /* 炮管横向间距（世界像素）：随舰体宽度放大，保证屏幕上能分辨各管弹丸 */
 const barrelGap = s => Math.max(2.6, shipConf(s).w*TILE*0.09);
+/* 单座炮塔管数：td.b 优先（如路易斯安娜 2×3 + 1×4 混装），否则取舰级默认 */
+const turretB = (c, i) => (c.turretDefs[i] && c.turretDefs[i].b) || c.barrels;
+const totalBarrels = c => c.turretDefs.reduce((n, td, i) => n + turretB(c, i), 0);
 /* 同一炮塔内各管击发的错开时间（秒），形成“连珠”齐射视觉 */
 const SHELL_LAG = .035;
-function fireVolley(s, aim, type, txp, typ, burst){
+function fireVolley(s, aim, type, txp, typ, burst, burstIdx){
   const c = shipConf(s);
   if (s.ammoT > 0) return;                           // 换弹（切弹种）期间无法开火
   const useType = type || shellType;
@@ -2054,25 +2434,31 @@ function fireVolley(s, aim, type, txp, typ, burst){
     txp = s.x*TILE + tx*rngPx;
     typ = s.y*TILE + ty*rngPx;
   }
-  let fired = 0;
-  let sdmg = (useType === 1 ? c.dmgHE*HE_DMG_MUL : c.dmgAP)*dmgMul(s);   // 分弹种单发伤害（HE 按 33% 输出）× 补给伤害加成
+  let fired = 0, firedB = 0;
+  const firedIdx = [];                               // 本轮实际击发的炮塔序号（供 [F] 双连射第二轮复打）
+  const tArc = turArcOf(c), vArc = volleyArcOf(c);   // 齐射角：默认 150/30；阿达尔伯特 145/35
+  let sdmg = (useType === 1 ? heDmgOf(c) : c.dmgAP)*dmgMul(s);   // 分弹种单发伤害（HE 按 33% × 舰级倍率）× 补给伤害加成
   if (s.sk && s.sk.dmg) sdmg *= s.sk.dmg;
   if (useType === 1 && hasDyn(s, 'ifhe')) sdmg *= 1.25;   // HE惯性引信：HE 伤害 +25%
+  if (useType !== 1) sdmg *= fApDmgMulOf(s);              // [F] 形态 AP 伤害加成（维亚济 +35%）
   defs.forEach((td, i)=>{
-    // ① 炮塔自身射界：前炮塔避开艉部30°锥，后炮塔避开艏部30°锥（noArc 无视全部射角限制）
-    let ok = c.noArc || (td.fore ? ad <= TURRET_ARC : ad >= 180-TURRET_ARC);
+    // [F] 双连射的第二轮：只复打首轮真正击发过的炮塔，沿用同一射击诸元，
+    // 不再重复射界/齐射角判定（首轮已合法 => 第二轮同样合法，避免转向后被射角拒火）
+    if (burstIdx && burstIdx.indexOf(i) < 0) return;
+    // ① 炮塔自身射界：前炮塔避开艉部 30°(或舰级齐射角)锥，后炮塔避开艏部同角度锥（noArc 无视全部射角限制）
+    let ok = burstIdx ? true : (c.noArc || (td.fore ? ad <= tArc : ad >= 180-tArc));
     // ② 中轴线遮挡：瞄准方向距舰艏轴向 <30° 只有头炮；距舰艉轴向 <30° 只有尾炮
-    if (!c.noArc){
-      if (ad < VOLLEY_ARC) ok = (i === headIdx);
-      else if (ad > 180-VOLLEY_ARC) ok = (i === sternIdx);
+    if (!burstIdx && !c.noArc){
+      if (ad < vArc) ok = (i === headIdx);
+      else if (ad > 180-vArc) ok = (i === sternIdx);
     }
     // ③ 该炮塔独立装填未就绪则跳过（其余就绪炮塔照常开火）；补射轮忽略装填计时
     if (!ok || (!burst && s.turretsR[i] > 0)) return;
-    fired++;
+    fired++; firedIdx.push(i); firedB += turretB(c, i);
     if (!burst) s.turretsR[i] = reloadTimeOf(s);      // 每座炮塔独立装填(含技能/补给/重装填)
     const bx = s.x*TILE + Math.cos(s.ang)*td.off*c.l*TILE;
     const by = s.y*TILE + Math.sin(s.ang)*td.off*c.l*TILE;
-    const B = c.barrels;                             // 炮管数 = 实际出弹数
+    const B = turretB(c, i);                         // 该炮塔炮管数 = 实际出弹数
     const gap = barrelGap(s);                        // 炮管间距（与舰体炮管绘制一致）
     const pw = s.cls === 'bb' ? 4.6 : s.cls === 'ca' ? 3.8 : 3.2;   // 弹丸屏幕尺寸
     for (let b = 0; b < B; b++){
@@ -2082,7 +2468,7 @@ function fireVolley(s, aim, type, txp, typ, burst){
       const dl = Math.hypot(dx, dy) || 1;
       dx /= dl; dy /= dl;
       shells.push({ x:mx, y:my, dx, dy, pw,
-        type: useType, speed:c.shellSpeed*TILE, range:Math.min(rngPx, dl),
+        type: useType, speed:shellSpeedOf(s)*TILE, range:Math.min(rngPx, dl),
         dist:0, dmg:sdmg, owner:s, delay: b*SHELL_LAG });   // 各管错时出膛
       if (s.isBot) potDmg += sdmg;                   // 潜在伤害：敌方向本舰射出的弹药累计
       parts.push({ x:mx + tx*4, y:my + ty*4,         // 每根炮管独立的炮口焰
@@ -2091,11 +2477,11 @@ function fireVolley(s, aim, type, txp, typ, burst){
     }
   });
   if (fired > 0){
-    if (!s.isBot){ shotsFired += fired*c.barrels; s.noFireT = 0; }
+    if (!s.isBot){ shotsFired += firedB; s.noFireT = 0; }
     beep(useType === 1 ? 220 : 160, .06);
     // [F] 双连射形态：同一射击诸元在 BURST_GAP 后自动补射第二轮（不受装填计时限制）
     if (!burst && s.fMode && (c.fBurst || 1) > 1)
-      burstQueue.push({ s, aim, type:useType, txp, typ, t:BURST_GAP });
+      burstQueue.push({ s, aim, type:useType, txp, typ, t:BURST_GAP, idx:firedIdx.slice() });
   }
 }
 function fireTorps(s){
@@ -2112,6 +2498,48 @@ function fireTorps(s){
   }
   s.torpT = c.torp.reload*S(s, 'torpReload');         // 鱼雷武器专家：装填 -10%
   beep(120, .12);
+}
+/* ---- 单发鱼雷（果敢）：每次左键射出 1 发，共 count 发；全部射完才开始装填 ---- */
+function fireTorpSingle(s, aim){
+  const c = shipConf(s);
+  if (!c.torp || !c.torp.single) return false;
+  if (s.torpT > 0 || s.torpReloading){ feed(`⏱ 鱼雷装填中，剩余 ${Math.ceil(Math.max(0, s.torpT))}s`); return false; }
+  if (s.torpAmmo <= 0){                              // 已射空：等待装填（保险分支）
+    s.torpReloading = true;
+    if (s.torpT <= 0) s.torpT = c.torp.reload*S(s, 'torpReload');
+    feed('✖ 鱼雷已全部射出，等待装填'); return false;
+  }
+  const tr = c.torp.range*TILE*S(s, 'torpRange');
+  const tdmg = c.torp.dmg*dmgMul(s)*S(s, 'torpDmg');
+  torps.push({ x:s.x*TILE + Math.cos(aim)*c.l*TILE*.35, y:s.y*TILE + Math.sin(aim)*c.l*TILE*.35,
+    dx:Math.cos(aim), dy:Math.sin(aim),
+    speed:c.torp.speed*TILE, range:tr, dist:0, dmg:tdmg, owner:s });
+  s.torpAmmo--;
+  beep(150, .06);
+  if (s.torpAmmo <= 0){                               // 10 发射完 → 进入装填
+    s.torpT = c.torp.reload*S(s, 'torpReload');
+    s.torpReloading = true;                           // 只有射空后的这次装填才会补满 10 发
+    if (!s.isBot){
+      feed(`✖ ${c.torp.count} 发鱼雷已全部射出 · 开始装填 ${Math.round(s.torpT)}s`);
+      floats.push({ x:s.x*TILE, y:s.y*TILE - 30, txt:'鱼雷装填中', t:1.4, color:'#ffb066' });
+    }
+  }
+  return true;
+}
+/* ---- 烟雾发生器（果敢）：每 0.5s 在舰位铺一团半径 5 格的烟，生成 10s，烟团存续 20s ---- */
+function useSmoke(){
+  if (!player || !player.alive) return;
+  const sc = shipConf(player).smoke;
+  if (!sc){ feed('ⓘ 本舰没有烟雾发生器'); return; }
+  if (player.smokeGenT > 0){ feed('ⓘ 上一团烟幕仍在生成中'); return; }
+  if (player.smokeCd > 0){ feed(`⏱ 烟雾发生器冷却中，剩余 ${Math.ceil(player.smokeCd)}s`); return; }
+  if (player.smokeN <= 0 && !INFCH()){ feed('✖ 烟雾发生器已用尽！'); return; }
+  if (!INFCH()) player.smokeN--;                       // 肉鸽：次数不限，仅受冷却
+  player.smokeGenT = sc.gen; player.smokeSpawnT = sc.spawn;   // 首团立即铺下
+  smokes.push({ x:player.x*TILE, y:player.y*TILE, r:sc.r*TILE, t:sc.life });
+  feed(`💨 烟幕释放！每 ${sc.spawn}s 铺 1 团 · 半径 ${sc.r} 格 · 生成 ${sc.gen}s · 存续 ${sc.life}s · 剩余 ${chg(player.smokeN)} 次`);
+  floats.push({ x:player.x*TILE, y:player.y*TILE - 30, txt:'💨 拉烟！', t:1.6, color:'#cfe3ff' });
+  beep(420, .12);
 }
 /* ================= 空袭（CA 专属，替代鱼雷）=================
    流程：鼠标指定落点（限主炮射程内）→ 3s 预警，飞机编队飞越并画出空袭区
@@ -2135,7 +2563,7 @@ function strikeDmgOf(s){
 }
 /* ---- 空袭：三段式操作 [3] 进入选点 → 鼠标移动选框 → 左键确认 ---- */
 function strikeAimable(s){
-  return s && s.alive && s.cls === 'ca' && !strikes.length && s.strikeN > 0;
+  return s && s.alive && s.cls === 'ca' && !shipConf(s).torp && !strikes.length && s.strikeN > 0;
 }
 function beginStrikeAim(){
   const s = player;
@@ -2162,11 +2590,11 @@ function callStrike(tx, ty){
   const s = player;
   if (!s || !s.alive || s.cls !== 'ca') return false;
   if (strikes.length){ feed('✈ 上一轮空袭尚未结束', '#8fa8c9'); return false; }
-  if (s.strikeN <= 0){ feed('✈ 空袭已用尽，等待整备（每 25s 恢复 1 次）', '#ff8a80'); return false; }
+  if (s.strikeN <= 0 && !INFCH()){ feed('✈ 空袭已用尽，等待整备（每 25s 恢复 1 次）', '#ff8a80'); return false; }
   if (tx === undefined){ tx = mouse.wx; ty = mouse.wy; }
   const d = Math.hypot(tx - s.x*TILE, ty - s.y*TILE);
   if (d > strikeRangeOf(s)){ feed('✈ 目标超出空袭半径', '#ff8a80'); beep(200, .08); return false; }
-  s.strikeN--;
+  if (!INFCH()) s.strikeN--;                           // 肉鸽：次数不限，仅受整备冷却
   if (s.strikeCd <= 0) s.strikeCd = AIRSTRIKE.cd;
   strikes.push({ x:tx, y:ty, ang:Math.atan2(ty - s.y*TILE, tx - s.x*TILE), t:0, dropped:false });
   feed('✈ 空袭已呼叫 · 3s 后投弹', '#ffd166');
@@ -2206,7 +2634,7 @@ function updateStrikes(dt){
       direct = Math.abs(h.lx) <= hc.l*TILE/2 && Math.abs(h.ly) <= hc.w*TILE/2 + 1;
       let hd = direct ? b.dmg : b.dmg/3, htag = null;
       if (direct && hasDyn(player, 'inertiaFuse') && Math.random() < .10){
-        hd = b.dmg/HE_DMG_MUL; htag = '击穿 ';          // 惯性引信：10% 打出全额（未折 33%）
+        hd = b.dmg/(HE_DMG_MUL*heMulOf(shipConf(player))); htag = '击穿 ';   // 惯性引信：10% 打出全额（未折 33%×舰级倍率）
       }
       applyDmg(s, hd, b.x, b.y, htag, player);
       const fr = direct ? fireChanceOf(player)*S(s, 'fireTaken') : 0;
@@ -2220,63 +2648,270 @@ function updateStrikes(dt){
     bombs.splice(i, 1);
   }
 }
+/* ================= 轰炸机编队（路易斯安娜 3 号消耗品）=================
+   [C]/[3] 选中 → 左键确认 → 失去船舶操控（船舶按当前速度与舵位继续航行），
+   从舰上起飞 3 架轰炸机、操控权交给长机：
+   · 起飞 3s 内 18 格/s，之后 12 格/s；无倒挡，按住 S 经 0.2s 线性缓冲降到 8 格/s
+   · A/D 转向，转弯半径 4 格（角速度 = 速度 / 4 格）
+   · 机头前 3 格有一个半径 1 格的瞄准圆；左键进入 2s 投弹预备，预备完成后再次左键投弹
+   · 1s 后 9 枚「四倍伤害」的战列舰 HE 落在瞄准圆内；随后保持 1.5s 落点观察视角
+     （右键随时提前返回），观察结束再把操控交还船舶 */
+const PLANE = {
+  spd0:18, spd1:12, spd0T:3,        // 起飞冲刺 3s（18 格/s），随后巡航 12 格/s
+  slowSpd:8, slowBuf:.2, fastBuf:.45,   // 按住 S：0.2s 线性缓冲降至 8；松开 0.45s 回到巡航
+  turnR:4,                          // 转弯半径 4 格
+  aimAhead:3, aimR:1,               // 瞄准圆：机头前 3 格 · 半径 1 格
+  prep:2, fall:1, nBombs:9, dmgMul:4,   // 投弹预备 2s · 1s 落地 · 9 枚四倍战列舰 HE
+  watch:1.5,                        // 投弹后保持 1.5s 落点观察视角（右键随时返回）
+  scale:1.3,                        // 机体像素尺寸 +30%
+  leadGap:2.6, wingGap:1.7          // 编队间距（格）
+};
+let air = null;                     // 空中编队状态（null = 操控船舶）
+let planeSel = false;               // 消耗品已选中、等待左键确认起飞
+const planeDmg = () => SHIPS.bb.dmgHE*PLANE.dmgMul*HE_DMG_MUL;   // 四倍战列舰 HE（含 33% 口径系数）
+const planeBaseSpd = a => (a.t < PLANE.spd0T ? PLANE.spd0 : PLANE.spd1)*TILE;
+const planeAimPoint = () => ({ x: air.lead.x + Math.cos(air.lead.ang)*PLANE.aimAhead*TILE,
+                               y: air.lead.y + Math.sin(air.lead.ang)*PLANE.aimAhead*TILE });
+function planeUsable(s){
+  const pc = s && shipConf(s).plane;
+  return !!(pc && s.alive && !air && (s.planeN > 0 || INFCH()) && s.planeCd <= 0);
+}
+function beginPlaneSel(){
+  if (!player || !player.alive) return;
+  const pc = shipConf(player).plane;
+  if (!pc){ feed('ⓘ 本舰没有轰炸机消耗品'); return; }
+  if (air){ feed('✈ 轰炸机已在空中'); return; }
+  if (!planeUsable(player)){
+    if (player.planeN <= 0) feed(`⏱ 轰炸机整备中 · ${Math.ceil(Math.max(0, player.planeCd))}s 后生成 ×${pc.use}`, '#8fa8c9');
+    else feed(`⏱ 轰炸机整备中，剩余 ${Math.ceil(player.planeCd)}s`, '#8fa8c9');
+    return;
+  }
+  planeSel = !planeSel;
+  if (planeSel){
+    feed('✈ 已选中轰炸机编队 · 左键确认起飞（再次按 [C]/[3] 取消）', '#ffd166');
+    beep(700, .06);
+  } else { feed('✈ 已取消起飞', '#8fa8c9'); beep(380, .06); }
+}
+function cancelPlaneSel(msg){
+  if (!planeSel) return;
+  planeSel = false;
+  if (msg) feed('✈ 已取消起飞', '#8fa8c9');
+}
+function launchPlanes(){
+  const s = player;
+  if (!planeUsable(s)){ cancelPlaneSel(); return false; }
+  const pc = shipConf(s).plane;
+  planeSel = false;
+  if (INFCH()) s.planeN = Math.max(1, s.planeN);       // 肉鸽：次数不限（仅冷却）
+  else s.planeN--;
+  s.torpSel = false;
+  const px = s.x*TILE, py = s.y*TILE;
+  const planes = [];
+  for (let i = 0; i < pc.n; i++){                    // 依次自舰艉方向滑出起飞
+    const back = (1.1 + i*1.3)*TILE;
+    planes.push({ x:px - Math.cos(s.ang)*back, y:py - Math.sin(s.ang)*back,
+                  ang:s.ang, spd:PLANE.spd0*TILE, slowK:0, idx:i });
+  }
+  air = { t:0, prepOn:false, prepLeft:0, lead:planes[0], planes };
+  feed(`✈ ${pc.n} 架轰炸机起飞！船舶按当前 ${GEAR_NAME[s.gear]} 与舵位继续行进 · A/D 转向 · 按住 S 减速 · 左键投弹`, '#ffd166');
+  floats.push({ x:px, y:py - 34, txt:`✈ 轰炸机 ×${pc.n} 起飞！`, t:1.8, color:'#ffd166' });
+  beep(640, .1); beep(780, .1);
+  return true;
+}
+function endAir(msg){
+  if (!air) return;
+  air = null;
+  planeSel = false;
+  const pc = player && shipConf(player).plane;
+  // 次数用空后才开始整备：cd 结束后一次性生成 regen 次（默认 2 次），可连续出动
+  if (player && player.alive && pc){
+    if (INFCH()){ player.planeN = Math.max(1, player.planeN); player.planeCd = pc.cd; }  // 肉鸽：每次出动后整备 30s
+    else if (player.planeN <= 0) player.planeCd = pc.cd;
+  }
+  if (msg) feed(msg, '#9be26b');
+  beep(430, .1);
+}
+function updatePlanes(dt){
+  if (!air) return;
+  air.t += dt;
+  const lead = air.lead;
+  const minS = PLANE.slowSpd*TILE;
+  // 基准速度：起飞 3s 内 18 格/s，之后 0.5s 内线性降至 12 格/s 巡航
+  const base = air.t < PLANE.spd0T ? PLANE.spd0*TILE
+             : (PLANE.spd1 + (PLANE.spd0 - PLANE.spd1)*Math.max(0, 1 - (air.t - PLANE.spd0T)/.5))*TILE;
+  // 按住 S 减速（0.2s 线性缓冲至 8 格/s）；松开后 0.45s 回到巡航速度；无倒挡
+  lead.slowK = Math.max(0, Math.min(1, lead.slowK + (!air.dropped && keys.has('KeyS') ? dt/PLANE.slowBuf : -dt/PLANE.fastBuf)));
+  lead.spd = base + (minS - base)*lead.slowK;
+  // 转向：角速度 = 速度 / 转弯半径（4 格）；投弹后已脱离操控，飞机直线返航
+  const tr = Math.max(.3, lead.spd/(PLANE.turnR*TILE));
+  if (!air.dropped){
+    if (keys.has('KeyA')) lead.ang -= tr*dt;
+    if (keys.has('KeyD')) lead.ang += tr*dt;
+  }
+  lead.x += Math.cos(lead.ang)*lead.spd*dt;
+  lead.y += Math.sin(lead.ang)*lead.spd*dt;
+  // 投弹后：保持落点观察视角倒计时，归零交还船舶操控
+  if (air.dropped){
+    air.watchT -= dt;
+    if (air.watchT <= 0){ endAir('✈ 观察结束 · 操控交还船舶'); return; }
+  }
+  // 僚机：追随长机的编队位（左/右交错、逐级后错）
+  for (let i = 1; i < air.planes.length; i++){
+    const p = air.planes[i], side = i % 2 ? 1 : -1, rank = Math.ceil(i/2);
+    const tx = lead.x - Math.cos(lead.ang)*PLANE.leadGap*rank*TILE - Math.sin(lead.ang)*side*PLANE.wingGap*TILE;
+    const ty = lead.y - Math.sin(lead.ang)*PLANE.leadGap*rank*TILE + Math.cos(lead.ang)*side*PLANE.wingGap*TILE;
+    let d = angDiff(Math.atan2(ty - p.y, tx - p.x), p.ang);
+    d = Math.max(-tr*dt*1.8, Math.min(tr*dt*1.8, d));
+    p.ang += d;
+    p.spd += (lead.spd - p.spd)*Math.min(1, dt*4);
+    p.x += Math.cos(p.ang)*p.spd*dt;
+    p.y += Math.sin(p.ang)*p.spd*dt;
+  }
+  // 投弹预备读条
+  if (air.prepOn && air.prepLeft > 0){
+    air.prepLeft -= dt;
+    if (air.prepLeft <= 0){
+      air.prepLeft = 0;
+      feed('✈ 投弹预备完毕 · 再次左键投弹', '#ffd166');
+      beep(880, .08);
+    }
+  }
+  // 螺旋桨尾流
+  for (const p of air.planes)
+    if (Math.random() < dt*20)
+      parts.push({ x:p.x - Math.cos(p.ang)*10, y:p.y - Math.sin(p.ang)*10,
+                   vx:-Math.cos(p.ang)*30, vy:-Math.sin(p.ang)*30,
+                   t:.35, c:'rgba(220,233,246,.7)', s:2 });
+  // 世界边界：飞出海域则钳制（避免丢失编队）
+  const lim = MAP*TILE - 4;
+  for (const p of air.planes){
+    if (p.x < 4 || p.x > lim || p.y < 4 || p.y > lim){
+      p.x = Math.max(4, Math.min(lim, p.x));
+      p.y = Math.max(4, Math.min(lim, p.y));
+    }
+  }
+}
+/* 空中左键：第一次进入 2s 投弹预备，预备完成后再次左键投弹 */
+function planeClick(){
+  if (!air) return;
+  if (air.dropped){ feed('✈ 炸弹已投出 · 观察视角中，右键返回船舶操控', '#8fa8c9'); return; }
+  if (!air.prepOn){
+    air.prepOn = true; air.prepLeft = PLANE.prep;
+    feed(`✈ 投弹预备 ${PLANE.prep}s · 预备完成后再按左键投弹`, '#ffd166');
+    beep(560, .07);
+    return;
+  }
+  if (air.prepLeft > 0){ feed(`⏳ 投弹预备中… ${air.prepLeft.toFixed(1)}s`, '#8fa8c9'); return; }
+  dropPlaneBombs();
+}
+function dropPlaneBombs(){
+  const a = planeAimPoint(), dmg = planeDmg();
+  for (let k = 0; k < PLANE.nBombs; k++){          // 9 枚炸弹散布在半径 1 格的瞄准圆内
+    const r = Math.sqrt(Math.random())*PLANE.aimR*TILE, th = Math.random()*6.2832;
+    bombs.push({ x:a.x + Math.cos(th)*r, y:a.y + Math.sin(th)*r,
+                 delay:Math.max(0, PLANE.fall - AIRSTRIKE.fall), t:0, dmg });
+  }
+  boom(a.x, a.y, 8);
+  // 投弹后不立即交还操控：保持 PLANE.watch(1.5s) 的落点观察视角，右键可随时提前返回
+  air.prepOn = false;
+  air.dropped = true;
+  air.watchT = PLANE.watch;
+  air.obs = { x:a.x, y:a.y };
+  feed(`💥 投弹！${PLANE.nBombs} 枚四倍战列舰 HE（${fmtInt(dmg)}/枚）· ${PLANE.fall}s 后落于瞄准圆 · 观察 ${PLANE.watch}s（右键立即返回）`, '#ffd166');
+}
 /* ---- 切弹种：换弹期间主炮无法开火（炮弹速换 -40%）---- */
 function setShellType(t){
   if (shellType === t) return;
   shellType = t;
   if (player && player.alive){
+    player.torpSel = false;                       // 切弹即收起鱼雷武器，左键回到主炮
     player.ammoT = Math.max(player.ammoT || 0, .35*S(player, 'ammoSwitch'));
     beep(430, .04);
   }
 }
 /* ---- BB副炮：自动索敌最近敌舰，左右舷交替开火（AI 同款弹道预瞄；每轮 2 座炮位齐射） ---- */
 /* sec: 小口径速射炮(参考DD炮伤减半) / sec2: CA同款中口径炮(伤减半，每侧3座) */
+/* [F] 副炮主炮化是否生效（开关式：s.fMode 且该舰有 fSec） */
+function fSecManualOn(s){
+  const c = shipConf(s);
+  return !!(c && c.fSec && s.fMode && s.alive);
+}
 function updateSecondaries(s, dt){
   const c = shipConf(s);
   if (!c.sec || !s.alive) return;
   s.secT -= dt;
+  if (c.sec2) s.sec2T -= dt;
+  if (fSecManualOn(s)) return;                        // 副炮主炮化：停止自动索敌，改由左键朝准星齐射
   if (s.secT <= 0) secShot(s, c.sec, 'secT', 'secSide');
-  if (c.sec2){
-    s.sec2T -= dt;
-    if (s.sec2T <= 0) secShot(s, c.sec2, 'sec2T', 'sec2Side');
-  }
+  if (c.sec2 && s.sec2T <= 0) secShot(s, c.sec2, 'sec2T', 'sec2Side');
 }
-function secShot(s, spec, tk, sk){
+/* 手动副炮扳机：[F] 形态下按住左键/空格，副炮朝准星方向齐射（各自独立装填，不受主炮装填限制） */
+function manualSecFire(s, wx, wy){
+  if (!fSecManualOn(s)) return;
+  const c = shipConf(s);
+  if (!c.sec) return;
+  const aim = { x:wx, y:wy };
+  if (s.secT <= 0) secShot(s, c.sec, 'secT', 'secSide', aim);
+  if (c.sec2 && s.sec2T <= 0) secShot(s, c.sec2, 'sec2T', 'sec2Side', aim);
+}
+/* manual：{x,y} 世界像素坐标 —— 传入则跳过索敌与提前量，直瞄准星；不传则自动打最近敌舰 */
+function secShot(s, spec, tk, sk, manual){
   let best = null, bd = Infinity;
-  for (const o of allShips()){
-    if (!o.alive || o.isBot === s.isBot) continue;
-    const d = Math.hypot(o.x*TILE - s.x*TILE, o.y*TILE - s.y*TILE);
-    if (d < bd){ bd = d; best = o; }
+  if (!manual){
+    for (const o of allShips()){
+      if (!o.alive || o.isBot === s.isBot) continue;
+      const d = Math.hypot(o.x*TILE - s.x*TILE, o.y*TILE - s.y*TILE);
+      if (d < bd){ bd = d; best = o; }
+    }
   }
-  if (!best || bd > spec.range*TILE*S(s, 'secRange')) return;      // 副炮增程弹 +20%
   const cc = shipConf(s);
-  if (cc.secArc){                                      // 副炮射角限制：艏/艉各 cc.secArc 度盲锥内不开火
-    const brg = Math.atan2(best.y*TILE - s.y*TILE, best.x*TILE - s.x*TILE);
-    const dFore = Math.abs(angDiff(brg, s.ang))*180/Math.PI;
-    if (dFore < cc.secArc || dFore > 180 - cc.secArc) return;
+  // 副炮增强消耗品 / [F] 副炮主炮化：射程 · 射速 · 伤害加成（倍数）
+  const rMul = 1 + secBoostOn(s, 'range') + fSecOn(s, 'range'),
+        tMul = 1 + secBoostOn(s, 'reload') + fSecOn(s, 'rate'),
+        dMul = 1 + secBoostOn(s, 'dmg')   + fSecOn(s, 'dmg');
+  const secR = spec.range*TILE*S(s, 'secRange')*rMul;              // 含副炮增程弹 +20%
+  if (manual){
+    if (Math.hypot(manual.x - s.x*TILE, manual.y - s.y*TILE) > secR) return;   // 准星超出副炮射程
+  } else {
+    if (!best || bd > secR) return;
+    if (cc.secArc){                                    // 副炮射角限制：艏/艉各 cc.secArc 度盲锥内不开火
+      const brg = Math.atan2(best.y*TILE - s.y*TILE, best.x*TILE - s.x*TILE);
+      const dFore = Math.abs(angDiff(brg, s.ang))*180/Math.PI;
+      if (dFore < cc.secArc || dFore > 180 - cc.secArc) return;
+    }
   }
-  s[tk] = spec.reload*rateMul(s)*S(s, 'secReload');                // 手动副炮射控：装填 -10%
+  s[tk] = spec.reload*rateMul(s)*S(s, 'secReload')/tMul;           // 手动副炮射控：装填 -10%；副炮增强：射速 +15%
   s[sk] = !s[sk];                                    // 左右舷交替开火
   const sd = s[sk] ? 1 : -1;
   const px = -Math.sin(s.ang), py = Math.cos(s.ang);
-  const bx = s.x*TILE + px*sd*shipConf(s).w*TILE*.42;
-  const by = s.y*TILE + py*sd*shipConf(s).w*TILE*.42;
-  const sdmg = spec.dmg*HE_DMG_MUL*dmgMul(s)*S(s, 'secDmg');   // 副炮为 HE 弹，同按 33% 输出
-  // 副炮数量翻倍：每轮 2 座炮位（沿舰体纵向前后各一），各自解算提前量独立开火
-  for (const mo of [-.13, .13]){
-    const mx = bx + Math.cos(s.ang)*mo*shipConf(s).l*TILE;
-    const my = by + Math.sin(s.ang)*mo*shipConf(s).l*TILE;
-    const aim = (() => {                                 // 副炮预瞄：与 AI 主炮同一套提前量解算
-      const lp = leadPoint(s, best, best.x*TILE, best.y*TILE, spec.shellSpeed*TILE, mx, my);
-      return Math.atan2(lp.y - my, lp.x - mx);
-    })() + (Math.random()*.14 - .07)*S(s, 'secDisp');
-    shells.push({ x:mx, y:my, dx:Math.cos(aim), dy:Math.sin(aim),
-      type:1, sec:true, speed:spec.shellSpeed*TILE, range:spec.range*TILE*S(s, 'secRange')*1.15,
-      dist:0, dmg:sdmg, owner:s });
-    parts.push({ x:mx + Math.cos(aim)*6, y:my + Math.sin(aim)*6,
-                 vx:Math.cos(aim)*50, vy:Math.sin(aim)*50, t:.12, c:'#fff3b0', s:2 });
+  const ccw = shipConf(s).w*TILE*.42;
+  /* 每座炮位一轮的 HE 总伤害（已计 33%）；b = 每座炮管数，单管伤害按管数均分 */
+  const sdmg = spec.dmg*HE_DMG_MUL*dmgMul(s)*S(s, 'secDmg')*dMul;
+  /* 每轮炮位数：默认 2（既有 BB），路易斯安娜 10 座双联装 → 10 个炮位；沿舰体纵向均匀分布 */
+  const nMount = spec.mounts || 2, nBarrel = spec.b || 1, perBarrel = sdmg/nBarrel;
+  const span = nMount <= 2 ? .13 : Math.min(.44, .13 + (nMount - 2)*.026);
+  for (let k = 0; k < nMount; k++){
+    const mo = nMount === 1 ? 0 : (k/(nMount - 1) - .5)*2*span;
+    const sideK = (k % 2 === 0 ? 1 : -1)*sd;        // 相邻炮位左右舷交替（舷侧炮塔分布）
+    const mx = s.x*TILE + px*sideK*ccw + Math.cos(s.ang)*mo*shipConf(s).l*TILE;
+    const my = s.y*TILE + py*sideK*ccw + Math.sin(s.ang)*mo*shipConf(s).l*TILE;
+    const aim0 = (manual
+      ? Math.atan2(manual.y - my, manual.x - mx)           // 手动：直瞄准星（无提前量）
+      : (() => {                                           // 自动：与 AI 主炮同一套提前量解算
+          const lp = leadPoint(s, best, best.x*TILE, best.y*TILE, spec.shellSpeed*TILE, mx, my);
+          return Math.atan2(lp.y - my, lp.x - mx);
+        })()) + (Math.random()*.14 - .07)*S(s, 'secDisp');
+    for (let j = 0; j < nBarrel; j++){                  // 联装炮管：每管各出一发（横向微偏）
+      const bo = (j - (nBarrel - 1)/2)*2.2;
+      const bx = mx - Math.sin(aim0)*bo, by = my + Math.cos(aim0)*bo;
+      shells.push({ x:bx, y:by, dx:Math.cos(aim0), dy:Math.sin(aim0),
+        type:1, sec:true, speed:spec.shellSpeed*TILE, range:secR*1.15,
+        dist:0, dmg:perBarrel, owner:s });
+      parts.push({ x:bx + Math.cos(aim0)*6, y:by + Math.sin(aim0)*6,
+                   vx:Math.cos(aim0)*50, vy:Math.sin(aim0)*50, t:.12, c:'#fff3b0', s:2 });
+    }
   }
-  if (s.isBot) potDmg += sdmg*2;                      // 潜在伤害：敌方副炮弹累计（×2 炮位）
+  if (s.isBot) potDmg += sdmg*nMount;                 // 潜在伤害：敌方副炮弹累计（按炮位数）
 }
 /* ---- 哈巴罗夫斯克装甲带：按来袭舰种概率完全免疫炮弹伤害（主炮/副炮 HE+AP，不含鱼雷/炸弹）---- */
 function khResist(s, sh){
@@ -2338,7 +2973,7 @@ function spawnBuff(){
   return false;
 }
 function updateBuffs(dt){
-  if (gameMode !== 'arms') return;
+  if (gameMode !== 'arms' && gameMode !== 'rogue') return;
   buffSpawnT -= dt;
   if (buffSpawnT <= 0){                                 // 定时补充，场上不超过 BUFF_MAX 个
     buffSpawnT = BUFF_SPAWN_T;
@@ -2373,7 +3008,7 @@ function renderBuffBar(){
   if (!bar || !box) return;
   const b = (player && player.buffs) || null;
   const has = b && (b.rate + b.hp + b.dmg + b.regen) > 0;
-  if (gameMode !== 'arms' || !has){ bar.classList.remove('on'); box.innerHTML = ''; return; }
+  if ((gameMode !== 'arms' && gameMode !== 'rogue') || !has){ bar.classList.remove('on'); box.innerHTML = ''; return; }
   bar.classList.add('on');
   box.innerHTML = BUFF_KINDS.filter(k => b[k.k] > 0).map(k =>
     `<div class="buffItem"><i style="background:${k.c}">${k.glyph}</i>` +
@@ -2404,6 +3039,197 @@ function drawBuff(b){
   ctx.restore();
   ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
 }
+/* ================= 肉鸽模式：波次推进 / 三选一增益 ================= */
+const ROGUE_ICON = { atk:'攻', def:'防', util:'辅', arms:'械' };   // 增益图标（按类别）
+/* 第 w 波敌方倍率：第一波 30%/30%/70%，此后按基础值逐波 +10%/+10%/+5% */
+const rogueMulOf = w => ({
+  hp:  ROGUE.hp0  + (w-1)*ROGUE.hpStep,
+  dmg: ROGUE.dmg0 + (w-1)*ROGUE.dmgStep,
+  spd: ROGUE.spd0 + (w-1)*ROGUE.spdStep
+});
+function rogueStart(){
+  rogue = { wave:0, phase:'fight', cd:0, offer:[], picks:[] };
+  bots = [];
+  rogueNextWave();                                     // 第一波直接来袭（不经过三选一）
+}
+function rogueNextWave(){
+  rogue.wave++;
+  rogue.phase = 'fight';
+  rogue.cd = 0;
+  rogueSpawnWave();
+  updateRogueHud();
+}
+/* 从地图边缘生成一波 6 艘随机敌舰（舰型取自仓库全部舰船） */
+function rogueSpawnWave(){
+  const m = rogueMulOf(rogue.wave);
+  const ids = Object.keys(SHIPS);
+  nameQueue = [...BOT_NAMES].sort(() => Math.random() - .5);      // 每波重置敌舰名
+  // 出生边：70% 选离玩家最近的一边（节奏紧凑），30% 完全随机（0上 1右 2下 3左）
+  const dists = [player.y, MAP-1-player.x, MAP-1-player.y, player.x];
+  let edge = 0;
+  for (let i = 1; i < 4; i++) if (dists[i] < dists[edge]) edge = i;
+  if (Math.random() < .3) edge = (Math.random()*4)|0;
+  const pad = 24, span = 40;                           // 贴边深度 / 沿边展开半宽（格）
+  // 以「玩家在该边上的垂足」为中心展开来袭阵面（不贴脸、不散到对岸）
+  const proj = (edge === 0 || edge === 2) ? player.x : player.y;
+  for (let i = 0; i < ROGUE.count; i++){
+    const sid = ids[(Math.random()*ids.length)|0];
+    const c0 = SHIPS[sid];
+    const rad = Math.max(c0.w, 1)*TILE*.85;
+    const t = ROGUE.count > 1 ? i/(ROGUE.count-1) - .5 : 0;
+    const along = Math.max(8, Math.min(MAP-9, proj + t*2*span + (Math.random()-.5)*10));
+    let x = 0, y = 0, ok = false;
+    for (let k = 0; k < 30 && !ok; k++){               // 贴边排布，遇岛礁向内侧逐格试探
+      const inset = pad + k*2.5;
+      if (edge === 0){ x = along; y = inset; }
+      else if (edge === 1){ x = MAP-1-inset; y = along; }
+      else if (edge === 2){ x = along; y = MAP-1-inset; }
+      else { x = inset; y = along; }
+      x = Math.max(6, Math.min(MAP-7, x));
+      y = Math.max(6, Math.min(MAP-7, y));
+      ok = !circleBlocked(x*TILE, y*TILE, rad);
+    }
+    // 避免「贴脸刷新」：距玩家不足 26 格时沿背离玩家的方向外推（仍贴着边缘）
+    const ox = x - player.x, oy = y - player.y, od = Math.hypot(ox, oy) || 1;
+    if (od < 26){
+      const push = 26 - od + 2;
+      const nx2 = Math.max(6, Math.min(MAP-7, x + ox/od*push));
+      const ny2 = Math.max(6, Math.min(MAP-7, y + oy/od*push));
+      if (!circleBlocked(nx2*TILE, ny2*TILE, rad)){ x = nx2; y = ny2; }
+    }
+    const b = makeShip(sid, x, y, Math.atan2(player.y - y, player.x - x), true);   // 舰艏朝玩家
+    b.maxHp = Math.max(1, Math.round(b.baseMaxHp*m.hp));   // 波次血量倍率
+    b.hp = b.maxHp;
+    b.dmgScale = m.dmg;                                    // 波次伤害倍率（dmgMul 统一乘入）
+    b.spdScale = m.spd;                                    // 波次航速倍率
+    b.wave = rogue.wave;
+    bots.push(b);
+  }
+}
+/* 增益池：当前舰种的研发技能 + 军械库配件（数值与描述直接复用） */
+function roguePool(){
+  const cls = player.cls, out = [];
+  for (const s of SKILLS)
+    if (s.cls.includes(cls) && ((s.mods && s.mods.length) || s.dyn))
+      out.push({ id:'s_'+s.id, name:s.name, desc:s.desc, mods:s.mods || [], dyn:s.dyn,
+                 cat:s.cat || 'util', src:'舰长技能' });
+  for (const u of UPGRADES)
+    if (upgNeedOk(u, shipConf(player)))               // 全舰种通用：只剔除本舰吃不到的配件，避免空 pick
+      out.push({ id:'u_'+u.id, name:u.name, desc:u.desc, mods:u.mods || [], cat:'arms', src:'军械库配件' });
+  return out;
+}
+function rollRogueOffer(n){
+  const pool = roguePool();
+  const used = new Set(rogue.picks.map(p => p.id));
+  let cand = pool.filter(p => !used.has(p.id));
+  if (cand.length < n) cand = pool;                    // 池子抽干后允许重复（继续叠加）
+  const bag = cand.slice(), out = [];
+  while (out.length < n && bag.length) out.push(bag.splice((Math.random()*bag.length)|0, 1)[0]);
+  return out;
+}
+function rogueShowPick(){
+  $('rpCards').innerHTML = rogue.offer.map((u, i) =>
+    `<div class="rp-card ${u.cat}" data-i="${i}">` +
+      `<div class="rp-ico">${ROGUE_ICON[u.cat] || '✦'}</div>` +
+      `<div class="rp-name">${u.name}</div>` +
+      `<div><span class="rp-src">${u.src}</span></div>` +
+      `<div class="rp-desc">${u.desc}</div>` +
+      `<span class="rp-key">点 击 选 择 · 键 ${i+1}</span></div>`).join('');
+  [...$('rpCards').children].forEach(el =>
+    el.addEventListener('click', () => rogueChoose(+el.dataset.i)));
+  $('rpKicker').textContent = `第 ${rogue.wave} 波 · 清 场`;
+  $('rpTitle').textContent = '选 择 一 项 增 益';
+  $('rpSub').textContent = `${ROGUE.pickT}s 内点选（超时随机）· 选定后 ${ROGUE.spawnT}s 进入第 ${rogue.wave+1} 波`;
+  $('rpBar').style.width = '100%';
+  $('roguePick').classList.add('on');
+}
+function rogueShowSpawn(){
+  const m = rogueMulOf(rogue.wave + 1);
+  $('rpCards').innerHTML =
+    `<div style="width:100%;text-align:center">` +
+      `<div class="rp-count" id="rpCount">${ROGUE.spawnT}</div>` +
+      `<div class="rp-who">第 ${rogue.wave+1} 波 · ${ROGUE.count} 艘敌舰自地图边缘来袭</div>` +
+      `<div class="rp-who" style="margin-top:9px;color:#ff8a80">敌方强度：血 ${Math.round(m.hp*100)}% · ` +
+      `伤 ${Math.round(m.dmg*100)}% · 速 ${Math.round(m.spd*100)}%</div></div>`;
+  $('rpKicker').textContent = '增 益 已 生 效';
+  $('rpTitle').textContent = '下 一 波 即 将 来 袭';
+  $('rpSub').textContent = '装填就绪 · 抢占有利阵位';
+  $('rpBar').style.width = '100%';
+  $('roguePick').classList.add('on');
+}
+/* 清场 → 进入三选一 */
+function rogueWaveCleared(){
+  if (!rogue || rogue.phase !== 'fight') return;
+  rogue.phase = 'pick';
+  rogue.cd = ROGUE.pickT;
+  rogue.offer = rollRogueOffer(3);
+  rogueShowPick();
+  feed(`✔ 第 ${rogue.wave} 波清场！${ROGUE.pickT}s 内选择一项增益（点击 / 按 1·2·3）`, '#e0b0ff');
+  beep(700, .09); beep(880, .09);
+}
+/* 选定增益：直接叠加到玩家的技能/配件属性池（sk），立即生效 */
+function rogueChoose(i){
+  if (!rogue || rogue.phase !== 'pick') return;
+  const up = rogue.offer[i] || rogue.offer[0];
+  if (!up) return;
+  rogue.picks.push(up);
+  rogueApply(up);
+  rogue.phase = 'spawn';
+  rogue.cd = ROGUE.spawnT;
+  rogueShowSpawn();
+  updateRogueHud();
+  beep(620, .08);
+}
+function rogueApply(up){
+  const sk = player.sk || (player.sk = { dyn:{} });
+  sk.dyn = sk.dyn || {};
+  const before = player.maxHp;
+  if (up.mods && up.mods.length) applyMods(sk, up.mods);
+  if (up.dyn) sk.dyn[up.dyn] = true;
+  if (up.mods && up.mods.some(m => m[0] === 'maxHp')){   // 最大血量类：立即按新系数换算并补足
+    player.maxHp = Math.round(player.baseMaxHp*(1 + (sk.maxHp || 0)));
+    player.hp += Math.max(0, player.maxHp - before);
+  }
+  if (up.mods && up.mods.some(m => m[0] === 'consumableCharges' || m[0] === 'repairCharges')){
+    player.engineN++; player.repairN++; player.tRepairN++; player.smokeN++; player.secBoostN++;   // 肉鸽内次数无限，仅作计数
+  }
+  feed(`✦ 增益生效：${up.name} · ${up.desc}`, '#ffd166');
+  floats.push({ x:player.x*TILE, y:player.y*TILE - 34, txt:'✦ ' + up.name, t:1.8, color:'#e0b0ff' });
+}
+function updateRogue(dt){
+  if (gameMode !== 'rogue' || !rogue) return;
+  if (rogue.phase === 'pick'){
+    rogue.cd -= dt;
+    $('rpBar').style.width = Math.max(0, rogue.cd/ROGUE.pickT)*100 + '%';
+    if (rogue.cd <= 0) rogueChoose((Math.random()*rogue.offer.length)|0);   // 超时随机
+  } else if (rogue.phase === 'spawn'){
+    rogue.cd -= dt;
+    const el = $('rpCount');
+    if (el) el.textContent = Math.max(0, Math.ceil(rogue.cd));
+    $('rpBar').style.width = Math.max(0, rogue.cd/ROGUE.spawnT)*100 + '%';
+    if (rogue.cd <= 0){
+      $('roguePick').classList.remove('on');
+      rogueNextWave();
+      const m = rogueMulOf(rogue.wave);
+      feed(`⚠ 第 ${rogue.wave} 波敌舰来袭！血 ${Math.round(m.hp*100)}% · 伤 ${Math.round(m.dmg*100)}% · 速 ${Math.round(m.spd*100)}%`,
+           '#ff8a80');
+      floats.push({ x:player.x*TILE, y:player.y*TILE - 40, txt:`⚠ 第 ${rogue.wave} 波`, t:2, color:'#ff8a80' });
+      beep(240, .22);
+    }
+  }
+  updateRogueHud();
+}
+function updateRogueHud(){
+  const hud = $('rogueHud');
+  if (!hud) return;
+  if (gameMode !== 'rogue' || !rogue){ hud.classList.remove('on'); return; }
+  hud.classList.add('on');
+  const m = rogueMulOf(rogue.wave);
+  $('rgWave').textContent = rogue.wave;
+  $('rgAlive').textContent = bots.filter(b => b.alive).length;
+  $('rgMul').textContent = `血 ${Math.round(m.hp*100)}% · 伤 ${Math.round(m.dmg*100)}% · 速 ${Math.round(m.spd*100)}%`;
+  $('rgPicks').textContent = rogue.picks.length;
+}
 /* AP 弹（驱逐/巡洋）：伤害倍率 = 10%全穿 / 50%穿1/3 / 20%擦10% / 20%不穿 */
 function rollType2(){
   const r = Math.random();
@@ -2423,6 +3249,27 @@ function apImpactAngleDeg(sh, s){
   const dot = sh.dx*Math.cos(s.ang) + sh.dy*Math.sin(s.ang);
   return Math.acos(Math.min(1, Math.abs(dot)))*180/Math.PI;     // 0~90°
 }
+/* 穿透结果抽取：bonus>0 时把该档「未击穿(0)」概率压低 bonus（如 0.10 = 击穿概率 +10 个百分点），
+   腾出的概率并入该档最高伤害结果（全额击穿优先），保证全档概率和仍为 1 */
+function apRoll(table, band, bonus){
+  const rolls = table[band].rolls;
+  let list = rolls;
+  if (bonus > 0){
+    const zi = rolls.findIndex(x => x[0] <= 0);
+    const top = rolls.reduce((m, x, i) => (x[0] > rolls[m][0] ? i : m), 0);
+    if (zi >= 0 && top !== zi){
+      const t = Math.min(bonus, rolls[zi][1]);
+      list = rolls.map(([mul, pr], i) => i === zi ? [mul, pr - t] : i === top ? [mul, pr + t] : [mul, pr]);
+    }
+  }
+  const r = Math.random();
+  let acc = 0;
+  for (const [mul, pr] of list){
+    acc += pr;
+    if (r < acc) return mul;
+  }
+  return 0;
+}
 /* 命中角分档：默认 45° / 60°；apBandShift<0 表示开火舰的“各舰种免疫角度 -5°”→ 分档线整体前移 */
 const apBandShiftOf = s => shipConf(s).apBandShift || 0;
 function apBandOf(a, shift){
@@ -2435,12 +3282,7 @@ function bbApMul(sh, s){
   const a = apImpactAngleDeg(sh, s);
   const band = apBandOf(a, apBandShiftOf(sh.owner));
   const table = s.cls === 'dd' ? CA_AP_DD : BB_AP_BANDS;         // apAngleDD：对驱逐舰也按角度表结算
-  let r = Math.random(), acc = 0;
-  for (const [mul, p] of table[band].rolls){
-    acc += p;
-    if (r < acc) return mul;
-  }
-  return 0;
+  return apRoll(table, band, apPenBonusOf(sh.owner));            // [F] 形态：各角度击穿概率 +10%
 }
 /* ---- 巡洋舰 AP：按命中角度 × 目标舰种决定穿透结果 ----
    角度同战列舰（0° 艏艉向 / 90° 正横）；对 BB/CA 与 DD 各一套概率表。
@@ -2459,12 +3301,7 @@ function caApMul(sh, s){
   const a = apImpactAngleDeg(sh, s);
   const band = apBandOf(a, apBandShiftOf(sh.owner));
   const table = s.cls === 'dd' ? CA_AP_DD : CA_AP_CAPITAL;
-  let r = Math.random(), acc = 0;
-  for (const [mul, p] of table[band].rolls){
-    acc += p;
-    if (r < acc) return mul;
-  }
-  return 0;
+  return apRoll(table, band, apPenBonusOf(sh.owner));            // [F] 形态：各角度击穿概率 +10%
 }
 /* AP 穿透结果：按开火舰口径（apTable：bb 战列炮 / ca 巡洋炮 / dd 驱逐炮）选择对应角度表 */
 function apMulOf(sh, s){
@@ -2481,7 +3318,7 @@ function sinkShip(target, reason, killer){
   else
     feed(`💀 ${target.name}${reason}`, col);
   if (target.isBot){ kills++; checkVictory(); }
-  else gameOver(false, '你的旗舰战沉');
+  else { if (air){ air = null; planeSel = false; } gameOver(false, '你的旗舰战沉'); }
 }
 function applyDmg(target, dmg, sx, sy, tag, src){
   if (!target.alive || dmg <= 0) return;
@@ -2518,7 +3355,11 @@ function updateShells(dt){
       const cx = (sh.x/TILE)|0, cy = (sh.y/TILE)|0;
       if (cx<0||cy<0||cx>=MAP||cy>=MAP){ dead = true; break; }
       const t = map[cy][cx];
-      if (t === T_ISLAND){ boom(sh.x, sh.y, 6); dead = true; break; }
+      if (t === T_ISLAND){
+        // 高抛弹道（得梅因）：射出的炮弹可越过半径小于阈值的岛屿，仍被大片陆地拦截
+        const overR = sh.owner && shipConf(sh.owner).overIslandR || 0;
+        if (!(overR && isleRadiusAt(cx, cy) < overR)){ boom(sh.x, sh.y, 6); dead = true; break; }
+      }
       if (t === T_REEF){ map[cy][cx] = T_WATER; boom(sh.x, sh.y, 6); dead = true; break; }
       for (const s of allShips()){
         if (!s.alive || s === sh.owner || (s.isBot && sh.owner.isBot)) continue;   // AI之间不互相伤害
@@ -2529,7 +3370,13 @@ function updateShells(dt){
               floats.push({ x:sh.x, y:sh.y, txt:'跳弹', t:1, color:'#b9c6d2' });
               boom(sh.x, sh.y, 3);
             } else {
-              applyDmg(s, sh.dmg, sh.x, sh.y, null, sh.owner);
+              // 副炮 HE 同样享受 hePen / 惯性引信的击穿判定（击穿 → 打出全额）
+              let secD = sh.dmg, secTag = null;
+              const secPen = (hasDyn(sh.owner, 'inertiaFuse') ? .10 : 0) + (shipConf(sh.owner).hePen || 0);
+              if (secPen > 0 && Math.random() < secPen){
+                secD = sh.dmg/(HE_DMG_MUL*heMulOf(shipConf(sh.owner))); secTag = '击穿 ';
+              }
+              applyDmg(s, secD, sh.x, sh.y, secTag, sh.owner);
               boom(sh.x, sh.y, 4);
             }
             dead = true; break;
@@ -2570,10 +3417,12 @@ function updateShells(dt){
             floats.push({ x:sh.x, y:sh.y, txt: s.shipId === 'kh' ? '装甲带' : s.shipId === 'vz' ? '倾角跳弹' : '跳弹', t:1, color:'#b9c6d2' });
             boom(sh.x, sh.y, 3);
           } else {
-            // 惯性引信：HE 直击有 10% 概率击穿，打出全额伤害
+            // 惯性引信：HE 直击有 10% 概率击穿，打出全额伤害；
+            // 船体特性 hePen（阿达尔伯特）：所有 HE 炮弹击穿率额外 +5%
             let hd = direct ? sh.dmg : sh.dmg/3, htag = null;
-            if (direct && hasDyn(sh.owner, 'inertiaFuse') && Math.random() < .10){
-              hd = sh.dmg/HE_DMG_MUL; htag = '击穿 ';
+            const penP = (hasDyn(sh.owner, 'inertiaFuse') ? .10 : 0) + (shipConf(sh.owner).hePen || 0);
+            if (direct && penP > 0 && Math.random() < penP){
+              hd = sh.dmg/(HE_DMG_MUL*heMulOf(shipConf(sh.owner))); htag = '击穿 ';
             }
             applyDmg(s, hd, sh.x, sh.y, htag, sh.owner);
             const fr = direct ? fireChanceOf(sh.owner)*S(s, 'fireTaken') : 0;   // 点火率 × 目标防火/防护保养（仅直击）
@@ -2622,7 +3471,7 @@ function updateTorps(dt){
    shellV/ox/oy 可选：副炮等特殊炮位传入自身弹速与出膛点（默认取本舰中心 × 主炮弹速） */
 function leadPoint(b, tgt, ax, ay, shellV, ox, oy){
   const c = shipConf(b), tc = shipConf(tgt);
-  shellV = shellV || c.shellSpeed*TILE;                                 // 弹速 px/s
+  shellV = shellV || shellSpeedOf(b)*TILE;                              // 弹速 px/s（含 [F] 加成）
   ox = ox !== undefined ? ox : b.x*TILE;
   oy = oy !== undefined ? oy : b.y*TILE;
   const tv = tc.speed*S(tgt, 'speed')*TILE*GEARS[tgt.gear]
@@ -2659,7 +3508,7 @@ function incomingThreat(b){
 const EVADE_DIRS = 16;
 const EVADE_ARC = 80*Math.PI/180;                   // 只能在 ±80° 内选（打满舵，而不是原地瞬移航向）
 function evadeHeading(b, th){
-  const c = shipConf(b), spd = c.speed*TILE;
+  const c = shipConf(b), spd = c.speed*TILE*(b.spdScale || 1);
   const rate = c.turn*Math.PI/180;                  // 实际转舵速率 rad/s
   const T = Math.max(.4, th.t);
   const sh = th.sh;
@@ -2729,7 +3578,7 @@ function updateBot(b, dt){
   b.tAng = aimA;
   updateTurrets(b, aimA, dt);
   // 航行（带绕障：直行受阻时左右试探改向，避免在岛群间卡死）
-  const v = c.speed*TILE*GEARS[b.gear];
+  const v = c.speed*TILE*GEARS[b.gear]*(inSmoke(b) ? .85 : 1)*(b.spdScale || 1);   // 烟幕 -15% · 肉鸽波次航速倍率
   if (!tryMove(b, Math.cos(b.ang)*v*dt, Math.sin(b.ang)*v*dt)){
     for (const off of [.7, -.7, 1.3, -1.3, 2.0, -2.0]){
       const a = b.ang + off;
@@ -2740,7 +3589,8 @@ function updateBot(b, dt){
   /* 开火：隐蔽专家让敌舰需更近才开火；烟雾专家使半速以上时敌舰瞄准散布更大 */
   const spotMul = S(player, 'spot');
   const jit = D.jit*aiDispMul(player);                  // 隐蔽/烟雾/眼花缭乱：敌方散布倍率
-  if (player.alive && dist < c.range*TILE*.95*spotMul &&
+  const smokeRange = inSmoke(player) ? .5 : 1;          // 烟幕遮蔽：敌方对本舰的攻击距离 -50%
+  if (player.alive && dist < c.range*TILE*.95*spotMul*smokeRange &&
       Math.abs(angDiff(aimA, b.tAng)) < .2) fireVolley(b, aimA, player.cls === 'bb' ? 1 : 2,
         aimX + (Math.random()*2-1)*jit, aimY + (Math.random()*2-1)*jit);   // AI：目标BB用HE，否则AP
   if (c.torp && player.alive && b.torpT <= 0 && dist < c.torp.range*TILE*.8 &&
@@ -2872,22 +3722,26 @@ function drawShip(s){
     ctx.save();
     ctx.translate(td.off*L, 0);
     ctx.rotate(s.turrets[i]*Math.PI/180);
+    const tb = turretB(c, i);
     ctx.fillStyle = flash ? '#fff' : gun;
     ctx.fillRect(-tr*.8, -tr*.75, tr*1.6, tr*1.5);     // 炮塔体
+    if (tb === 4) ctx.fillRect(-tr*.8, -tr*.95, tr*1.6, tr*1.9);   // 四联装炮塔更宽
     ctx.fillStyle = '#1c242c';
-    for (let b = 0; b < c.barrels; b++){
-      const by = (b - (c.barrels-1)/2)*bg;
+    for (let b = 0; b < tb; b++){
+      const by = (b - (tb-1)/2)*bg;
       ctx.fillRect(tr*.5, by-1, tr*1.8, 2);            // 联装炮管
     }
     ctx.restore();
   });
-  // ---- 舷侧副炮（BB：每侧3座CA同款双联装 + 小口径炮位）----
+  // ---- 舷侧副炮（BB：每侧 3 座CA同款双联装 + 小口径炮位；路易斯安娜每侧 5 座双联装驱逐炮）----
   if (s.cls === 'bb'){
-    for (let i = 0; i < 3; i++){
-      const mx = L*(.08 - i*.18);
+    const perSide = Math.max(1, Math.round(((c.sec && c.sec.mounts) || 6)/2));
+    const xs = perSide === 3 ? [.08, -.10, -.28]
+             : Array.from({ length:perSide }, (_, i) => .30 - i*(.60/Math.max(1, perSide-1)));
+    xs.forEach(mx => {
       for (const sd of [-1, 1]){
         ctx.save();
-        ctx.translate(mx, sd*W*.42);
+        ctx.translate(mx*L, sd*W*.42);
         ctx.fillStyle = flash ? '#fff' : gun;
         ctx.fillRect(-3.2, -3, 6.4, 6);                // 副炮塔体
         ctx.fillStyle = '#1c242c';
@@ -2896,7 +3750,7 @@ function drawShip(s){
         ctx.fillRect(0.4, bo, 1.3, 2.4);
         ctx.restore();
       }
-    }
+    });
     ctx.fillStyle = flash ? '#fff' : '#3a4650';        // 小口径速射炮位
     for (let i = 0; i < 2; i++){
       const mx = L*(.16 - i*.28);
@@ -2970,14 +3824,65 @@ function drawPlane(x, y, ang, t, idx){
   }
   ctx.restore();
 }
+/* 轰炸机（BTD Destroyer 式舰载轰炸机，俯视 2 格 ≈ 32px）：
+   长机身 + 宽梯形主翼 + 大水平尾翼 + 蓝色座舱 + 螺旋桨；shadow=true 时只画右下偏移的投影 */
+function drawBomber(p, shadow){
+  ctx.save();
+  const K = PLANE.scale;                             // 机体像素尺寸 +30%
+  if (shadow) ctx.translate(p.x + 13*K, p.y + 17*K);
+  else ctx.translate(p.x, p.y);
+  ctx.rotate(p.ang);
+  ctx.scale(K, K);
+  const S0 = shadow;
+  const dark = S0 ? 'rgba(0,0,0,.20)' : '#2b3d51';
+  const mid  = S0 ? 'rgba(0,0,0,.20)' : '#3d5670';
+  const lit  = S0 ? 'rgba(0,0,0,.20)' : '#67839f';
+  // 主翼（略后掠：中段宽、翼尖收窄，模拟 BTD 的梯形翼）
+  ctx.fillStyle = mid;
+  ctx.fillRect(-5, -17, 9, 6);       ctx.fillRect(-5, -11, 10, 22);
+  ctx.fillRect(-5, 11, 9, 6);
+  ctx.fillStyle = dark;              // 翼尖
+  ctx.fillRect(-5, -17, 9, 2);       ctx.fillRect(-5, 15, 9, 2);
+  // 水平尾翼
+  ctx.fillStyle = mid; ctx.fillRect(-16, -7, 6, 14);
+  ctx.fillStyle = dark; ctx.fillRect(-16, -7, 6, 2); ctx.fillRect(-16, 5, 6, 2);
+  // 机身
+  ctx.fillStyle = dark; ctx.fillRect(-16, -2.8, 32, 5.6);
+  ctx.fillStyle = lit;  ctx.fillRect(-15, -1.8, 29, 2.4);
+  // 机头与发动机罩
+  ctx.fillStyle = S0 ? 'rgba(0,0,0,.20)' : '#22303c';
+  ctx.beginPath(); ctx.moveTo(16, -2.8); ctx.lineTo(21, 0); ctx.lineTo(16, 2.8); ctx.closePath(); ctx.fill();
+  if (!S0){
+    ctx.fillStyle = '#8fa8bd'; ctx.fillRect(14, -2.2, 3, 4.4);       // 发动机
+    ctx.fillStyle = '#a8c4d8'; ctx.fillRect(4, -1.9, 8, 3.8);        // 座舱盖
+    ctx.fillStyle = 'rgba(150,220,255,.8)'; ctx.fillRect(5, -1.3, 6, 1.2);
+    // 螺旋桨（高速旋转的模糊圆盘）
+    ctx.fillStyle = `rgba(226,238,248,${.30 + .28*Math.abs(Math.sin(waveT*16 + p.idx*2))})`;
+    ctx.fillRect(20, -9, 2, 18);
+    // 白星识别标志（左翼）
+    ctx.fillStyle = '#e8f3fb';
+    ctx.beginPath();
+    for (let i = 0; i < 5; i++){
+      const a1 = -1.5708 + i*1.2566, a2 = a1 + .6283;
+      const px1 = -1 + Math.cos(a1)*3.2, py1 = -12 + Math.sin(a1)*3.2;
+      const px2 = -1 + Math.cos(a2)*1.4, py2 = -12 + Math.sin(a2)*1.4;
+      i ? ctx.lineTo(px1, py1) : ctx.moveTo(px1, py1);
+      ctx.lineTo(px2, py2);
+    }
+    ctx.closePath(); ctx.fill();
+  }
+  ctx.restore();
+}
 function draw(){
   resizeCanvas();
   const { vw, vh } = viewSize();
-  // 相机跟随；视野大于世界时居中显示
+  // 相机跟随；操控轰炸机时跟随长机（投弹后跟随落点观察）；视野大于世界时居中显示
+  const fx = air ? (air.dropped ? air.obs.x : air.lead.x) : player.x*TILE,
+        fy = air ? (air.dropped ? air.obs.y : air.lead.y) : player.y*TILE;
   cam.x = vw >= WORLD ? -(vw - WORLD)/2
-                      : Math.max(0, Math.min(WORLD - vw, player.x*TILE - vw/2));
+                      : Math.max(0, Math.min(WORLD - vw, fx - vw/2));
   cam.y = vh >= WORLD ? -(vh - WORLD)/2
-                      : Math.max(0, Math.min(WORLD - vh, player.y*TILE - vh/2));
+                      : Math.max(0, Math.min(WORLD - vh, fy - vh/2));
   ctx.setTransform(zoom, 0, 0, zoom, -Math.round(cam.x*zoom), -Math.round(cam.y*zoom));
   const x0 = Math.max(0, (cam.x/TILE)|0),               y0 = Math.max(0, (cam.y/TILE)|0);
   const x1 = Math.min(MAP, Math.ceil((cam.x+vw)/TILE)), y1 = Math.min(MAP, Math.ceil((cam.y+vh)/TILE));
@@ -3012,6 +3917,18 @@ function draw(){
     ctx.lineTo(player.x*TILE + Math.cos(player.tAng)*rl,
                player.y*TILE + Math.sin(player.tAng)*rl);
     ctx.stroke(); ctx.setLineDash([]);
+    /* 单发鱼雷选中：青色虚线指向准星（限鱼雷射程内） */
+    if (player.torpSel && shipConf(player).torp){
+      const tr = shipConf(player).torp.range*TILE*S(player, 'torpRange');
+      const ta = Math.atan2(mouse.wy - player.y*TILE, mouse.wx - player.x*TILE);
+      const td = Math.min(Math.hypot(mouse.wx - player.x*TILE, mouse.wy - player.y*TILE), tr);
+      ctx.strokeStyle = `rgba(120,220,255,${.35 + .25*Math.sin(waveT*6)})`;
+      ctx.lineWidth = 1.4; ctx.setLineDash([9, 5]);
+      ctx.beginPath();
+      ctx.moveTo(player.x*TILE, player.y*TILE);
+      ctx.lineTo(player.x*TILE + Math.cos(ta)*td, player.y*TILE + Math.sin(ta)*td);
+      ctx.stroke(); ctx.setLineDash([]);
+    }
   }
   for (const t of torps){
     ctx.fillStyle = '#d9e6f2';
@@ -3126,6 +4043,94 @@ function draw(){
   for (const b of buffs) drawBuff(b);                   // 军备竞赛：战场补给点
   for (const s of allShips())
     if (s.alive && onScreen(s, vw, vh)) drawShip(s);
+  /* ---- 烟幕云：同层烟团合并为一条路径、每层只填充一次——多团重叠透明度不叠加，恒定 50%；末 3s 淡出 ---- */
+  if (smokes.length){
+    const groups = new Map();                          // 按淡出系数分组（通常只有 1~2 组）
+    for (const cl of smokes){
+      const f = Math.round(Math.min(1, cl.t/3)*20)/20;
+      (groups.get(f) || groups.set(f, []).get(f)).push(cl);
+    }
+    const layerPath = (list, scale, ox, oy) => {
+      const p = new Path2D();
+      for (const cl of list){
+        const r = cl.r*scale;
+        p.moveTo(cl.x + ox*r + r, cl.y + oy*r);
+        p.arc(cl.x + ox*r, cl.y + oy*r, r, 0, 6.283);
+      }
+      return p;
+    };
+    for (const [f, list] of groups){
+      ctx.globalAlpha = .25*f; ctx.fillStyle = '#9fb3c2'; ctx.fill(layerPath(list, 1, 0, 0));
+      ctx.globalAlpha = .17*f; ctx.fillStyle = '#c3d4df'; ctx.fill(layerPath(list, .72, 0, 0));
+      ctx.globalAlpha = .11*f; ctx.fillStyle = '#e2edf5'; ctx.fill(layerPath(list, .44, -.12, -.12));
+    }
+  }
+  ctx.globalAlpha = 1;
+  /* ---- 轰炸机编队：机体 / 投影 / 机头前 3 格半径 1 格的瞄准圆 ---- */
+  if (air){
+    const lp = air.lead, ap = planeAimPoint();
+    const ready = air.prepOn && air.prepLeft <= 0;
+    const pulse = .5 + .5*Math.sin(waveT*6);
+    // 瞄准圆（预备完成后转为红色）；投弹后仅保留落点观察标记
+    if (!air.dropped){
+      ctx.strokeStyle = ready ? `rgba(255,82,82,${.65 + .3*pulse})` : 'rgba(255,209,102,.8)';
+      ctx.lineWidth = 1.6; ctx.setLineDash([7, 5]);
+      ctx.beginPath(); ctx.arc(ap.x, ap.y, PLANE.aimR*TILE, 0, 6.2832); ctx.stroke();
+      ctx.setLineDash([]);
+      if (ready){                                        // 可投弹：圆内淡红填充
+        ctx.fillStyle = `rgba(255,82,82,${.06 + .05*pulse})`;
+        ctx.beginPath(); ctx.arc(ap.x, ap.y, PLANE.aimR*TILE, 0, 6.2832); ctx.fill();
+      }
+      // 十字与机头连线
+      ctx.strokeStyle = ready ? '#ff5247' : '#ffd166'; ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.moveTo(ap.x - 8, ap.y); ctx.lineTo(ap.x - 3, ap.y);
+      ctx.moveTo(ap.x + 3, ap.y); ctx.lineTo(ap.x + 8, ap.y);
+      ctx.moveTo(ap.x, ap.y - 8); ctx.lineTo(ap.x, ap.y - 3);
+      ctx.moveTo(ap.x, ap.y + 3); ctx.lineTo(ap.x, ap.y + 8);
+      ctx.stroke();
+      ctx.strokeStyle = 'rgba(255,209,102,.22)'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(lp.x, lp.y); ctx.lineTo(ap.x, ap.y); ctx.stroke();
+    } else {
+      // 观察视角：落点圈（倒计时文字在机体之后绘制，避免被遮挡）
+      const op = air.obs;
+      ctx.strokeStyle = `rgba(255,209,102,${.35 + .3*pulse})`; ctx.lineWidth = 1.4;
+      ctx.setLineDash([4, 4]);
+      ctx.beginPath(); ctx.arc(op.x, op.y, PLANE.aimR*TILE + 6 + 3*pulse, 0, 6.2832); ctx.stroke();
+      ctx.setLineDash([]);
+    }
+    // 投弹预备：机身上方的进度环
+    if (air.prepOn){
+      const p = 1 - air.prepLeft/PLANE.prep;
+      ctx.strokeStyle = 'rgba(6,14,22,.7)'; ctx.lineWidth = 3.4;
+      ctx.beginPath(); ctx.arc(lp.x, lp.y, 26, -1.5708, 4.7124); ctx.stroke();
+      ctx.strokeStyle = ready ? '#9be26b' : '#ffd166'; ctx.lineWidth = 2.6;
+      ctx.beginPath(); ctx.arc(lp.x, lp.y, 26, -1.5708, -1.5708 + 6.2832*p); ctx.stroke();
+      ctx.font = 'bold 10px monospace'; ctx.textAlign = 'center';
+      ctx.fillStyle = '#000'; ctx.fillText(ready ? '投弹就绪' : `预备 ${air.prepLeft.toFixed(1)}s`, lp.x + 1, lp.y - 33);
+      ctx.fillStyle = ready ? '#9be26b' : '#ffd166';
+      ctx.fillText(ready ? '投弹就绪' : `预备 ${air.prepLeft.toFixed(1)}s`, lp.x, lp.y - 34);
+    }
+    // 投影先行、机体后绘
+    for (const p of air.planes) drawBomber(p, true);
+    for (const p of air.planes) drawBomber(p, false);
+    // 观察倒计时（最后绘制，深色底板保证可读）
+    if (air.dropped){
+      const op = air.obs, label = `观察 ${Math.max(0, air.watchT).toFixed(1)}s · 右键返回`;
+      ctx.font = 'bold 11px monospace'; ctx.textAlign = 'center';
+      const tw = ctx.measureText(label).width;
+      ctx.fillStyle = 'rgba(6,14,22,.72)';
+      ctx.fillRect(op.x - tw/2 - 6, op.y - PLANE.aimR*TILE - 26, tw + 12, 16);
+      ctx.fillStyle = '#ffd166';
+      ctx.fillText(label, op.x, op.y - PLANE.aimR*TILE - 14);
+    }
+    // 长机标记
+    if (!air.dropped){
+      ctx.fillStyle = '#ffd166';
+      ctx.beginPath(); ctx.moveTo(lp.x, lp.y - 24); ctx.lineTo(lp.x - 4, lp.y - 30);
+      ctx.lineTo(lp.x + 4, lp.y - 30); ctx.closePath(); ctx.fill();
+    }
+  }
   if (player.alive && hasDyn(player, 'lockCount')) drawLockTag(lockCountOf());   // 被锁定数量：贴舰体显示
   // ---- 炮弹曳光：AP白色 / HE黄色，头部亮尾部透明渐变，长度按缩放补偿 ----
   const tl = Math.max(6.5, 18.2/zoom);
@@ -3163,7 +4168,7 @@ function draw(){
   ctx.globalAlpha = 1;
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   // ---- WoWS式准星：十字线 + 主炮装填环 + 弹丸飞行时间（整体缩小30%·透明度50%）----
-  if (player && player.alive){
+  if (player && player.alive && !air){
     const c = shipConf(player);
     const sx = (mouse.wx - cam.x)*zoom, sy = (mouse.wy - cam.y)*zoom;
     const K = .7, R = 13*K;                            // K: 尺寸缩放0.7
@@ -3190,8 +4195,8 @@ function draw(){
     // 弹丸飞行时间 + 弹种（含阻力时用解析解）
     const dist = Math.hypot(mouse.wx - player.x*TILE, mouse.wy - player.y*TILE);
     const kd = SHELL_DRAG.enabled ? (SHELL_DRAG.k[player.cls] || 0)/TILE : 0;
-    const ft = kd > 0 ? (Math.exp(kd*dist) - 1)/(kd*c.shellSpeed*TILE)
-                      : dist/(c.shellSpeed*TILE);
+    const ft = kd > 0 ? (Math.exp(kd*dist) - 1)/(kd*shellSpeedOf(player)*TILE)
+                      : dist/(shellSpeedOf(player)*TILE);
     ctx.font = 'bold 9px monospace'; ctx.textAlign = 'left';
     ctx.fillStyle = '#000'; ctx.fillText(ft.toFixed(1)+'s', sx+R+4, sy-R+1);
     ctx.fillStyle = '#fff'; ctx.fillText(ft.toFixed(1)+'s', sx+R+3, sy-R);
@@ -3248,6 +4253,10 @@ function drawMinimap(){
       mmx.fillStyle = s.isBot ? '#ff5252' : '#4fc3f7';
       mmx.fillRect((s.x|0)-1, (s.y|0)-1, 3, 3);
     }
+  for (const p of (air ? air.planes : [])){            // 轰炸机编队：小地图三角
+    mmx.fillStyle = '#ffd166';
+    mmx.fillRect((p.x/TILE|0)-1, (p.y/TILE|0)-1, 3, 3);
+  }
   /* 玩家射程圈（实线·琥珀）与隐蔽圈（虚线·青）：小地图 1px = 1 格 */
   if (player && player.alive){
     const px = player.x, py = player.y;
@@ -3283,7 +4292,8 @@ const DC_CD = 30, DC_IMMUNE = 10;
 const dcCdOf = s => DC_CD*S(s, 'dcCd');                        // 技能：基础生存 / 紧急维修
 const ENGINE_DUR = 60, RLBOOST_DUR = 20, REPAIR_DUR = 14;
 const Y_CD = 30;                                               // Y 消耗品使用间隔：任一次使用后 30s 内不可再按
-const yDurOf = (s, kind) => (kind === 'engine' ? boostOf(s).dur : kind === 'rl' ? RLBOOST_DUR : REPAIR_DUR)
+const yDurOf = (s, kind) => (kind === 'engine' ? boostOf(s).dur : kind === 'rl' ? RLBOOST_DUR
+                            : kind === 'secBoost' ? (secBoostOf(s) ? secBoostOf(s).dur : 20) : REPAIR_DUR)
                             * S(s, 'consumableDur') * (kind === 'repair' ? S(s, 'repairDuration') : 1);
 function useDC(){
   if (!player || !player.alive) return;
@@ -3299,28 +4309,42 @@ function useDC(){
 function useY(){
   if (!player || !player.alive) return;
   if (player.cls !== 'dd' && player.cls !== 'ca' && player.cls !== 'bb'){ feed('ⓘ 本舰种没有 Y 消耗品'); return; }
+  if (yKindOf(player) === 'none'){ feed('ⓘ 本舰没有 Y 消耗品（改用 [C] 烟雾发生器、[T] 维修小组）'); return; }
   if (player.yCd > 0){ feed(`⏱ Y 消耗品使用间隔中，剩余 ${Math.ceil(player.yCd)}s`); return; }
   const kind = yKindOf(player);
   if (kind === 'engine'){
     if (player.engineT > 0){ feed('ⓘ 引擎增压已在生效'); return; }
-    if (player.engineN <= 0){ feed('✖ 引擎增压已用尽！'); return; }
+    if (player.engineN <= 0 && !INFCH()){ feed('✖ 引擎增压已用尽！'); return; }
     const b = boostOf(player);
-    player.engineN--; player.engineT = yDurOf(player, 'engine'); player.yCd = b.cd;
-    feed(`🚀 引擎增压！最大速度 +${Math.round(b.speed*100)}%，持续 ${Math.round(player.engineT)}s，剩余 ${player.engineN} 个`);
+    if (!INFCH()) player.engineN--;                    // 肉鸽：次数不限，仅受冷却
+    player.engineT = yDurOf(player, 'engine'); player.yCd = b.cd;
+    feed(`🚀 引擎增压！最大速度 +${Math.round(b.speed*100)}%，持续 ${Math.round(player.engineT)}s，剩余 ${chg(player.engineN)} 个`);
     floats.push({ x:player.x*TILE, y:player.y*TILE - 30, txt:'🚀 引擎增压！', t:1.6, color:'#9be26b' });
     beep(600, .12);
   } else if (kind === 'rl'){
     if (player.rlBoostT > 0){ feed('ⓘ 主炮重装填已在生效'); return; }
-    if (player.rlBoostN <= 0){ feed('✖ 主炮重装填已用尽！'); return; }
-    player.rlBoostN--; player.rlBoostT = yDurOf(player, 'rl'); player.yCd = Y_CD;
-    feed(`🔄 主炮重装填！装填时间 -50%，持续 ${Math.round(player.rlBoostT)}s，剩余 ${player.rlBoostN} 个`);
+    if (player.rlBoostN <= 0 && !INFCH()){ feed('✖ 主炮重装填已用尽！'); return; }
+    if (!INFCH()) player.rlBoostN--;
+    player.rlBoostT = yDurOf(player, 'rl'); player.yCd = Y_CD;
+    feed(`🔄 主炮重装填！装填时间 -50%，持续 ${Math.round(player.rlBoostT)}s，剩余 ${chg(player.rlBoostN)} 个`);
     floats.push({ x:player.x*TILE, y:player.y*TILE - 30, txt:'🔄 重装填！', t:1.6, color:'#ffd166' });
     beep(480, .12);
+  } else if (kind === 'secBoost'){
+    const sb = secBoostOf(player);
+    if (!sb){ feed('ⓘ 本舰没有副炮增强消耗品'); return; }
+    if (player.secBoostT > 0){ feed('ⓘ 副炮增强已在生效'); return; }
+    if (player.secBoostN <= 0 && !INFCH()){ feed('✖ 副炮增强已用尽！'); return; }
+    if (!INFCH()) player.secBoostN--;
+    player.secBoostT = yDurOf(player, 'secBoost'); player.yCd = sb.cd;
+    feed(`🎯 副炮增强！射程 +${Math.round(sb.range*100)}% · 射速 +${Math.round(sb.reload*100)}% · 伤害 +${Math.round(sb.dmg*100)}%，持续 ${Math.round(player.secBoostT)}s，剩余 ${chg(player.secBoostN)} 个`);
+    floats.push({ x:player.x*TILE, y:player.y*TILE - 30, txt:'🎯 副炮增强！', t:1.6, color:'#ff8a80' });
+    beep(560, .12);
   } else {
     if (player.repairT > 0){ feed('ⓘ 维修小组已在作业'); return; }
-    if (player.repairN <= 0){ feed('✖ 维修小组已用尽！'); return; }
-    player.repairN--; player.repairT = yDurOf(player, 'repair'); player.yCd = Y_CD;
-    feed(`🛠 维修小组上架！每秒恢复 1% 血量，持续 ${Math.round(player.repairT)}s，剩余 ${player.repairN} 个`);
+    if (player.repairN <= 0 && !INFCH()){ feed('✖ 维修小组已用尽！'); return; }
+    if (!INFCH()) player.repairN--;
+    player.repairT = yDurOf(player, 'repair'); player.yCd = Y_CD;
+    feed(`🛠 维修小组上架！每秒恢复 1% 血量，持续 ${Math.round(player.repairT)}s，剩余 ${chg(player.repairN)} 个`);
     floats.push({ x:player.x*TILE, y:player.y*TILE - 30, txt:'🛠 维修小组！', t:1.6, color:'#9be26b' });
     beep(520, .12);
   }
@@ -3335,18 +4359,24 @@ function useTRepair(){
   if (!tc){ feed('ⓘ T 维修小组仅巡洋舰/哈巴罗夫斯克可用'); return; }
   if (player.tRepairCd > 0){ feed(`⏱ 维修小组冷却中，剩余 ${Math.ceil(player.tRepairCd)}s`); return; }
   if (player.tRepairT > 0){ feed('ⓘ 维修小组已在作业'); return; }
-  if (player.tRepairN <= 0){ feed('✖ 维修小组已用尽！'); return; }
-  player.tRepairN--; player.tRepairT = tDurOf(player); player.tRepairCd = tc.cd;
-  feed(`🛠 维修小组上架！每秒恢复 ${Math.round(tc.heal*100)}% 血量，持续 ${Math.round(player.tRepairT)}s，剩余 ${player.tRepairN} 个`);
+  if (player.tRepairN <= 0 && !INFCH()){ feed('✖ 维修小组已用尽！'); return; }
+  if (!INFCH()) player.tRepairN--;
+  player.tRepairT = tDurOf(player); player.tRepairCd = tc.cd;
+  feed(`🛠 维修小组上架！每秒恢复 ${Math.round(tc.heal*100)}% 血量，持续 ${Math.round(player.tRepairT)}s，剩余 ${chg(player.tRepairN)} 个`);
   floats.push({ x:player.x*TILE, y:player.y*TILE - 30, txt:'🛠 维修小组！', t:1.6, color:'#9be26b' });
   beep(520, .12);
 }
 /* ---- [F] 特殊射击形态（夏威夷 速射 / 维亚济 双连射）：随时切换 ---- */
 function fInfoOf(s){
   const c = shipConf(s);
+  if (c.fSec)                                       // 阿达尔伯特：F 只强化副炮（主炮不变）
+    return { reload: (c.sec ? c.sec.reload/(1 + (c.fSecRate || 0)) : c.reload),
+             range: c.sec ? c.sec.range*(1 + (c.fSecRange || 0)) : c.range,
+             burst: 1, speedMul: 1, apMul: 1, apPen: 0, name:'副炮主炮化' };
   return { reload: c.fReloadAbs || c.reload*(c.fReloadMul || 2/3),
            range: c.range*(c.fRangeMul || .68),
            burst: c.fBurst || 1,
+           speedMul: c.fSpeedMul || 1, apMul: c.fApDmgMul || 1, apPen: c.fApPen || 0,
            name: c.fBurst ? '双连射' : '速射' };
 }
 function toggleFMode(){
@@ -3355,8 +4385,22 @@ function toggleFMode(){
   if (!c.fGun){ feed('ⓘ 本舰没有 [F] 特殊射击形态'); return; }
   player.fMode = !player.fMode;
   const f = fInfoOf(player);
+  if (c.fSec){                                      // [F] 副炮主炮化：开关式，不影响主炮
+    feed(player.fMode
+      ? `⚡ 副炮主炮化：副炮停止自动开火，按住左键朝准星齐射 · 射程 ${f.range.toFixed(1)} 格（+${Math.round(c.fSecRange*100)}%）· 伤害 +${Math.round(c.fSecDmg*100)}% · 射速 +${Math.round(c.fSecRate*100)}%`
+      : `◈ 副炮恢复自动射击：射程 ${c.sec.range} 格 · 按 [F] 再次切换`);
+    floats.push({ x:player.x*TILE, y:player.y*TILE - 30,
+                  txt:player.fMode ? '⚡ 副炮主炮化！' : '◈ 常规副炮', t:1.2, color:player.fMode ? '#ffd166' : '#b9c6d2' });
+    beep(player.fMode ? 700 : 420, .08);
+    return;
+  }
+  const fBonus = [
+    f.speedMul !== 1 ? `弹速 +${Math.round((f.speedMul - 1)*100)}%` : '',
+    f.apMul !== 1 ? `AP 伤害 +${Math.round((f.apMul - 1)*100)}%` : '',
+    f.apPen ? `AP 各角度击穿 +${Math.round(f.apPen*100)}%` : ''
+  ].filter(Boolean).join(' · ');
   feed(player.fMode
-    ? `⚡ ${f.name}形态：装填 ${f.reload.toFixed(1)}s/轮${f.burst > 1 ? ` · 每轮连打 ${f.burst} 轮` : ''} · 射程 ${f.range.toFixed(1)} 格`
+    ? `⚡ ${f.name}形态：装填 ${f.reload.toFixed(1)}s/轮${f.burst > 1 ? ` · 每轮连打 ${f.burst} 轮` : ''} · 射程 ${f.range.toFixed(1)} 格${fBonus ? ` · ${fBonus}` : ''}`
     : `◈ 标准形态：装填 ${c.reload}s/轮 · 射程 ${c.range} 格`);
   floats.push({ x:player.x*TILE, y:player.y*TILE - 30,
                 txt:player.fMode ? `⚡ ${f.name}！` : '◈ 标准', t:1.2, color:player.fMode ? '#ffd166' : '#b9c6d2' });
@@ -3399,9 +4443,10 @@ function drawShipView(){
     svc.rotate(player.turrets[i]*Math.PI/180);
     svc.fillStyle = '#2f3a45';
     svc.fillRect(-W*.18, -W*.15, W*.36, W*.3);          // 炮塔体
+    const tb = turretB(c, i);
     svc.fillStyle = '#1c242c';
-    for (let b = 0; b < c.barrels; b++){
-      const bx = (b - (c.barrels-1)/2)*(W*.14);
+    for (let b = 0; b < tb; b++){
+      const bx = (b - (tb-1)/2)*(W*.14);
       svc.fillRect(bx - 1, -W*.55, 2, W*.4);            // 炮管朝上(艏向)
     }
     svc.restore();
@@ -3441,16 +4486,33 @@ function updateHUD(){
     $('wT2').className = 'wbtn' + (shellType === 2 ? ' on' : '');
     $('torpRB').style.width = c.torp
       ? (100 - Math.max(0, player.torpT)/(c.torp.reload*S(player,'torpReload'))*100) + '%'
+      : c.plane
+      ? (air || player.planeN > 0 ? '100%'
+          : Math.max(0, 1 - Math.max(0, player.planeCd)/c.plane.cd)*100 + '%')
       : (player.strikeN >= strikeMaxOf(player) ? 100
           : (1 - Math.max(0, player.strikeCd)/AIRSTRIKE.cd)*100) + '%';
-    if (!c.torp){                                      // CA：按钮显示空袭次数与整备状态
+    if (c.plane){                                      // 路易斯安娜：3 号消耗品 = 轰炸机编队
+      $('t3label').textContent = air ? (air.dropped ? '轰炸机·观察' : '轰炸机·空中') : planeSel ? '左键起飞' : '轰炸机';
+      $('torpN').textContent = air ? '投弹中'
+        : '×' + chg(player.planeN) + (player.planeCd > 0 ? ` ⏱${Math.ceil(player.planeCd)}s` : '');
+      $('wTorp').className = 'wbtn' +
+        (planeSel || air ? ' on' : (player.planeN <= 0 && !INFCH() ? ' off' : ''));
+    } else if (!c.torp){                               // CA：按钮显示空袭次数与整备状态
       $('t3label').textContent = strikeAim ? '选点中' : '空袭';
       $('torpN').textContent = strikeAim ? '左键确认'
-        : '×' + player.strikeN +
+        : '×' + chg(player.strikeN) +
           (player.strikeN < strikeMaxOf(player) ? ' ⏱' + Math.ceil(Math.max(0, player.strikeCd)) + 's' : '');
       $('wTorp').className = 'wbtn' +
-        (strikeAim ? ' on' : (player.strikeN <= 0 || strikes.length ? ' off' : ''));
+        (strikeAim ? ' on' : ((player.strikeN <= 0 && !INFCH()) || strikes.length ? ' off' : ''));
       if (strikeAim && !strikeAimable(player)) strikeAim = false;   // 次数耗尽/空袭已开始时自动退出选点
+    } else if (c.torp.single){                         // 果敢：单发鱼雷——显示余弹/装填与选中态
+      $('t3label').textContent = player.torpSel ? '鱼雷·单发' : '鱼雷';
+      $('torpN').textContent = player.torpT > 0 ? `⏱${Math.ceil(player.torpT)}s` : `×${player.torpAmmo}`;
+      $('wTorp').className = 'wbtn' +
+        (player.torpSel ? ' on' : (player.torpAmmo <= 0 && player.torpT > 0 ? ' off' : ''));
+    } else {                                           // 其他鱼雷舰：显示齐射雷数
+      $('t3label').textContent = '鱼雷';
+      $('torpN').textContent = '×' + c.torp.count + (player.torpT > 0 ? ` ⏱${Math.ceil(player.torpT)}s` : '');
     }
     $('dcState').textContent = player.dcT > 0 ? '盾' + Math.ceil(player.dcT) + 's'
                              : player.dcCd > 0 ? Math.ceil(player.dcCd) + 's' : '√';
@@ -3469,10 +4531,13 @@ function updateHUD(){
     // Y 舰种消耗品按钮（效果倒计时 / 使用间隔；类型与间隔按舰配置，如维亚济为引擎增压 60s 间隔）
     const wY = $('wY');
     const yKind = yKindOf(player), yCdMax = yCdOf(player);
-    const yInfo = yKind === 'engine'
+    const yInfo = yKind === 'none' ? null
+      : yKind === 'engine'
       ? { name:'引擎增压',   n:player.engineN,  t:player.engineT,  dur:yDurOf(player,'engine') }
       : yKind === 'rl'
       ? { name:'主炮重装填', n:player.rlBoostN, t:player.rlBoostT, dur:yDurOf(player,'rl') }
+      : yKind === 'secBoost'
+      ? { name:'副炮增强',   n:player.secBoostN, t:player.secBoostT, dur:yDurOf(player,'secBoost') }
       : { name:'维修小组',   n:player.repairN,  t:player.repairT,  dur:yDurOf(player,'repair') };
     if (!yInfo){
       $('wYName').textContent = '无 Y 消耗品';
@@ -3480,11 +4545,11 @@ function updateHUD(){
       wY.className = 'wbtn off';
     } else {
       const cd = Math.max(0, player.yCd);
-      $('wYName').textContent = `${yInfo.name} ×${yInfo.n}` +
+      $('wYName').textContent = `${yInfo.name} ×${chg(yInfo.n)}` +
         (yInfo.t > 0 ? ` · ${Math.ceil(yInfo.t)}s` : cd > 0 ? ` ⏱${Math.ceil(cd)}s` : '');
       $('yRB').style.width = (cd > 0 ? Math.max(0, 1 - cd/yCdMax) : 1)*100 + '%';
       $('yRB').style.background = cd > 0 ? '#4a6a86' : yInfo.t > 0 ? '#9be26b' : '#66d9ef';
-      wY.className = 'wbtn' + (cd > 0 || yInfo.n <= 0 || yInfo.t > 0 ? ' off' : '');
+      wY.className = 'wbtn' + (cd > 0 || (yInfo.n <= 0 && !INFCH()) || yInfo.t > 0 ? ' off' : '');
     }
     // T 维修小组按钮（按舰配置：CA / 哈巴罗夫斯克；次数 / 作业倒计时 / 冷却）
     const wTR = $('wTR');
@@ -3492,25 +4557,59 @@ function updateHUD(){
     if (tc){
       wTR.style.display = '';
       const trT = player.tRepairT, trCd = player.tRepairCd;
-      $('wTRName').textContent = `维修小组 ×${player.tRepairN}` +
+      $('wTRName').textContent = `维修小组 ×${chg(player.tRepairN)}` +
         (trT > 0 ? ` · ${Math.ceil(trT)}s` : trCd > 0 ? ` ⏱${Math.ceil(trCd)}s` : '');
       const trDur = tDurOf(player);
       $('tRB').style.width = (trT > 0 ? Math.max(0, trT/trDur) : trCd > 0 ? Math.max(0, 1 - trCd/tc.cd) : 1)*100 + '%';
       $('tRB').style.background = trCd > 0 ? '#4a6a86' : trT > 0 ? '#9be26b' : '#66d9ef';
-      wTR.className = 'wbtn' + (trCd > 0 || trT > 0 || player.tRepairN <= 0 ? ' off' : '');
+      wTR.className = 'wbtn' + (trCd > 0 || trT > 0 || (player.tRepairN <= 0 && !INFCH()) ? ' off' : '');
     } else wTR.style.display = 'none';
     // [F] 特殊射击形态按钮（夏威夷 速射 / 维亚济 双连射）
     const wF = $('wF');
     if (shipConf(player).fGun){
       wF.style.display = '';
       const cF = shipConf(player), fI = fInfoOf(player);
-      $('wFName').textContent = player.fMode
+      $('wFName').textContent = cF.fSec
+        ? (player.fMode ? `副炮主炮化 ${fI.range.toFixed(1)}格 · 手动齐射` : `常规副炮 ${cF.sec ? cF.sec.range : 0}格`)
+        : player.fMode
         ? `${fI.name} ${fI.reload.toFixed(1)}s · ${fI.range.toFixed(1)}格${fI.burst > 1 ? ' ×' + fI.burst : ''}`
         : `标准 ${cF.reload}s · ${cF.range}格`;
-      $('fRB').style.width = '100%';
-      $('fRB').style.background = player.fMode ? '#ffd166' : '#4a6a86';
+      if (cF.fSec && player.fMode && cF.sec){      // 手动模式：进度条改为副炮装填（小口径速射炮）
+        const tMul = 1 + secBoostOn(player, 'reload') + fSecOn(player, 'rate');
+        const full = cF.sec.reload*rateMul(player)*S(player, 'secReload')/tMul;
+        const p = full > 0 ? Math.min(1, Math.max(0, 1 - Math.max(0, player.secT)/full)) : 1;
+        $('fRB').style.width = (p*100) + '%';
+        $('fRB').style.background = p >= 1 ? '#9be26b' : '#ffd166';
+      } else {
+        $('fRB').style.width = '100%';
+        $('fRB').style.background = player.fMode ? '#ffd166' : '#4a6a86';
+      }
       wF.className = 'wbtn' + (player.fMode ? '' : ' off');
     } else wF.style.display = 'none';
+    // [C] 烟雾发生器按钮（果敢）
+    const wSM = $('wSM'), scSM = shipConf(player).smoke;
+    if (scSM){
+      wSM.style.display = '';
+      $('wSMName').textContent = `烟雾发生器 ×${chg(player.smokeN)}` +
+        (player.smokeGenT > 0 ? ` · 生成 ${Math.ceil(player.smokeGenT)}s`
+         : player.smokeCd > 0 ? ` · 冷却 ${Math.ceil(player.smokeCd)}s` : '');
+      $('smRB').style.width = (player.smokeGenT > 0 ? (1 - player.smokeGenT/scSM.gen)
+                             : player.smokeCd > 0 ? Math.max(0, 1 - player.smokeCd/SMOKE_CD) : 1)*100 + '%';
+      $('smRB').style.background = player.smokeGenT > 0 ? '#9be26b' : player.smokeCd > 0 ? '#e06c5a' : '#66d9ef';
+      wSM.className = 'wbtn' + ((player.smokeN <= 0 && !INFCH()) || player.smokeCd > 0 ? ' off' : '');
+    } else wSM.style.display = 'none';
+    // [C] 轰炸机编队按钮（路易斯安娜）
+    // [C] 按钮：与 [3] 重复，不再显示（[C] 键仍可选中轰炸机）
+    $('wPL').style.display = 'none';
+    // 轰炸机操控面板（起飞后显示）
+    const ah = $('airHud');
+    if (air){
+      ah.classList.add('on');
+      $('ahSpd').textContent = (air.lead.spd/TILE).toFixed(1);
+      $('ahPrep').textContent = air.dropped ? `观察中 ${Math.max(0, air.watchT).toFixed(1)}s · 右键返回`
+        : !air.prepOn ? '左键进入预备'
+        : air.prepLeft > 0 ? `预备中 ${air.prepLeft.toFixed(1)}s` : '就绪 · 左键投弹';
+    } else ah.classList.remove('on');
     // 右上实时战况：命中 / 造成伤害 / 潜在伤害（敌方射向本舰的弹药累计，含命中与落空）
     $('sHits').textContent = hitCount;
     $('sDmg').textContent = fmtShort(dmgDealt);
@@ -3542,8 +4641,14 @@ function loop(ts){
   lastT = ts;
   tickFps(rawDt);
   if (state !== 'play') return;
-  gameTime -= dt;
-  if (gameTime <= 0){ gameTime = 0; gameOver(true, '时间到！测试结束'); }
+  const rogueHold = gameMode === 'rogue' && rogue && rogue.phase !== 'fight';   // 选增益/倒计时期间不计时
+  if (!rogueHold) gameTime -= dt;
+  if (gameTime <= 0){
+    gameTime = 0;
+    if (gameMode === 'rogue' && rogue) gameOver(true, `⏱ 10 分钟结束 · 坚持到第 ${rogue.wave} 波`);
+    else gameOver(true, '时间到！测试结束');
+  }
+  updateRogue(dt);                                    // 肉鸽：清场三选一 / 下一波倒计时
   waveT += dt;
   // 鼠标世界坐标
   mouse.wx = mouse.sx/zoom + cam.x;
@@ -3552,6 +4657,21 @@ function loop(ts){
     const c = shipConf(player);
     for (let i = 0; i < player.turretsR.length; i++) player.turretsR[i] -= dt;   // 各炮塔独立装填
     player.torpT -= dt; player.flashT -= dt;
+    const tc0 = shipConf(player).torp;
+    if (tc0 && tc0.single && player.torpReloading && player.torpT <= 0){
+      player.torpAmmo = tc0.count; player.torpReloading = false;   // 射空后的装填完成 → 补满 10 发
+      feed(`✔ 鱼雷装填完成 · ${tc0.count} 发就绪`, '#9be26b');
+      beep(680, .08);
+    }
+    if (player.smokeGenT > 0){                        // 烟雾发生器：每 spawn 秒在舰位铺一团
+      const sc = shipConf(player).smoke;
+      player.smokeGenT -= dt; player.smokeSpawnT += dt;
+      while (sc && player.smokeSpawnT >= sc.spawn){
+        player.smokeSpawnT -= sc.spawn;
+        smokes.push({ x:player.x*TILE, y:player.y*TILE, r:sc.r*TILE, t:sc.life });
+      }
+      if (player.smokeGenT <= 0) player.smokeCd = SMOKE_CD;   // 生成结束后才开始 30s 冷却
+    } else if (player.smokeCd > 0) player.smokeCd -= dt;
     if (player.ammoT > 0) player.ammoT -= dt;         // 切弹种停火计时
     player.noFireT += dt;                             // 距上次开火（快速巡航判定）
     if (player.engineT > 0) player.engineT -= dt;
@@ -3559,6 +4679,17 @@ function loop(ts){
     if (player.dcCd > 0) player.dcCd -= dt;
     if (player.yCd > 0) player.yCd -= dt;              // Y 消耗品使用间隔
     if (player.tRepairCd > 0) player.tRepairCd -= dt;   // T 维修小组（CA）冷却
+    if (player.secBoostT > 0) player.secBoostT -= dt;   // Y 副炮增强（阿达尔伯特）生效倒计时
+    if (player.planeCd > 0){                            // 轰炸机整备冷却：归零时一次性生成 regen 次可用次数
+      player.planeCd -= dt;
+      const pcPl = shipConf(player).plane;
+      if (player.planeCd <= 0 && pcPl){
+        player.planeCd = 0;
+        player.planeN = Math.min(pcPl.use, player.planeN + (pcPl.regen || 1));
+        feed(`✈ 轰炸机整备完成 · 可用 ×${player.planeN}`, '#9be26b');
+        beep(680, .07);
+      }
+    }
     if (player.cls === 'ca' && player.strikeN < strikeMaxOf(player)){
       if (player.strikeCd > 0) player.strikeCd -= dt;  // 空袭整备：每 25s 恢复 1 次
       if (player.strikeCd <= 0){
@@ -3587,13 +4718,21 @@ function loop(ts){
     }
     if (player.buffs.regen > 0)                         // 补给：每秒回复 0.2%/层 最大血量
       player.hp = Math.min(player.maxHp, player.hp + player.maxHp*.002*player.buffs.regen*dt);
-    // 转舵（舵效技能）
+    // 转舵（舵效技能）：倒车时转向镜像（艉部为先导端，D 右舵→艉部右摆，与前进相反）
     const turnSpd = c.turn*S(player, 'turn')*dt*Math.PI/180;
-    if (keys.has('KeyA')) player.ang -= turnSpd;
-    if (keys.has('KeyD')) player.ang += turnSpd;
-    // 炮塔指向鼠标（各炮塔独立射界，无法360°旋转，换侧需反向绕转）
-    player.tAng = Math.atan2(mouse.wy - player.y*TILE, mouse.wx - player.x*TILE);
-    updateTurrets(player, player.tAng, dt);
+    const steer = GEARS[player.gear] < 0 ? -1 : 1;
+    // 操控轰炸机时：船舶按「起飞瞬间的舵位」继续行进（A/D 改控飞机）
+    if (!air){
+      if (keys.has('KeyA')) player.helm = -1;
+      else if (keys.has('KeyD')) player.helm = 1;
+      else player.helm = 0;
+    }
+    if (player.helm) player.ang += turnSpd*steer*player.helm;
+    // 炮塔指向鼠标（各炮塔独立射界，无法360°旋转，换侧需反向绕转）；操控飞机时炮塔停在原诸元
+    if (!air){
+      player.tAng = Math.atan2(mouse.wy - player.y*TILE, mouse.wx - player.x*TILE);
+      updateTurrets(player, player.tAng, dt);
+    }
     // 进水 DOT
     if (player.floodT > 0){
       player.floodT -= dt;
@@ -3633,11 +4772,15 @@ function loop(ts){
                      vx:0, vy:0, t:.5, c:'#bfe3ff', s:2 });
     }
     const oor = Math.hypot(mouse.wx - player.x*TILE, mouse.wy - player.y*TILE) > gunRangeOf(player);
-    if ((input.fire || input.hold || keys.has('Space')) && !oor){   // 按住左键/空格持续射击；超出射程禁止开火
+    const firePress = input.fire || input.hold || keys.has('Space');   // 本帧是否有开火输入（点击/长按）
+    if (!air && firePress && !oor && !player.torpSel){   // 按住左键/空格持续射击；操控飞机/超出射程/鱼雷选中时禁止开火
       fireVolley(player, player.tAng, null, mouse.wx, mouse.wy);   // 弹幕汇聚到准星位置
       input.fire = false;
-    } else if (oor) input.fire = false;
+    } else if (oor || air) input.fire = false;
+    /* [F] 副炮主炮化：副炮不再自动开火，改为随左键朝准星齐射（各自独立装填，可按住持续输出） */
+    if (!air && firePress && !player.torpSel) manualSecFire(player, mouse.wx, mouse.wy);
   }
+  updatePlanes(dt);                                   // 轰炸机编队（操控中）
   for (const b of bots) if (b.alive){
     b.torpT -= dt; b.flashT -= dt;
     for (let i = 0; i < b.turretsR.length; i++) b.turretsR[i] -= dt;
@@ -3662,7 +4805,7 @@ function loop(ts){
     const q = burstQueue[i];
     if (!q.s.alive){ burstQueue.splice(i,1); continue; }
     q.t -= dt;
-    if (q.t <= 0){ burstQueue.splice(i,1); fireVolley(q.s, q.aim, q.type, q.txp, q.typ, true); }
+    if (q.t <= 0){ burstQueue.splice(i,1); fireVolley(q.s, q.aim, q.type, q.txp, q.typ, true, q.idx); }
   }
   updateShells(dt);
   updateTorps(dt);
@@ -3670,6 +4813,10 @@ function loop(ts){
   updateBuffs(dt);                                        // 军备竞赛：补给刷新与拾取判定
   for (const s of allShips()) updateSecondaries(s, dt);   // BB副炮自动索敌
   for (const s of allShips()) updateSmoke(s, dt);         // 烟囱拉烟
+  for (let i = smokes.length-1; i >= 0; i--){             // 烟幕云存续计时
+    smokes[i].t -= dt;
+    if (smokes[i].t <= 0) smokes.splice(i, 1);
+  }
   for (let i = parts.length-1; i >= 0; i--){
     const p = parts[i];
     p.x += p.vx*dt; p.y += p.vy*dt; p.t -= dt;
@@ -3691,16 +4838,37 @@ const input = { fire:false, hold:false };
 });
 cv.addEventListener('mousedown', e => {
   if (state !== 'play') return;
+  if (air){                                           // 操控轰炸机：左键投弹（预备/投弹），右键召回/返回
+    e.preventDefault();
+    if (e.button === 2) endAir(air.dropped ? '✈ 已跳过观察 · 操控交还船舶' : '✈ 已召回轰炸机 · 操控交还船舶');
+    else if (e.button === 0) planeClick();
+    return;
+  }
+  if (planeSel){                                      // 已选中轰炸机消耗品：左键确认起飞
+    e.preventDefault();
+    if (e.button === 2) cancelPlaneSel(true);
+    else if (e.button === 0) launchPlanes();
+    return;
+  }
   if (strikeAim){                                     // 选点中：左键确认空袭、右键取消，不触发主炮
     e.preventDefault();
     if (e.button === 2) cancelStrikeAim(true);
     else if (e.button === 0) confirmStrikeAim();
     return;
   }
-  if (e.button === 2){ cancelStrikeAim(true); return; }
+  if (e.button === 2){
+    cancelStrikeAim(true);
+    if (player && player.torpSel){ player.torpSel = false; feed('◈ 鱼雷武器已收起 · 左键恢复主炮射击'); }
+    return;
+  }
+  if (player && player.alive && player.torpSel){      // 单发鱼雷：左键朝准星射 1 发，不触发主炮
+    e.preventDefault();
+    fireTorpSingle(player, Math.atan2(mouse.wy - player.y*TILE, mouse.wx - player.x*TILE));
+    return;
+  }
   input.fire = true; input.hold = true;
 });
-cv.addEventListener('contextmenu', e => { if (strikeAim) e.preventDefault(); });
+cv.addEventListener('contextmenu', e => { if (strikeAim || planeSel || air) e.preventDefault(); });
 addEventListener('mouseup', () => { input.hold = false; });
 cv.addEventListener('mousedown', () => cv.focus());   // 点击画面即锁定键盘焦点
 addEventListener('keydown', e => {
@@ -3712,12 +4880,16 @@ addEventListener('keydown', e => {
     return;
   }
   if (state !== 'play') return;
+  // 肉鸽三选一：数字键 1/2/3 直接选择对应增益
+  if (gameMode === 'rogue' && rogue && rogue.phase === 'pick' && /^Digit[123]$/.test(e.code)){
+    rogueChoose(+e.code.slice(5) - 1); e.preventDefault(); return;
+  }
   keys.add(e.code);
-  if (e.code === 'KeyW' && player.alive){
+  if (e.code === 'KeyW' && player.alive && !air){
     player.gear = Math.min(GEAR_MAX, player.gear + 1);
     beep(300 + player.gear*60, .05);
   }
-  if (e.code === 'KeyS' && player.alive){
+  if (e.code === 'KeyS' && player.alive && !air){
     player.gear = Math.max(GEAR_MIN, player.gear - 1);
     beep(240 + player.gear*60, .05);
   }
@@ -3725,13 +4897,27 @@ addEventListener('keydown', e => {
   if (e.code === 'Digit1') setShellType(1);
   if (e.code === 'Digit2') setShellType(2);
   if (e.code === 'Digit3' && player.alive){
-    if (player.cls === 'ca') beginStrikeAim();        // CA：进入/退出空袭选点，左键确认
+    const t3 = shipConf(player).torp;
+    if (shipConf(player).plane) beginPlaneSel();      // 路易斯安娜：3 号消耗品 = 轰炸机编队（左键确认起飞）
+    else if (player.cls === 'ca' && !shipConf(player).torp) beginStrikeAim();   // CA：进入/退出空袭选点（带鱼雷的巡洋舰走鱼雷分支）
+    else if (t3 && t3.single){                        // 果敢：选中单发鱼雷武器，左键单发
+      player.torpSel = !player.torpSel;
+      feed(player.torpSel
+        ? `🎯 鱼雷武器已选中：左键朝准星单发（剩余 ${player.torpAmmo} 发）· 再按 [3] 收起`
+        : '◈ 鱼雷武器已收起 · 左键恢复主炮射击');
+      if (player.torpSel) floats.push({ x:player.x*TILE, y:player.y*TILE - 30, txt:'🎯 单发鱼雷', t:1.2, color:'#8fd7ff' });
+      beep(player.torpSel ? 520 : 320, .07);
+    }
     else fireTorps(player);
   }
   if (e.code === 'KeyR' || e.key === 'r' || e.key === 'R'){ useDC(); e.preventDefault(); }
   if (e.code === 'KeyY' || e.key === 'y' || e.key === 'Y'){ useY(); e.preventDefault(); }
   if (e.code === 'KeyT' || e.key === 't' || e.key === 'T'){ useTRepair(); e.preventDefault(); }
   if (e.code === 'KeyF' || e.key === 'f' || e.key === 'F'){ toggleFMode(); e.preventDefault(); }
+  if (e.code === 'KeyC' || e.key === 'c' || e.key === 'C'){
+    if (shipConf(player).plane) beginPlaneSel(); else useSmoke();
+    e.preventDefault();
+  }
   if (e.code === 'Equal'  || e.code === 'NumpadAdd')      setZoom(zoom + 1);
   if (e.code === 'Minus'  || e.code === 'NumpadSubtract') setZoom(zoom - 1);
 });
@@ -3739,15 +4925,19 @@ addEventListener('keyup', e => keys.delete(e.code));
 
 /* ================= 流程控制 ================= */
 function checkVictory(){
-  if (bots.every(b => !b.alive)) gameOver(true, '全部敌舰击沉！');
+  if (!bots.length || !bots.every(b => !b.alive)) return;
+  if (gameMode === 'rogue'){ rogueWaveCleared(); return; }   // 肉鸽：清场 → 三选一，不结算
+  gameOver(true, '全部敌舰击沉！');
 }
 function gameOver(win, reason){
   if (state !== 'play') return;
   state = 'over'; strikeAim = false;
+  $('roguePick').classList.remove('on');               // 肉鸽：收起三选一 / 倒计时浮层
   $('overlay').classList.remove('hidden');             // 显示结算遮罩（此前缺失导致看不到结算画面）
   $('menuPanel').style.display = 'none';
   $('researchPanel').classList.remove('on');
   $('armoryPanel').classList.remove('on');
+  $('arsenalPanel').classList.remove('on');
   $('resultPanel').style.display = '';
   $('resultTitle').textContent = win ? '★ 胜 利 ★' : '✚ 战斗结束';
   $('resultTitle').style.color = win ? '#ffd166' : '#e57373';
@@ -3755,7 +4945,11 @@ function gameOver(win, reason){
     `${reason}<br>海域：${curMapName()} · 模式：${modeName} · 难度：${diffName} · 舰种：${shipConf(player).name}<br>剩余HP：${fmtInt(player.hp)}/${fmtInt(player.maxHp)}<br>` +
     `击沉敌舰：${kills} / ${bots.length} · 命中数：${hitCount}<br>` +
     `造成伤害：${fmtInt(dmgDealt)} · 受到伤害：${fmtInt(dmgTaken)} · 潜在伤害：${fmtInt(potDmg)}<br>` +
-    `剩余时间：${((gameTime/60)|0)}分${((gameTime%60)|0)}秒`;
+    `剩余时间：${((gameTime/60)|0)}分${((gameTime%60)|0)}秒` +
+    (gameMode === 'rogue' && rogue
+      ? `<br>肉鸽进度：第 <b style="color:#e0b0ff">${rogue.wave}</b> 波 · 已获增益 <b>${rogue.picks.length}</b> 项` +
+        `（${rogue.picks.map(p => p.name).join(' / ') || '无'}）`
+      : '');
 }
 /* ================= 游戏内暂停菜单（ESC） ================= */
 let ppHelpOpen = false;
@@ -3790,23 +4984,27 @@ function backToPort(){
   showTab('port');                                     // 回到港口页签
   $('overlay').classList.remove('hidden');
   keys.clear(); input.hold = false; input.fire = false;
-  shells = []; torps = []; parts = []; floats = []; strikes = []; bombs = []; strikeAim = false; burstQueue = [];
+  shells = []; torps = []; parts = []; floats = []; strikes = []; bombs = []; strikeAim = false; burstQueue = []; smokes = [];
+  air = null; planeSel = false;
+  rogue = null; $('roguePick').classList.remove('on'); $('rogueHud').classList.remove('on');
   buffs = []; $('buffBar').classList.remove('on'); $('buffItems').innerHTML = '';
   $('feed').innerHTML = '';
 }
 function startGame(shipId){
   resizeCanvas();
   genMap();
-  const roster = fleetRoster();                        // 按「人数」比例生成的敌编队序列
+  const rogueOn = gameMode === 'rogue';                // 肉鸽：波次制，不用固定编队
+  const roster = rogueOn ? [] : fleetRoster();         // 按「人数」比例生成的敌编队序列
   const botN = roster.length;
-  const slots = botFormation(botN);                    // 与舰数匹配的集结方阵
+  const slots = rogueOn ? [] : botFormation(botN);     // 与舰数匹配的集结方阵
   clearZone(28, MAP-29, 15);
-  clearZone(MAP-34, 38, 24);                           // 敌方编队集结区（按方阵清场）
-  shells = []; torps = []; parts = []; floats = []; strikes = []; bombs = []; strikeAim = false; burstQueue = [];
+  if (!rogueOn) clearZone(MAP-34, 38, 24);             // 敌方编队集结区（按方阵清场）
+  shells = []; torps = []; parts = []; floats = []; strikes = []; bombs = []; strikeAim = false; burstQueue = []; smokes = [];
+  air = null; planeSel = false;
   buffs = []; buffSpawnT = BUFF_SPAWN_T;
   $('feed').innerHTML = '';
   kills = 0; dmgDealt = 0; dmgTaken = 0; hitCount = 0; potDmg = 0;
-  gameTime = GAME_TIME; shellType = 1; lastCls = shipId;
+  gameTime = rogueOn ? ROGUE.time : GAME_TIME; shellType = 1; lastCls = shipId;
   player = makeShip(shipId, 28, MAP-29, -Math.PI/4, false);
   bots = [];
   nameQueue = [...BOT_NAMES].sort(() => Math.random() - .5);
@@ -3814,18 +5012,34 @@ function startGame(shipId){
     const [sx, sy] = slots[i];
     bots.push(makeShip(roster[i], sx, sy, Math.PI*.75, true));
   }
-  if (gameMode === 'arms')                             // 军备竞赛：开局先铺 4 个补给点
+  rogue = null; $('roguePick').classList.remove('on');
+  if (rogueOn){                                        // 肉鸽：直接生成第一波（6 艘边缘来袭）
+    rogueStart();
+    feed('☠ 肉鸽模式：10 分钟 · 每波 6 艘 · 清场后三选一增益 · 消耗品次数无限（仅受冷却）', '#e0b0ff');
+  }
+  if (gameMode === 'arms' || rogueOn)                  // 军备竞赛 / 肉鸽：开局先铺 4 个补给点
     for (let i = 0; i < 4; i++) spawnBuff();
   renderBuffBar();
   $('researchPanel').classList.remove('on');
   $('armoryPanel').classList.remove('on');
+  $('arsenalPanel').classList.remove('on');
   state = 'play';
   $('overlay').classList.add('hidden');
   cv.focus();                                          // 抢占键盘焦点，避免按键无响应
-  // 底部 [3] 号按钮：CA 为空袭，DD/BB 为鱼雷
-  if (SHIPS[shipId].torp){
+  // 底部 [3] 号按钮：CA 为空袭，DD/BB 为鱼雷；路易斯安娜为 3 号消耗品「轰炸机」
+  if (SHIPS[shipId].plane){
+    $('t3label').textContent = '轰炸机';
+    $('torpN').textContent = '×' + (player ? player.planeN : SHIPS[shipId].plane.use);
+    feed(INFCH()
+      ? '✈ 3 号消耗品：轰炸机编队（肉鸽：次数无限 · 每次出动后整备 ' + SHIPS[shipId].plane.cd + 's）—— 按 [C]/[3] 选中后左键确认起飞'
+      : '✈ 3 号消耗品：轰炸机编队（每次整备生成 ×' + SHIPS[shipId].plane.use +
+        ' · 用空后整备 ' + SHIPS[shipId].plane.cd + 's）—— 按 [C]/[3] 选中后左键确认起飞');
+  } else if (SHIPS[shipId].torp){
     $('t3label').textContent = '鱼雷';
-    $('torpN').textContent = '×' + SHIPS[shipId].torp.count;   // 显示齐射雷数
+    $('torpN').textContent = '×' + (player ? player.torpAmmo : SHIPS[shipId].torp.count);   // 0 也要如实显示（射空等待装填）
+    if (SHIPS[shipId].torp.single)
+      feed('🎯 本舰鱼雷为单发发射：按 [3] 选中鱼雷后，左键每次射出 1 发（共 ' +
+           SHIPS[shipId].torp.count + ' 发，射完才装填）；[C] 烟雾发生器 · [T] 维修小组');
   } else {
     $('t3label').textContent = '空袭';
     $('torpN').textContent = '×' + (player ? player.strikeN : AIRSTRIKE.maxN);
@@ -3835,7 +5049,7 @@ function startGame(shipId){
     let fi = 0, ai = 0;                                 // 前/后分组计数：前1 后1 后2
     return SHIPS[shipId].turretDefs.map((td, i) => {
       const idx = td.fore ? ++fi : ++ai;
-      return `<div class="tcell"><div class="tname">${td.fore ? '前' : '后'}${idx} · ${SHIPS[shipId].barrels}管</div>` +
+      return `<div class="tcell"><div class="tname">${td.fore ? '前' : '后'}${idx} · ${turretB(SHIPS[shipId], i)}管</div>` +
              `<div class="tbar"><div id="tbar${i}"></div></div></div>`;
     }).join('');
   })();
@@ -3849,9 +5063,9 @@ const SHIP_META = {
        tip:'60 格鱼雷射程远超敌炮，可在对方射程外布雷；被咬住时 <em>[Y]</em> 增压拉开距离。' },
   ca:{ cn:'得 梅 因', en:'DES MOINES · 1948 · USN', scTag:'CRUISER · USN', tag:'美国海军 · 重巡洋舰',
        role:'空袭压制 · 高射速火力',
-       armor:'中甲（无厚甲减免）',
+       armor:'中甲（无厚甲减免）· 高抛弹道可越过半径 <20 格岛屿',
        yName:'主炮重装填 ×2', yDesc:'装填时间 -50% · 持续 20s · 间隔 30s',
-       tip:'1.6s 装填 + AP 直击是全场最高持续输出；<em>[3]</em> 呼叫空袭覆盖密集敌群，<em>[Y]</em> 开启后 20s 内 DPS 翻倍，<em>[T]</em> 维修小组每秒回血 2% 持续 20s。' },
+       tip:'1.6s 装填 + AP 直击是全场最高持续输出，弹速 13.0 格/s 但<em>高抛弹道可越过半径 20 格以内的岛屿</em>，隔着小岛照样打；<em>[3]</em> 呼叫空袭覆盖密集敌群，<em>[Y]</em> 开启后 20s 内 DPS 翻倍，<em>[T]</em> 维修小组每秒回血 2% 持续 20s。' },
   bb:{ cn:'大 和', en:'YAMATO · 1941 · IJN', scTag:'BATTLESHIP · IJN', tag:'日本海军 · 超无畏战列舰',
        role:'远程重炮 · 厚甲抗线',
        armor:'厚甲：CA 弹 50% / DD 弹 80% 跳弹',
@@ -3872,11 +5086,26 @@ const SHIP_META = {
        armor:'装甲带：CA 弹 30% / DD 弹 50% / BB 弹 20% 概率免疫',
        yName:'引擎增压 ×2', yDesc:'最大速度 +20% · 持续 60s · 间隔 30s',
        tip:'43.6 格射程压制所有驱逐，8 管速射弹幕配合 <em>[T]</em> 维修小组硬吃伤害；<em>[3]</em> 撒 10 枚雷防身，装甲带让炮弹常常无害弹开。' },
+  gq:{ cn:'果 敢', en:'GALLANT · 1942 · RN', scTag:'DESTROYER · RN', tag:'英国海军 · 部族级驱逐舰',
+       role:'单发雷击 · 烟幕游击',
+       armor:'轻甲（无厚甲减免）· 被攻击时敌方散布 +10%',
+       yName:'—', yDesc:'本舰无 Y 消耗品（改用 [C] 烟雾发生器）',
+       tip:'3 座双联全前置 0.8s 速射，AP 免疫角 -5° 更易击穿；<em>[3]</em> 选中鱼雷后左键<em>单发</em>（10 发射完才装填 40s）；<em>[C]</em> 烟幕让敌方射距 -50%、散布 +30%、云内敌舰减速 15%；<em>[T]</em> 维修小组 ×3 续航。' },
   vz:{ cn:'维 亚 济', en:'VYAZMA · 1944 · VMF', scTag:'CRUISER · VMF', tag:'苏联海军 · 战列巡洋舰',
        role:'全前置重炮 · 倾角装甲',
        armor:'倾角装甲：命中角 <20° 时 CA/DD 的 AP 全免 · BB AP 75% / DD HE 75% / CA HE 50% / BB HE 25% 免疫',
        yName:'引擎增压 ×2', yDesc:'最大速度 +15% · 持续 60s · 间隔 60s',
-       tip:'2 座全前置三联装战列炮，AP 免疫角 -5° 更易击穿；<em>[F]</em> 双连射（8s 一轮连打两轮 · 射程 -43%）打爆发，血量 <50% 时装填再 -20%；<em>[Y]</em> 增压 +15%、<em>[T]</em> 维修小组 ×3 续航。' }
+       tip:'2 座全前置三联装战列炮，AP 免疫角 -5° 更易击穿；<em>[F]</em> 双连射（8s 一轮连打两轮 · 射程 -43%，弹速 +30%、AP 伤害 +35%、各角度击穿 +10%，两轮同一诸元、第二轮不受齐射角限制）打爆发，血量 <50% 时装填再 -20%；<em>[Y]</em> 增压 +15%、<em>[T]</em> 维修小组 ×3 续航。' },
+  la:{ cn:'路 易 斯 安 娜', en:'LOUISIANA · BB-71 · USN', scTag:'BATTLESHIP · USN', tag:'美国海军 · 战列舰',
+       role:'10 门重炮 · 舰载轰炸机',
+       armor:'厚甲：CA 弹 50% / DD 弹 80% 跳弹 · 副炮齐射角 20°',
+       yName:'维修小组 ×2', yDesc:'每秒回复 1% 最大血量 · 持续 14s · 间隔 30s',
+       tip:'舰艏 2 座三联装 + 舰艉 1 座四联装（10 管）齐射，10 座双联装驱逐炮自动压制近身；全速航速 4.18 格/s（较标准战列 +10%）；<em>[C]/[3]</em> 起飞 3 架轰炸机：失去船舶操控（舰体按当前速度与舵位继续行进），机头前 3 格瞄准圆的 2s 预备后投下 9 枚四倍战列舰 HE（单枚 4818）；<em>[Y]</em> 抬血吃一轮齐射。' },
+  ad:{ cn:'阿 达 尔 伯 特', en:'ADALBERT · 1944 · KM', scTag:'CRUISER · KM', tag:'德国海军 · 重巡洋舰',
+       role:'副炮主力 · 双形态火力',
+       armor:'中甲（无厚甲减免）· 副炮无射界限制 · 所有 HE 击穿率 +5%',
+       yName:'副炮增强 ×3', yDesc:'副炮射程 +15% · 射速 +15% · 伤害 +20% · 持续 20s · 间隔 50s',
+       tip:'3 座三联装战列炮（9 管 · 5s 一轮 · 齐射角 35°）打中远距离，30 门副炮（4 座三联装巡洋炮 + 9 座双联装驱逐炮）近身无死角；<em>[Y]</em> 副炮增强叠射程/射速/伤害，<em>[F]</em> 副炮主炮化（副炮停火转为按住左键朝准星手动齐射 · 射程 +20% / 伤害 +60% / 射速 +15%，再按取消）把副炮变成主武器；<em>[3]</em> 5 发鱼雷、<em>[T]</em> 维修小组 ×2 续航。' }
 };
 /* 顶视像素剪影：船体逐列生成阶梯边缘，再叠加炮塔/舰桥/烟囱/鱼雷发射管 */
 function drawSilhouette(cv, cls){
@@ -3887,7 +5116,8 @@ function drawSilhouette(cv, cls){
               out:'#3f5a6b', fun:'#5e7c90', dark:'#6a8698' };
   const S = { dd:{ L:92, hw:4.4, bow:18 }, ca:{ L:94, hw:6.0, bow:16 }, bb:{ L:100, hw:8.6, bow:14 },
               cb:{ L:96, hw:6.0, bow:14 }, sl:{ L:94, hw:6.4, bow:14 }, kh:{ L:92, hw:6.2, bow:16 },
-              vz:{ L:96, hw:6.4, bow:15 } }[cls];
+              vz:{ L:96, hw:6.4, bow:15 }, gq:{ L:92, hw:4.4, bow:18 },
+              la:{ L:98, hw:7.4, bow:14 }, ad:{ L:96, hw:6.2, bow:16 } }[cls];
   const X0 = 55 - S.L/2;
   const px = v => (X0 + v)*U, py = v => (CY + v)*U;
   const box = (x1, x2, hw, c) => { g.fillStyle = c; g.fillRect(px(x1), py(-hw), (x2-x1)*U, hw*2*U); };
@@ -3920,7 +5150,18 @@ function drawSilhouette(cv, cls){
     g.fillRect(px(i), (CY - h/2)*U, U, h*U);
     if (h > 3){ g.fillStyle = C.deck; g.fillRect(px(i), (CY - h/2 + 1)*U, U, (h-2)*U); }   // 甲板高光
   }
-  if (cls === 'dd'){                                    // 岛风：1 前 2 后 双联装 + 3 座五联鱼雷 + 双烟囱
+  if (cls === 'gq'){                                    // 果敢：3 座全前置双联装 + 2 座五联鱼雷 + 双烟囱
+    box(6, 20, 2.6, C.sup); box(9, 17, 2.0, C.dark);     // 艉部甲板室
+    box(21, 27, 2.2, C.dark); box(22, 26, 2.8, C.deck);  // 二号鱼雷发射管
+    box(29, 35, 2.4, C.fun); box(29.5, 34.5, 1.6, C.out); // 二号烟囱
+    box(37, 44, 2.2, C.dark); box(38, 43, 2.8, C.deck);  // 一号鱼雷发射管
+    box(46, 53, 2.9, C.fun); box(46.5, 52.5, 2.0, C.out); // 一号烟囱
+    box(54, 56, .8, C.dark);                             // 桅杆
+    box(56, 66, 3.1, C.sup); box(58, 64, 2.2, C.tur);    // 舰桥（箱型）
+    tur(67, 75, 3.4, 2, 1, 6);                           // 前 C 炮塔（背负）
+    tur(76, 84, 3.4, 2, 1, 6);                           // 前 B 炮塔（背负）
+    tur(85, 93, 3.4, 2, 1, 6);                           // 前 A 炮塔
+  } else if (cls === 'dd'){                             // 岛风：1 前 2 后 双联装 + 3 座五联鱼雷 + 双烟囱
     tur(10, 18, 3.4, 2, -1, 5);                          // 后 C 炮塔（朝艉）    box(18, 27, 2.8, C.sup);                             // 后部甲板室
     tur(20, 27, 3.4, 2, -1, 5);                          // 后 B 炮塔（背负）
     box(27, 34, 2.2, C.dark); box(28, 33, 2.8, C.deck);  // 三号鱼雷发射管
@@ -4000,6 +5241,43 @@ function drawSilhouette(cv, cls){
     }); });
     tur(53, 64, 5.6, 3, 1, 7);                           // 前 B 炮塔（背负）
     tur(68, 86, 5.6, 3, 1, 7);                           // 前 A 炮塔
+  } else if (cls === 'la'){                             // 路易斯安娜：舰艏 2 座三联装 + 舰艉 1 座四联装 + 两舷 5 座双联副炮
+    tur(4, 17, 6.2, 4, -1, 7);                           // 舰艉四联装炮塔（朝艉）
+    box(17, 25, 4.2, C.sup);                             // 后部甲板室
+    box(25, 31, 2.8, C.fun); box(25.5, 30.5, 2.0, C.out); // 二号烟囱
+    box(32, 39, 3.0, C.fun); box(32.5, 38.5, 2.2, C.out); // 一号烟囱
+    box(39, 58, 4.8, C.sup); box(43, 54, 3.8, C.tur);    // 塔式舰桥
+    box(45, 48, 2.6, C.sup); box(46, 47, 1.2, C.dark);   // 测距所
+    [1, -1].forEach(sd => {                              // 两舷 5 座双联装驱逐炮
+      for (let i = 0; i < 5; i++){
+        const x = 20 + i*9, y0 = sd > 0 ? 5.6 : -7.6;
+        blk(x, x + 3.2, y0, y0 + 2, C.out);
+        g.fillStyle = C.tur; g.fillRect(px(x + .4), py(y0 + .3), 2.4*U, 1.4*U);
+      }
+    });
+    tur(60, 74, 6.2, 3, 1, 8);                           // 前 B 炮塔（背负）
+    tur(76, 92, 6.2, 3, 1, 8);                           // 前 A 炮塔
+  } else if (cls === 'ad'){                             // 阿达尔伯特：2 前 1 后三联装 + 双烟囱 + 五联鱼雷 + 密集副炮群
+    tur(3, 14, 5.2, 3, -1, 7);                           // 后 X 炮塔（朝艉）
+    box(14, 22, 3.8, C.sup);                             // 后部甲板室
+    box(22, 29, 3.0, C.dark); box(23, 28, 3.6, C.deck);  // 五联装鱼雷发射器
+    box(26, 32, 2.6, C.fun); box(26.5, 31.5, 1.8, C.out); // 二号烟囱
+    box(33, 39, 2.9, C.fun); box(33.5, 38.5, 2.1, C.out); // 一号烟囱
+    box(39, 56, 4.6, C.sup); box(42, 52, 3.6, C.tur);    // 塔式舰桥
+    [1, -1].forEach(sd => {
+      for (let i = 0; i < 4; i++){                       // 两舷 4 座三联装巡洋炮（外圈）
+        const x = 20 + i*9, y0 = sd > 0 ? 4.8 : -6.8;
+        blk(x, x + 3.4, y0, y0 + 2, C.out);
+        g.fillStyle = C.tur; g.fillRect(px(x + .3), py(y0 + .3), 2.6*U, 1.4*U);
+      }
+      for (let i = 0; i < 5; i++){                       // 两舷 9 座双联装驱逐炮（内圈，艏艉各 5 座示意）
+        const x = 18 + i*15, y0 = sd > 0 ? 1.8 : -3.8;
+        blk(x, x + 2.4, y0, y0 + 1.8, C.out);
+        g.fillStyle = C.tur; g.fillRect(px(x + .3), py(y0 + .3), 1.8*U, 1.2*U);
+      }
+    });
+    tur(59, 71, 5.4, 3, 1, 7);                           // 前 B 炮塔（背负）
+    tur(73, 91, 5.4, 3, 1, 7);                           // 前 A 炮塔
   } else {                                              // 大和：前 2 后 1 三联装 46cm + 塔式舰桥 + 单大烟囱
     tur(3, 16, 6.6, 3, -1, 7);                           // 后 C 炮塔
     box(16, 25, 4.4, C.sup);                             // 后部上层建筑
@@ -4021,24 +5299,45 @@ function drawSilhouette(cv, cls){
 }
 /* 选中舰船的详细参数面板（点击舰卡后在下方展开；按 shipId 解析，变体舰归入所属舰种列） */
 function buildShipDetail(shipId){
-  const c = SHIPS[shipId], m = SHIP_META[shipId], tn = c.turretDefs.length, B = c.barrels;
+  const c = SHIPS[shipId], m = SHIP_META[shipId], tn = c.turretDefs.length;
   const col = c.col || shipId;
-  const salvo = c.dmgAP*B*tn, dps = salvo/c.reload,
+  const B = totalBarrels(c);                                   // 全舰主炮管数（支持逐塔混装）
+  const mix = c.turretDefs.some((td, i) => turretB(c, i) !== turretB(c, 0));   // 是否混装（如 3+3+4）
+  const salvo = c.dmgAP*B, dps = salvo/c.reload,
         fire = Math.round((c.fireChance != null ? c.fireChance : FIRE_CHANCE[col])*100);
   const bar = (lb, pct) => `<div class="sd-bar"><i>${lb}</i><div class="track">` +
         `<div class="fill" style="width:${Math.max(4, Math.min(100, pct*100)).toFixed(0)}%"></div></div></div>`;
   const kv = rows => `<div class="sd-kv">${rows.map(([k, v, hi]) =>
         `<span>${k}</span><b${hi ? ' class="hi"' : ''}>${v}</b>`).join('')}</div>`;
+  const secMountTxt = sp => `${sp.mounts || 2} 座${sp.b === 3 ? '三' : sp.b === 2 ? '双' : ''}联装` +
+        ` · 每轮 ${(sp.mounts || 2)*(sp.b || 1)} 发`;
   const sec = c.sec ? `<div class="sd-grp" style="margin-top:8px">自动副炮 · HE（已计 33%）</div>` +
-        kv([['小口径', `${fmtInt(c.sec.dmg*HE_DMG_MUL)} 伤 / ${c.sec.reload}s`], ['中口径', `${fmtInt(c.sec2.dmg*HE_DMG_MUL)} 伤 / ${c.sec2.reload}s`],
-            ['副炮射程', c.sec.range + ' 格', 1], ['弹速', `${c.sec.shellSpeed} / ${c.sec2.shellSpeed}`],
-            ['射角', c.secArc ? `艏艉各 ${c.secArc}° 盲锥` : '无限制', 1]]) : '';
+        kv([['炮位', secMountTxt(c.sec), 1],
+            ['单发伤害', `${fmtInt(c.sec.dmg*HE_DMG_MUL/(c.sec.b || 1))} 伤 / ${c.sec.reload}s`],
+            ...(c.sec2 ? [['中口径', `${secMountTxt(c.sec2)} · ${fmtInt(c.sec2.dmg*HE_DMG_MUL/(c.sec2.b || 1))} 伤 / ${c.sec2.reload}s`]] : []),
+            ['副炮射程', c.sec.range + ' 格', 1],
+            ['弹速', c.sec2 ? `${c.sec.shellSpeed} / ${c.sec2.shellSpeed} 格/s` : `${c.sec.shellSpeed} 格/s`],
+            ['开火方式', c.fSec ? '自动索敌（[F] 后改为左键朝准星手动齐射）' : '自动索敌 · 最近敌舰', 1],
+            ['副炮齐射角', c.secArc ? `艏艉各 ${c.secArc}° 盲锥` : '无限制', 1]]) : '';
   const fI = c.fGun ? fInfoOf({ cls:col, shipId }) : null;
-  const fRow = fI ? [[`[F] ${fI.name}形态`,
-        `${fI.reload.toFixed(1)}s/轮 · ${fI.range.toFixed(1)} 格${fI.burst > 1 ? ` · 连打 ${fI.burst} 轮` : ''}`, 1]] : [];
+  const fRow = fI ? [[c.fSec ? '[F] 副炮主炮化（开关）' : `[F] ${fI.name}形态`,
+        c.fSec ? `副炮停止自动开火 → 按住左键朝准星齐射 · ${fI.reload.toFixed(2)}s/轮 · ${fI.range.toFixed(1)} 格`
+               : `${fI.reload.toFixed(1)}s/轮 · ${fI.range.toFixed(1)} 格${fI.burst > 1 ? ` · 连打 ${fI.burst} 轮（齐射角同首轮）` : ''}`, 1]] : [];
+  const fBonusRow = (() => {
+    if (!fI) return [];
+    if (c.fSec) return [['[F] 形态加成', `副炮射程 +${Math.round(c.fSecRange*100)}% · 伤害 +${Math.round(c.fSecDmg*100)}% · 射速 +${Math.round(c.fSecRate*100)}% · 期间副炮停火改为左键手动齐射 · 再按 [F] 取消`, 1]];
+    const parts = [
+      fI.speedMul !== 1 ? `弹速 +${Math.round((fI.speedMul - 1)*100)}%` : '',
+      fI.apMul !== 1 ? `AP 伤害 +${Math.round((fI.apMul - 1)*100)}%` : '',
+      fI.apPen ? `AP 各角度击穿 +${Math.round(fI.apPen*100)}%` : ''
+    ].filter(Boolean);
+    return parts.length ? [[`[F] 形态加成`, parts.join(' · '), 1]] : [];
+  })();
   const vzRow = c.lowHpReload ? [['低血装填', '血量 <50% 时装填 -20%', 1]] : [];
   const angRow = c.hullAngle ? [['倾角装甲', `命中角 <${c.hullAngle}° 触发免疫`, 1]] : [];
-  const arcRow = c.noArc ? [['齐射角', '无限制 · 全向开火', 1]] : [];
+  const arcRow = c.noArc ? [['齐射角', '无限制 · 全向开火', 1]]
+               : c.turretArc ? [['齐射角', `艏艉各 ${c.turretArc}° 盲锥`, 1]] : [];
+  const hePenRow = c.hePen ? [['HE 击穿率', `+${Math.round(c.hePen*100)}%（直击可能打出全额）`, 1]] : [];
   return `
   <div class="sd-col">
     <div class="sd-title">${m.cn}<span>${m.en}</span></div>
@@ -4048,26 +5347,42 @@ function buildShipDetail(shipId){
   <div class="sd-col">
     <div class="sd-grp">船 体 与 动 力</div>
     ${kv([['生命值', fmtInt(c.hp)], ['最大航速', c.speed + ' 格/s', 1], ['转舵速率', c.turn + ' °/s'], ['炮塔回转', c.turretSpd + ' °/s']])}
-    <div class="sd-grp" style="margin-top:8px">主 炮 · ${tn} 座${B === 2 ? '双' : B === 3 ? '三' : '四'}联装</div>
-    ${kv([['齐射弹数', B*tn + ' 发'], ['装填时间', c.reload + ' s', 1], ['HE 单发(33%)', fmtInt(c.dmgHE*HE_DMG_MUL)],
+    <div class="sd-grp" style="margin-top:8px">主 炮 · ${tn} 座${mix
+      ? `（${c.turretDefs.map((td, i) => turretB(c, i)).join('+')} 管）`
+      : (B === 2 ? '双' : B === 3 ? '三' : '四') + '联装'}</div>
+    ${kv([['齐射弹数', B + ' 发'], ['装填时间', c.reload + ' s', 1],
+          [heMulOf(c) > 1 ? `HE 单发(×${heMulOf(c)})` : 'HE 单发(33%)', fmtInt(heDmgOf(c))],
           ['AP 单发', fmtInt(c.dmgAP), 1], ['AP 齐射', fmtInt(salvo), 1], ['理论 DPS', fmtInt(dps), 1],
           ['最大射程', c.range + ' 格', 1], ['弹速', c.shellSpeed + ' 格/s'],
-          ['HE 点火率', fire + '%'], ...vzRow, ...angRow, ...fRow, ...arcRow])}
+          ...(c.overIslandR ? [['弹道特性', `可越过半径 <${c.overIslandR} 格岛屿`, 1]] : []),
+          ['HE 点火率', fire + '%'], ...vzRow, ...angRow, ...hePenRow, ...fRow, ...fBonusRow, ...arcRow])}
   </div>
   <div class="sd-col">
-    ${c.torp
+    ${c.plane
+      ? `<div class="sd-grp">轰 炸 机 编 队 · [C] / [3]</div>` +
+        kv([['出动架数', c.plane.n + ' 架（编队）', 1], ['每次整备', c.plane.use + ' 次（上限 ' + c.plane.use + '）'],
+            ['飞行速度', `${PLANE.spd0} → ${PLANE.spd1} 格/s`, 1], ['减速后', PLANE.slowSpd + ' 格/s（按住 S）'],
+            ['转弯半径', PLANE.turnR + ' 格'], ['瞄准圆', `机头前 ${PLANE.aimAhead} 格 · 半径 ${PLANE.aimR} 格`],
+            ['投弹预备', PLANE.prep + ' s', 1], ['落弹', `${PLANE.nBombs} 枚 · ${PLANE.fall}s 后落下`, 1],
+            ['落点观察', `${PLANE.watch}s（右键提前返回）`, 1], ['整备间隔', `${c.plane.cd}s · 生成 ${c.plane.regen} 次`, 1],
+            ['单枚伤害', fmtInt(SHIPS.bb.dmgHE*PLANE.dmgMul*HE_DMG_MUL), 1]])
+      : c.torp
       ? `<div class="sd-grp">鱼 雷</div>` +
-        kv([['发射管数', c.torp.count], ['单雷伤害', fmtInt(c.torp.dmg), 1],
-            ['鱼雷射程', c.torp.range + ' 格', 1], ['再装填', c.torp.reload + ' s']])
+        kv(c.torp.single
+          ? [['携带总数', c.torp.count + ' 发'], ['发射方式', '单发 · 左键逐发', 1],
+             ['单雷伤害', fmtInt(c.torp.dmg), 1], ['鱼雷射程', c.torp.range + ' 格', 1],
+             ['再装填', `射完 ${c.torp.count} 发后 ${c.torp.reload}s`, 1]]
+          : [['发射管数', c.torp.count], ['单雷伤害', fmtInt(c.torp.dmg), 1],
+             ['鱼雷射程', c.torp.range + ' 格', 1], ['再装填', c.torp.reload + ' s']])
       : `<div class="sd-grp">空 袭</div>` +
         kv([['使用次数', AIRSTRIKE.maxN + ' 次'], ['整备间隔', AIRSTRIKE.cd + ' s', 1],
             ['空袭区域', '10 × 5 格'], ['落弹数', AIRSTRIKE.nBombs + ' 枚', 1],
             ['单枚伤害', fmtInt(SHIPS.bb.dmgHE*HE_DMG_MUL), 1], ['投弹延迟', AIRSTRIKE.delay + ' s']])}
     ${sec}
     <div class="sd-grp" style="margin-top:8px">防 护 与 消 耗 品</div>
-    <div class="sd-note">装甲：${m.armor}<br>
+    <div class="sd-note">装甲：${m.armor}${c.spotBase ? `<br><em>舰体特性</em> 可被发现距离 ${Math.round((c.spotBase-1)*100)}%（与隐蔽技能/配件连乘）` : ''}<br>
       <em>[R] 损管队</em> 清除进水/起火 · 10s 免疫 · CD 30s<br>
-      <em>[Y] ${m.yName}</em> ${m.yDesc}${c.tRepair ? `<br><em>[T] 维修小组 ×${c.tRepair.n}</em> 每秒回复 ${Math.round(c.tRepair.heal*100)}% 最大血量 · 持续 ${c.tRepair.dur}s · CD ${c.tRepair.cd}s` : ''}</div>
+      <em>[Y] ${m.yName}</em> ${m.yDesc}${c.tRepair ? `<br><em>[T] 维修小组 ×${c.tRepair.n}</em> 每秒回复 ${Math.round(c.tRepair.heal*100)}% 最大血量 · 持续 ${c.tRepair.dur}s · CD ${c.tRepair.cd}s` : ''}${c.plane ? `<br><em>[C] 轰炸机编队 · 每次整备 ×${c.plane.regen}</em> 选中后左键确认起飞 ${c.plane.n} 架：失去船舶操控，船舶按当前速度与舵位继续行进；投弹后保持 ${PLANE.watch}s 落点观察再交还操控。次数用空后整备 ${c.plane.cd}s、一次生成 ${c.plane.regen} 次` : ''}${c.smoke ? `<br><em>[C] 烟雾发生器 ×${c.smoke.n}</em> 每 ${c.smoke.spawn}s 铺 1 团半径 ${c.smoke.r} 格烟幕 · 生成 ${c.smoke.gen}s · 存续 ${c.smoke.life}s<br>　烟幕效果：敌方攻击距离 -50% · 敌方散布 +30% · 云内敌舰航速 -15%` : ''}</div>
     <div class="sd-note" style="margin-top:6px">舰长技能：<em>${rsUsed(col)} / ${SKILL_POINTS}</em> 点 · 顶部「研 发」可加点强化</div>
     <div class="sd-note" style="margin-top:6px;color:#6f88a3">战术：${m.tip}</div>
   </div>`;
@@ -4081,7 +5396,7 @@ function showShipDetail(shipId){
 // 舰卡选择 + 出击（港口式：先选舰看参数，再点橙色出击按钮）
 let selCls = 'dd';
 /* 仓库：三竖列拥有的舰船 + 各列当前选用（持久化） */
-const DEPOT_OWN = { dd:['dd','kh'], ca:['ca','cb','vz'], bb:['bb','sl'] };
+const DEPOT_OWN = { dd:['dd','kh','gq'], ca:['ca','cb','vz','ad'], bb:['bb','sl','la'] };
 let selShip = { dd:'dd', ca:'ca', bb:'bb' };
 try{ Object.assign(selShip, JSON.parse(localStorage.getItem('yjfx_depot_v1') || '{}')); }catch(e){}
 for (const col of ['dd','ca','bb'])                  // 兜底：存储值失效时回退默认舰
@@ -4152,6 +5467,28 @@ function setMode(m){
   gameMode = m; modeName = MODE_INFO[m].name;
   document.querySelectorAll('.modecard').forEach(c => c.classList.toggle('on', c.dataset.m === m));
   $('modeDesc').innerHTML = MODE_INFO[m].desc.replace('{fleet}', fleetText());
+  renderBrief();
+}
+/* 港口「作战简报」：随机战 / 军备竞赛 / 肉鸽 分别显示对应规则 */
+function renderBrief(){
+  const c = fleetComposition();
+  if (gameMode === 'rogue'){
+    $('portBrief').innerHTML =
+      `<em>◈ 作战简报</em><br>` +
+      `波次防守 · 时限 <em>10:00</em><br>` +
+      `每波 <em>${ROGUE.count} 艘</em>随机敌舰（取自仓库全部舰船）自地图边缘来袭<br>` +
+      `第一波 血 <em>${Math.round(ROGUE.hp0*100)}%</em> / 伤 <em>${Math.round(ROGUE.dmg0*100)}%</em> / ` +
+      `速 <em>${Math.round(ROGUE.spd0*100)}%</em> · 每波再 <em>+10% / +10% / +5%</em><br>` +
+      `清场后 <em>${ROGUE.pickT}s 内三选一</em>增益（研发技能 / 军械库配件）· 消耗品次数无限<br>` +
+      `战场随机刷新军备竞赛补给`;
+    return;
+  }
+  $('portBrief').innerHTML =
+    `<em>◈ 作战简报</em><br>` +
+    `${gameMode === 'arms' ? '无据点遭遇战 + 战场补给' : '无据点遭遇战'} · 时限 <em>5:00</em><br>` +
+    `击沉全部敌舰即胜 · 时间到按伤害判定<br>` +
+    `敌编队 <em id="briefFleet">${c.bb} BB · ${c.ca} CA · ${c.dd} DD（共 ${c.total} 艘）</em><br>` +
+    `HE 弹可点火 · AP 弹直击 · 鱼雷致进水 · CA 空袭覆盖`;
 }
 document.querySelectorAll('.modecard').forEach(card =>
   card.addEventListener('click', () => setMode(card.dataset.m))
@@ -4180,8 +5517,10 @@ function setFleet(sc){
   fleetScale = sc;
   const c = fleetComposition();
   document.querySelectorAll('.fleetchip').forEach(ch => ch.classList.toggle('on', +ch.dataset.f === sc));
-  $('briefFleet').textContent = `${c.bb} BB · ${c.ca} CA · ${c.dd} DD（共 ${c.total} 艘）`;
-  const cardTxt = { random:`${c.total} 艘敌舰 · 无补给`, arms:`${c.total} 艘敌舰 · 增益叠加` };
+  const bf = $('briefFleet');
+  if (bf) bf.textContent = `${c.bb} BB · ${c.ca} CA · ${c.dd} DD（共 ${c.total} 艘）`;
+  const cardTxt = { random:`${c.total} 艘敌舰 · 无补给`, arms:`${c.total} 艘敌舰 · 增益叠加`,
+                    rogue:`6 艘/波 · 增益三选一` };
   document.querySelectorAll('.modecard').forEach(card => {
     card.querySelector('i').textContent = cardTxt[card.dataset.m] || '';
   });
@@ -4197,8 +5536,10 @@ $('wT1').addEventListener('click', () => setShellType(1));
 $('wT2').addEventListener('click', () => setShellType(2));
 $('wTorp').addEventListener('click', () => {
   if (!player || !player.alive) return;
-  if (player.cls === 'ca') beginStrikeAim(); else fireTorps(player);
+  if (shipConf(player).plane) beginPlaneSel();
+  else if (player.cls === 'ca' && !shipConf(player).torp) beginStrikeAim(); else fireTorps(player);
 });
+$('wPL').addEventListener('click', beginPlaneSel);
 $('wDC').addEventListener('click', useDC);
 $('wY').addEventListener('click', useY);
 // 结算面板按钮：继续战斗 = 重开本局；回到主界面 = 返回港口选择界面
@@ -4306,12 +5647,14 @@ function updatePortSkillLine(){
 /* ================= 军械库页：6 槽位配件交互 ================= */
 function amRows(cls){
   const c = SHIPS[cls], st = resolveBuild(cls), rows = [];
+  const yk = c.yKind || (cls === 'dd' ? 'engine' : cls === 'ca' ? 'rl' : 'repair');
   rows.push({ k:'生命值',   base:c.hp,          val:Math.round(c.hp*(1 + (st.maxHp || 0))), fmt:v=>fmtInt(v), dir:'up' });
   rows.push({ k:'主炮装填', base:c.reload,      val:c.reload*(st.reload || 1),   fmt:v=>v.toFixed(2)+'s', dir:'down' });
   rows.push({ k:'主炮射程', base:c.range,       val:c.range*(st.range || 1),     fmt:v=>v.toFixed(1)+' 格', dir:'up' });
   rows.push({ k:'AP 单发',  base:c.dmgAP,       val:c.dmgAP*(st.dmg || 1),       fmt:v=>fmtInt(v), dir:'up' });
-  rows.push({ k:'AP 齐射',  base:c.dmgAP*c.barrels, val:c.dmgAP*c.barrels*(st.dmg || 1), fmt:v=>fmtInt(v), dir:'up' });
-  rows.push({ k:'HE 单发(33%)', base:c.dmgHE*HE_DMG_MUL, val:c.dmgHE*HE_DMG_MUL*(st.dmg || 1), fmt:v=>fmtInt(v), dir:'up' });
+  rows.push({ k:'AP 齐射',  base:c.dmgAP*totalBarrels(c), val:c.dmgAP*totalBarrels(c)*(st.dmg || 1), fmt:v=>fmtInt(v), dir:'up' });
+  rows.push({ k:heMulOf(c) > 1 ? `HE 单发(×${heMulOf(c)})` : 'HE 单发(33%)', base:heDmgOf(c),
+              val:heDmgOf(c)*(st.dmg || 1), fmt:v=>fmtInt(v), dir:'up' });
   rows.push({ k:'炮塔转速', base:c.turretSpd,   val:c.turretSpd*(st.turretSpd || 1), fmt:v=>v.toFixed(0)+'°/s', dir:'up' });
   rows.push({ k:'航速',     base:c.speed,       val:c.speed*(st.speed || 1),     fmt:v=>v.toFixed(2)+' 格/s', dir:'up' });
   rows.push({ k:'转向速度', base:c.turn,        val:c.turn*(st.turn || 1),       fmt:v=>v.toFixed(0)+'°/s', dir:'up' });
@@ -4323,9 +5666,21 @@ function amRows(cls){
     rows.push({ k:'空袭次数', base:2, val:2 + (st.dyn && st.dyn.strikeExpert ? 1 : 0), fmt:v=>Math.round(v)+' 次', dir:'up' });
   }
   if (c.sec){
+    const secDmgBase = (c.sec2 || c.sec).dmg*HE_DMG_MUL;      // 有中口径就用中口径当代表值，没有则用小口径
     rows.push({ k:'副炮射程', base:c.sec.range,   val:c.sec.range*(st.secRange || 1), fmt:v=>v.toFixed(1)+' 格', dir:'up' });
     rows.push({ k:'副炮装填', base:c.sec.reload,  val:c.sec.reload*(st.secReload || 1), fmt:v=>v.toFixed(2)+'s', dir:'down' });
-    rows.push({ k:'副炮伤害', base:c.sec2.dmg*HE_DMG_MUL, val:c.sec2.dmg*HE_DMG_MUL*(st.secDmg || 1), fmt:v=>fmtInt(v), dir:'up' });
+    rows.push({ k:'副炮伤害', base:secDmgBase,    val:secDmgBase*(st.secDmg || 1), fmt:v=>fmtInt(v), dir:'up' });
+  }
+  if (yk !== 'none'){                                        // Y 消耗品（引擎增压 / 重装填 / 维修 / 副炮增强）
+    const yBase = yk === 'engine' ? (c.boost ? c.boost.n : 2)
+                : yk === 'secBoost' ? (c.secBoost ? c.secBoost.n : 3) : 2;
+    rows.push({ k:'Y 消耗品次数', base:yBase, val:yBase + (st.consumableCharges || 0), fmt:v=>Math.round(v)+' 次', dir:'up' });
+    rows.push({ k:'Y 消耗品时长', base:1, val:(st.consumableDur || 1), fmt:v=>(v*100).toFixed(0)+'%', dir:'up' });
+  }
+  if (c.tRepair || yk === 'repair'){                          // 维修小组（[T] 或 BB 的 [Y]）
+    const rn = c.tRepair ? c.tRepair.n : 2, heal = c.tRepair ? c.tRepair.heal : .01;
+    rows.push({ k:'维修小组次数', base:rn, val:rn + (st.repairCharges || 0), fmt:v=>Math.round(v)+' 次', dir:'up' });
+    rows.push({ k:'维修回血', base:heal*100, val:heal*100*(st.repairAmount || 1), fmt:v=>v.toFixed(1)+'%/s', dir:'up' });
   }
   rows.push({ k:'损管冷却', base:DC_CD,          val:DC_CD*(st.dcCd || 1),       fmt:v=>v.toFixed(0)+'s', dir:'down' });
   rows.push({ k:'隐蔽系数', base:1,              val:(st.spot || 1),             fmt:v=>v.toFixed(2)+'×', dir:'down' });
@@ -4333,7 +5688,7 @@ function amRows(cls){
   return rows;
 }
 function amInstall(cls, id){
-  const u = UPG_MAP[id]; if (!u || !u.cls.includes(cls)) return;
+  const u = UPG_MAP[id]; if (!u) return;                     // 全舰种通用：只校验槽位，不校验舰种
   if (ARMS[cls][u.slot] === id) delete ARMS[cls][u.slot];   // 再点已装配的配件 = 卸下
   else ARMS[cls][u.slot] = id;                              // 同槽位自动替换
   saveArms(); renderArms(); updatePortSkillLine();
@@ -4345,23 +5700,27 @@ function renderArms(){
   $('amClasses').querySelectorAll('.rs-class').forEach(el =>
     el.onclick = () => { amCls = el.dataset.c; amSlot = 1; renderArms(); });
   $('amCount').textContent = upgradesOf(cls).length;
-  // 左栏：6 个槽位
+  // 左栏：6 个槽位（已装但本舰种无对应装备时标红提示）
   $('amSlots').innerHTML = ARMS_SLOTS.map(s => {
     const u = UPG_MAP[ARMS[cls][s.n]];
-    return `<div class="am-slot${amSlot === s.n ? ' on' : ''}${u ? ' filled' : ''}" data-s="${s.n}">` +
+    const bad = u && !upgClassOk(u, cls);
+    return `<div class="am-slot${amSlot === s.n ? ' on' : ''}${u ? ' filled' : ''}${bad ? ' na' : ''}" data-s="${s.n}">` +
       `<div class="no">${s.n}</div><div class="txt"><b>${u ? u.name : '未装配'}</b>` +
-      `<small>${s.n} 号槽 · ${s.name}</small></div></div>`;
+      `<small>${s.n} 号槽 · ${bad ? '本舰种不生效' : s.name}</small></div></div>`;
   }).join('');
   $('amSlots').querySelectorAll('.am-slot').forEach(el =>
     el.onclick = () => { amSlot = +el.dataset.s; renderArms(); });
-  // 中栏：该槽位可选配件
-  const pool = UPGRADES.filter(u => u.slot === amSlot && u.cls.includes(cls));
+  // 中栏：该槽位全部可选配件（全舰种通用，不再按舰种过滤）
+  const pool = UPGRADES.filter(u => u.slot === amSlot);
   $('amList').innerHTML = pool.length ? pool.map(u => {
     const on = ARMS[cls][u.slot] === u.id;
-    return `<div class="am-card${on ? ' on' : ''}" data-id="${u.id}">` +
-      `<div class="am-name">${u.name}</div><div class="am-desc">${u.desc}</div>` +
-      `<div class="am-tag">${on ? '点击卸下' : '点击装配'}</div></div>`;
-  }).join('') : '<div class="am-card locked">本舰无该槽位可选配件</div>';
+    const ok = upgClassOk(u, cls), need = upgNeed(u);
+    const chip = need ? `<i class="am-need req">${UPG_NEED_TXT[need]}</i>` : '<i class="am-need">通用</i>';
+    const tag = on ? '点击卸下' : (ok ? '点击装配' : '点击装配 · 本舰种无此装备，不生效');
+    return `<div class="am-card${on ? ' on' : ''}${ok ? '' : ' na'}" data-id="${u.id}">` +
+      `<div class="am-name"><span>${u.name}</span>${chip}</div><div class="am-desc">${u.desc}</div>` +
+      `<div class="am-tag">${tag}</div></div>`;
+  }).join('') : '<div class="am-card locked">该槽位暂无可选配件</div>';
   $('amList').querySelectorAll('.am-card[data-id]').forEach(el =>
     el.onclick = () => amInstall(cls, el.dataset.id));
   // 右栏：属性结算
@@ -4371,38 +5730,272 @@ function renderArms(){
     return `<div class="rs-row"><span>${r.k}</span><b class="${changed ? (good ? 'up' : 'down') : ''}">` +
       `${r.fmt(r.val)}${changed ? `<s>${r.fmt(r.base)}</s>` : ''}</b></div>`;
   }).join('');
-  // 推荐配装
-  $('amPresets').innerHTML = Object.entries(AM_PRESETS).map(([k, p]) =>
-    `<button class="rs-preset" data-p="${k}">${p.name} · ${RS_CLASS.find(x => x[0] === k)[1]}</button>`).join('');
+  // 推荐配装：战术流派，一键套用到当前舰种（6 槽全替换）
+  const cur = ARMS[cls];
+  $('amPresets').innerHTML = Object.entries(AM_PRESETS).map(([k, p]) => {
+    const hit = ARMS_SLOTS.every(s => (cur[s.n] || '') === (p.arms[s.n] || ''));
+    return `<button class="rs-preset${hit ? ' on' : ''}" data-p="${k}">${p.name}</button>`;
+  }).join('');
   $('amPresets').querySelectorAll('.rs-preset').forEach(el => el.onclick = () => {
     const p = AM_PRESETS[el.dataset.p]; if (!p) return;
-    ARMS[el.dataset.p] = {};
+    ARMS[cls] = {};
     for (const [slot, id] of Object.entries(p.arms)){
       const u = UPG_MAP[id];
-      if (u && u.slot === +slot && u.cls.includes(el.dataset.p)) ARMS[el.dataset.p][slot] = id;
+      if (u && u.slot === +slot) ARMS[cls][slot] = id;
     }
-    amCls = el.dataset.p; amSlot = 1;
+    amSlot = 1;
     saveArms(); renderArms(); updatePortSkillLine();
   });
   const list = upgradesOf(cls).map(u => u.name);
-  $('amNote').innerHTML = `6 个槽位各装 1 件配件，同槽位自动替换、可随时免费拆换；` +
-    `配件与舰长技能叠加，敌方 AI 不享受任何配件与技能。` +
-    (list.length ? `<br>当前：${list.join(' · ')}` : '<br>当前未装配任何配件。');
+  const dead = upgradesOf(cls).filter(u => !upgClassOk(u, cls)).map(u => u.name);
+  $('amNote').innerHTML = `配件<em style="color:#9be26b;font-style:normal">全舰种通用</em>：` +
+    `6 个槽位各装 1 件、同槽位自动替换、可随时免费拆换；配件与舰长技能叠加，敌方 AI 不享受任何配件与技能。` +
+    `标注「需鱼雷 / 需副炮 / 需维修小组 / 需 Y 消耗品」的配件只有具备对应装备的舰船才吃得到效果。` +
+    (list.length ? `<br>当前：${list.join(' · ')}` : '<br>当前未装配任何配件。') +
+    (dead.length ? `<br><span style="color:#c98a7a">本舰种不生效：${dead.join(' · ')}</span>` : '');
 }
+/* ================= 兵工厂页：造船厂 / 许愿码头 / 礼包链 / 圣诞开箱 ================= */
+/* 四档纵向长条入口；右侧为详情卡（数据仅为界面展示，不改动战斗数值） */
+const ARSENAL = [
+  { id:'yard', no:'01', cn:'造 船 厂', en:'SHIPYARD', state:'在 建', lock:false,
+    desc:'限时造船工程：逐阶段推进建造进度，完成每阶段任务领取进度奖励；全部阶段交付后获得整舰，附赠专属涂装与指挥官。',
+    kv:[['本期工程', '巡洋舰 · 维 亚 济'], ['阶段进度', '第 3 阶段 / 共 5 阶段'],
+        ['交付奖励', '舰船 · 涂装 · 指挥官'], ['剩余时间', '12 天 06 小时']],
+    prog:.62, chips:['阶段任务 ×5', '进度奖励', '最终交付', '限时 12 天'] },
+  { id:'wish', no:'02', cn:'许 愿 码 头', en:'WISHING WHARF', state:'开 放', lock:false,
+    desc:'把闲置资源投入许愿池累积许愿值，可指定兑换心仪舰船与物资；许愿值跨期保留，兑换后重新累积。',
+    kv:[['当前许愿值', '2 480'], ['指定兑换', '战列舰 · 施 里 芬'],
+        ['兑换所需', '6 000'], ['本期截止', '10 月 31 日']],
+    prog:.41, chips:['许愿值兑换', '指定舰船', '跨期保留'] },
+  { id:'bundle', no:'03', cn:'礼 包 链', en:'BUNDLE CHAIN', state:'限 时', lock:false,
+    desc:'连锁礼包：购入当前一档即解锁下一档更优组合，逐级叠加折扣与赠品，链尾包含稀有舰船与专属涂装。',
+    kv:[['当前档位', '第 3 档 / 共 6 档'], ['本档内容', '补给箱 ×3 · 银币 ×50 万'],
+        ['链尾大奖', '哈巴罗夫斯克 + 涂装'], ['解锁条件', '完成前两档']],
+    prog:.5, chips:['逐级解锁', '折扣叠加', '链尾稀有舰'] },
+  { id:'xmas', no:'04', cn:'圣 诞 开 箱', en:'SANTA CRATES', state:'未 开 放', lock:true,
+    desc:'节日补给箱：开启随机获得舰船、涂装、指挥官与银币；同色箱子集齐可提升稀有掉落概率，并有保底机制。',
+    kv:[['开放时间', '12 月 01 日'], ['箱型', '小 / 大 / 巨型'],
+        ['保底', '每 10 箱必出舰船'], ['本期主题', '极 夜 舰 队']],
+    prog:0, chips:['随机掉落', '保底机制', '节日限定'] }
+];
+let arSel = 0, arBGDone = false;
+
+/* 背景：像素化「战舰宣传图」——夜色海面 + 侧影战列舰 + 主炮炮口焰 + 探照灯 + 月与倒影 */
+function drawArsenalBG(){
+  const cv = $('arBG');
+  if (!cv || !cv.getContext || arBGDone) return;
+  const g = cv.getContext('2d');
+  if (!g || !g.fillRect) return;
+  arBGDone = true;
+  const W = cv.width, H = cv.height, HZ = 88;          // 320 × 140，地平线 y=88
+  const px = (x, y, w, h, c) => { g.fillStyle = c; g.fillRect(x|0, y|0, Math.max(1, w|0), Math.max(1, h|0)); };
+  let seed = 20261225;
+  const rnd = () => (seed = (seed*1103515245 + 12345) & 0x7fffffff)/0x7fffffff;
+
+  /* 天空：自顶向地平线由墨蓝渐至冷青 */
+  for (let y = 0; y < HZ; y++){
+    const k = Math.pow(y/HZ, .8);
+    const c = [Math.round(9 + 36*k), Math.round(18 + 66*k), Math.round(30 + 94*k)];
+    px(0, y, W, 1, `rgb(${c[0]},${c[1]},${c[2]})`);
+  }
+  /* 星点 */
+  for (let i = 0; i < 46; i++){
+    const x = rnd()*W, y = rnd()*66, a = .18 + rnd()*.5;
+    px(x, y, 1, 1, `rgba(190,225,255,${a.toFixed(2)})`);
+  }
+  /* 月 + 光晕 */
+  const MX = 262, MY = 25, MR = 10;
+  for (const [r, a] of [[MR+34, .06], [MR+22, .09], [MR+13, .14]]){
+    g.globalAlpha = a; g.fillStyle = '#bfe3ff';
+    g.beginPath(); g.arc(MX, MY, r, 0, 6.2832); g.fill();
+  }
+  g.globalAlpha = 1;
+  g.fillStyle = '#e6f1fb'; g.beginPath(); g.arc(MX, MY, MR, 0, 6.2832); g.fill();
+  g.fillStyle = 'rgba(150,185,215,.45)'; g.beginPath(); g.arc(MX-2.5, MY-2, MR*.55, 0, 6.2832); g.fill();
+  /* 云层：横向块带（靠月一侧提亮） */
+  const cloud = (x0, y0, len, h, c) => {
+    let x = x0;
+    while (x < x0 + len){
+      const w = 3 + ((rnd()*4)|0);
+      px(x, y0, w, h, c); x += w + 1;
+    }
+  };
+  cloud(6, 30, 110, 3, 'rgba(14,32,44,.85)');
+  cloud(30, 36, 84, 2, 'rgba(20,44,60,.8)');
+  cloud(120, 20, 78, 3, 'rgba(15,36,50,.8)');
+  cloud(148, 50, 118, 2, 'rgba(24,58,78,.75)');
+  cloud(48, 58, 62, 2, 'rgba(26,62,82,.7)');
+  cloud(206, 44, 72, 2, 'rgba(96,150,186,.42)');
+  cloud(232, 52, 60, 2, 'rgba(120,172,204,.32)');
+  /* 地平线辉光 */
+  px(0, HZ-2, W, 2, 'rgba(110,170,205,.55)');
+  px(226, HZ-1, 74, 1, 'rgba(160,205,232,.5)');
+  /* 海面 */
+  for (let y = HZ; y < H; y++){
+    const k = (y - HZ)/(H - HZ);
+    const c = [Math.round(34 - 27*k), Math.round(76 - 58*k), Math.round(112 - 86*k)];
+    px(0, y, W, 1, `rgb(${c[0]},${c[1]},${c[2]})`);
+  }
+  /* 月光海面倒影 */
+  for (let y = HZ + 2; y < H; y += 3){
+    const w = 7 + rnd()*13, x = MX - w/2 + (rnd()*14 - 7);
+    if (rnd() > .22) px(x, y, w, 1, `rgba(165,210,240,${(.16 + rnd()*.22).toFixed(2)})`);
+  }
+  /* 远处浪纹 */
+  for (let i = 0; i < 70; i++){
+    const x = rnd()*W, y = HZ + 2 + rnd()*(H - HZ - 8), w = 2 + rnd()*8;
+    px(x, y, w, 1, `rgba(140,190,222,${(.09 + rnd()*.16).toFixed(2)})`);
+  }
+
+  /* 舰体背景冷光（把剪影从海面衬出来） */
+  for (const [r, a] of [[150, .05], [110, .06], [76, .08]]){
+    g.globalAlpha = a; g.fillStyle = '#9fd0ee';
+    g.beginPath(); g.arc(252, 84, r, 0, 6.2832); g.fill();
+  }
+  g.globalAlpha = 1;
+  /* ---- 主舰侧影（艏朝右）：船体 ---- */
+  const hull = () => {
+    g.beginPath();
+    g.moveTo(92, 97); g.lineTo(150, 96); g.lineTo(232, 95); g.lineTo(286, 93); g.lineTo(319, 90);
+    g.lineTo(319, 96); g.lineTo(292, 101); g.lineTo(232, 105); g.lineTo(150, 107); g.lineTo(92, 104);
+    g.closePath(); g.fillStyle = '#050c12'; g.fill();
+  };
+  hull();
+  /* 船体轮廓光（迎着炮口焰的一侧） */
+  g.strokeStyle = 'rgba(165,210,240,.9)'; g.lineWidth = 1.2;
+  g.beginPath(); g.moveTo(92, 97); g.lineTo(150, 96); g.lineTo(232, 95); g.lineTo(286, 93); g.lineTo(319, 90); g.stroke();
+  g.strokeStyle = 'rgba(255,196,110,.5)'; g.lineWidth = 1;
+  g.beginPath(); g.moveTo(258, 94.4); g.lineTo(300, 92); g.stroke();
+  g.strokeStyle = 'rgba(80,130,165,.45)';
+  g.beginPath(); g.moveTo(319, 90); g.lineTo(319, 96); g.lineTo(292, 101); g.stroke();
+  /* 水线带 + 舷窗 */
+  px(96, 102, 218, 1, 'rgba(40,66,86,.8)');
+  for (let x = 130; x < 300; x += 14) px(x, 99, 1, 1, 'rgba(150,190,220,.25)');
+  /* 甲板线 */
+  px(96, 96, 216, 1, 'rgba(90,140,175,.5)');
+
+  /* 上层建筑（塔式舰桥） */
+  const stack = (x, y, w, h) => { px(x, y, w, h, '#060e15'); px(x, y, w, 1, 'rgba(110,160,195,.6)'); };
+  stack(206, 84, 46, 12);
+  stack(214, 74, 30, 11);
+  stack(220, 64, 18, 11);
+  stack(224, 57, 11, 8);
+  px(228, 48, 2, 10, 'rgba(120,165,195,.5)');            // 桅杆
+  px(221, 46, 1, 4, 'rgba(120,165,195,.35)');
+  /* 舰桥灯窗 */
+  for (let i = 0; i < 4; i++) px(222 + i*4, 67, 2, 1, 'rgba(255,214,140,.85)');
+  px(216, 78, 26, 1, 'rgba(255,196,120,.4)');
+  /* 烟囱 ×2 + 烟迹 */
+  const funnel = x => {
+    px(x, 70, 9, 15, '#070f17'); px(x, 70, 9, 1, 'rgba(110,160,195,.55)');
+    px(x+1, 68, 7, 2, 'rgba(30,52,68,.9)');
+  };
+  funnel(196); funnel(210 - 3);
+  for (let i = 0; i < 16; i++){
+    const t = i/16;
+    px(198 - t*26 + rnd()*3, 66 - t*22 + rnd()*3, 3 + rnd()*4, 2, `rgba(38,58,72,${(.5 - t*.32).toFixed(2)})`);
+  }
+  /* 主炮炮塔 ×3（双联装，炮口朝艏右上） */
+  const turret = (x0, deckY) => {
+    px(x0, deckY-6, 17, 6, '#081119');
+    px(x0, deckY-6, 17, 1, 'rgba(120,170,205,.55)');
+    px(x0+15, deckY-6, 2, 6, 'rgba(90,140,175,.3)');
+    for (const dy of [1, 4]){
+      g.strokeStyle = 'rgba(14,28,38,.95)'; g.lineWidth = 2;
+      g.beginPath(); g.moveTo(x0+15, deckY - dy); g.lineTo(x0+28, deckY - 6 - dy); g.stroke();
+      g.strokeStyle = 'rgba(110,158,192,.5)'; g.lineWidth = .7;
+      g.beginPath(); g.moveTo(x0+15, deckY - dy - .6); g.lineTo(x0+28, deckY - 6.6 - dy); g.stroke();
+    }
+  };
+  turret(276, 93); turret(254, 94); turret(170, 95);
+  /* 副炮 / 防空炮位 */
+  for (const x of [150, 164, 232, 246]) px(x, 91, 3, 2, 'rgba(10,20,28,.9)');
+
+  /* ---- 主炮炮口焰（画面焦点） ---- */
+  const FX = 306, FY = 82;
+  g.globalAlpha = 1;
+  for (const [r, c] of [[64, 'rgba(255,140,50,.12)'], [42, 'rgba(255,160,60,.18)'],
+                        [24, 'rgba(255,196,90,.34)'], [12, 'rgba(255,236,170,.6)']]){
+    g.fillStyle = c; g.beginPath(); g.arc(FX, FY, r, 0, 6.2832); g.fill();
+  }
+  px(FX-3, FY-3, 7, 7, '#fff8dc');
+  px(FX-1, FY-4, 3, 9, 'rgba(255,250,220,.95)');
+  px(FX-1, FY-3, 3, 7, 'rgba(255,245,205,.9)');
+  /* 炮口烟团 */
+  for (let i = 0; i < 12; i++){
+    const t = i/12;
+    px(FX - 10 - t*34 + rnd()*4, FY - 2 - t*10 + rnd()*4, 4 + rnd()*6, 3 + rnd()*3,
+       `rgba(70,90,104,${(.34 - t*.24).toFixed(2)})`);
+  }
+  /* 火星 */
+  for (let i = 0; i < 22; i++){
+    const a = rnd()*6.2832, d = 4 + rnd()*26;
+    px(FX + Math.cos(a)*d, FY + Math.sin(a)*d*.7, 1, 1, `rgba(255,${180 + (rnd()*60|0)},120,${(.4 + rnd()*.5).toFixed(2)})`);
+  }
+  /* 探照灯光柱（自舰桥射向左上） */
+  for (const [ax, ay, spread] of [[232, 60, 7], [240, 58, 5]]){
+    g.globalAlpha = .16; g.fillStyle = '#cfe9ff';
+    g.beginPath(); g.moveTo(ax, ay); g.lineTo(ax - 120, ay - 46 - spread);
+    g.lineTo(ax - 120, ay - 46 + spread); g.closePath(); g.fill();
+  }
+  g.globalAlpha = 1;
+  /* 艏浪 */
+  for (let i = 0; i < 26; i++){
+    const x = 292 + rnd()*27, y = 96 + rnd()*10;
+    px(x, y, 1 + (rnd()*2|0), 1, `rgba(200,230,248,${(.12 + rnd()*.3).toFixed(2)})`);
+  }
+  /* 近景暗浪（压住画面底部） */
+  for (let x = 0; x < W; x += 2){
+    const h = 2 + Math.round(Math.sin(x*.09)*1.4 + Math.sin(x*.21)*1);
+    px(x, H - h, 2, h, 'rgba(4,9,13,.85)');
+  }
+}
+
+/* 长条入口 + 右侧详情 */
+function renderArsenal(){
+  drawArsenalBG();
+  $('arList').innerHTML = ARSENAL.map((a, i) =>
+    `<div class="ar-strip${i === arSel ? ' on' : ''}" data-ar="${i}">` +
+      `<div class="ar-no">${a.no}</div>` +
+      `<div class="ar-txt"><b>${a.cn}</b><small>${a.en}</small></div>` +
+      `<div class="ar-state${a.lock ? ' lock' : ''}">${a.state}</div>` +
+    `</div>`).join('');
+  document.querySelectorAll('.ar-strip').forEach(el => {
+    el.addEventListener('click', () => { arSel = +el.dataset.ar; renderArsenal(); });
+  });
+  const a = ARSENAL[arSel];
+  const kv = a.kv.map(([k, v]) => `<div class="ar-kv"><span>${k}</span><b>${v}</b></div>`).join('');
+  const prog = a.prog > 0
+    ? `<div class="ar-prog"><i style="width:${Math.round(a.prog*100)}%"></i><em>${Math.round(a.prog*100)}%</em></div>`
+    : `<div class="ar-note">尚未开启 · ${a.kv[0][1]}</div>`;
+  $('arSideIn').innerHTML =
+    `<div class="ar-detail">` +
+      `<div class="sd-title">${a.cn}<span style="font-size:11px;color:#5d7488;letter-spacing:2px;margin-left:10px">${a.en}</span></div>` +
+      `<div class="ar-desc">${a.desc}</div>` +
+      kv + prog +
+      `<div class="ar-chips">${a.chips.map(c => `<span>${c}</span>`).join('')}</div>` +
+      `<div class="ar-hint">※ 兵工厂为港口界面入口展示：造船厂推进工程、许愿码头累积兑换、礼包链逐级解锁、圣诞开箱节日掉落。以上数值为界面展示数据，不影响实战参数。</div>` +
+    `</div>`;
+}
+
 /* 港口 / 仓库 / 研发 / 军械库 页签切换 */
 function showTab(name){
-  const isPort = name === 'port', isDp = name === 'depot', isRs = name === 'research', isAm = name === 'armory';
+  const isPort = name === 'port', isDp = name === 'depot', isRs = name === 'research',
+        isAm = name === 'armory', isAr = name === 'arsenal';
   $('menuPanel').style.display = isPort ? '' : 'none';
   $('depotPanel').classList.toggle('on', isDp);
   $('researchPanel').classList.toggle('on', isRs);
   $('armoryPanel').classList.toggle('on', isAm);
+  $('arsenalPanel').classList.toggle('on', isAr);
   $('tabPort').classList.toggle('on', isPort);
   $('tabDepot').classList.toggle('on', isDp);
   $('tabResearch').classList.toggle('on', isRs);
   $('tabArmory').classList.toggle('on', isAm);
+  $('tabArsenal').classList.toggle('on', isAr);
   if (isPort) updatePortSkillLine();
   else if (isDp) renderDepot();
   else if (isRs){ rsCls = selCls; renderRs(); }
+  else if (isAr) renderArsenal();
   else { amCls = selCls; amSlot = 1; renderArms(); }
   $('overlay').scrollTop = 0;
 }
@@ -4413,12 +6006,15 @@ function renderDepot(){
     `<div class="dp-col"><div class="dp-head">${label}</div>` +
     DEPOT_OWN[col].map(sid => {
       const c = SHIPS[sid], m = SHIP_META[sid];
+      const bt = c.turretDefs.map((td, i) => turretB(c, i));
+      const btxt = bt.every(v => v === bt[0]) ? `${bt.length} 座×${bt[0]} 管`
+                                              : `${bt.length} 座（${bt.join('+')} 管）`;
       return `<div class="dp-ship${selShip[col] === sid ? ' on' : ''}" data-ship="${sid}" data-col="${col}">` +
         `<canvas width="220" height="72"></canvas>` +
         `<b>${m.cn}${selShip[col] === sid ? '<i class="dp-use">出 战</i>' : ''}</b>` +
         `<span>${m.en}</span>` +
-        `<small>HP ${fmtInt(c.hp)} · ${c.speed} 格/s · ${c.turretDefs.length} 座×${c.barrels}管` +
-        `${c.fGun ? ' · [F] ' + (c.fBurst ? '双连射' : '速射') : ''}${c.torp ? ' · 鱼雷' : ' · 空袭'}</small></div>`;
+        `<small>HP ${fmtInt(c.hp)} · ${c.speed} 格/s · ${btxt}` +
+        `${c.fGun ? ' · [F] ' + (c.fSec ? '副炮主炮化' : c.fBurst ? '双连射' : '速射') : ''}${c.plane ? ' · 轰炸机' : c.torp ? ' · 鱼雷' : ' · 空袭'}</small></div>`;
     }).join('') + '</div>').join('');
   document.querySelectorAll('.dp-ship').forEach(el => {
     drawSilhouette(el.querySelector('canvas'), el.dataset.ship);
@@ -4436,6 +6032,7 @@ $('tabPort').addEventListener('click', () => showTab('port'));
 $('tabDepot').addEventListener('click', () => showTab('depot'));
 $('tabResearch').addEventListener('click', () => showTab('research'));
 $('tabArmory').addEventListener('click', () => showTab('armory'));
+$('tabArsenal').addEventListener('click', () => showTab('arsenal'));
 $('rsReset').addEventListener('click', () => {
   BUILDS[rsCls].clear(); saveBuilds(); renderRs(); updatePortSkillLine();
 });
